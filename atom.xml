@@ -4,11 +4,11 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://lilinj2000.github.io/atom.xml" rel="self"/>
   <link href="http://lilinj2000.github.io/"/>
-  <updated>2013-11-15T23:32:26+08:00</updated>
+  <updated>2013-11-15T23:49:37+08:00</updated>
   <id>http://lilinj2000.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
-    
+    <name><![CDATA[李林江]]></name>
+    <email><![CDATA[lilinj2000@163.com]]></email>
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
