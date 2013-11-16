@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-<<<<<<< HEAD
   <title><![CDATA[李林江]]></title>
   <link href="http://lilinj2000.github.io/atom.xml" rel="self"/>
   <link href="http://lilinj2000.github.io/"/>
@@ -10,21 +9,10 @@
   <author>
     <name><![CDATA[李林江]]></name>
     
-=======
-  <title><![CDATA[李林江的博客]]></title>
-  <link href="http://lilinj2000.github.io/atom.xml" rel="self"/>
-  <link href="http://lilinj2000.github.io/"/>
-  <updated>2013-11-16T00:05:26+08:00</updated>
-  <id>http://lilinj2000.github.io/</id>
-  <author>
-    <name><![CDATA[李林江]]></name>
-    <email><![CDATA[lilinj2000@163.com]]></email>
->>>>>>> 55bac8a23d50b08b6217ab008020bf7b66d2c12e
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
   
-<<<<<<< HEAD
   <entry>
     <title type="html"><![CDATA[hello world]]></title>
     <link href="http://lilinj2000.github.io/blog/2013/11/16/hello-world/"/>
@@ -34,6 +22,4 @@
 ]]></content>
   </entry>
   
-=======
->>>>>>> 55bac8a23d50b08b6217ab008020bf7b66d2c12e
 </feed>
