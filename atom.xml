@@ -4,7 +4,7 @@
   <title><![CDATA[李林江]]></title>
   <link href="http://lilinj2000.github.io/atom.xml" rel="self"/>
   <link href="http://lilinj2000.github.io/"/>
-  <updated>2013-11-16T22:44:10+08:00</updated>
+  <updated>2013-11-18T16:51:44+08:00</updated>
   <id>http://lilinj2000.github.io/</id>
   <author>
     <name><![CDATA[李林江]]></name>
@@ -14,11 +14,32 @@
 
   
   <entry>
+    <title type="html"><![CDATA[中文]]></title>
+    <link href="http://lilinj2000.github.io/blog/2013/11/18/test/"/>
+    <updated>2013-11-18T16:32:00+08:00</updated>
+    <id>http://lilinj2000.github.io/blog/2013/11/18/test</id>
+    <content type="html"><![CDATA[<p><strong>中文支持吗?</strong>
+<strong><em>afsdfasdf</em></strong></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[tes]]></title>
+    <link href="http://lilinj2000.github.io/blog/2013/11/18/tes/"/>
+    <updated>2013-11-18T16:31:00+08:00</updated>
+    <id>http://lilinj2000.github.io/blog/2013/11/18/tes</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[hello world]]></title>
     <link href="http://lilinj2000.github.io/blog/2013/11/16/hello-world/"/>
     <updated>2013-11-16T22:38:00+08:00</updated>
     <id>http://lilinj2000.github.io/blog/2013/11/16/hello-world</id>
     <content type="html"><![CDATA[<h6>Hello world!</h6>
+
+<h4>测试中文</h4>
 ]]></content>
   </entry>
   
