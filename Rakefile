@@ -102,7 +102,7 @@ task :new_post, :title, :title_alias do |t, args|
   if args.title_alias
     title_alias = args.title_alias
   else
-    title_alias = get_stdin("Enter a title_alias for your post: ")
+    title_alias = args.title #if no title_alias, just use the title.
   end
 
   raise "### You haven't set anything up yet. First run `rake install` to set up an Octopress theme." unless File.directory?(source_dir)

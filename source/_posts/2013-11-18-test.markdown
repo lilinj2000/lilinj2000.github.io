@@ -1,0 +1,10 @@
+---
+layout: post
+title: "中文"
+date: 2013-11-18 16:32
+comments: true
+categories: 
+---
+
+**中文支持吗?**
+***afsdfasdf***
