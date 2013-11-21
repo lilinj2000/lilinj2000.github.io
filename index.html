@@ -9,7 +9,7 @@
   <meta name="author" content="李林江">
 
   
-  <meta name="description" content="链接 Markdown 支持两种形式的链接语法： 行内式和参考式两种形式。 不管是哪一种，链接文字都是用 [方括号] 来标记。 ">
+  <meta name="description" content="链接 Markdown 支持两种形式的链接语法： 行内式和参考式两种形式。 不管是哪一种，链接文字都是用 [方括号] 来标记。 要建立一个行内式的链接，只要在方块括号后面紧接着圆括号并插入网址链接即可，如果你还想要加上链接的 title 文字，只要在网址后面，用双引号把 title 文字包起来即可 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -100,6 +100,18 @@
 
 <p>不管是哪一种，链接文字都是用 [方括号] 来标记。</p>
 
+<p>要建立一个行内式的链接，只要在方块括号后面紧接着圆括号并插入网址链接即可，如果你还想要加上链接的 title 文字，只要在网址后面，用双引号把 title 文字包起来即可，例如：</p>
+
+<pre><code>This is [an example](http://example.com/ "Title") inline link.
+
+[This link](http://example.net/) has no title attribute.
+</code></pre>
+
+<p>如果你是要链接到同样主机的资源，你可以使用相对路径：</p>
+
+<pre><code>See my [About](/about/) page for details.
+</code></pre>
+
 </div>
   
   
@@ -116,7 +128,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/11/21/markdown-basic-knowledge/">Markdown基本语法介绍 （标题和列表）</a></h1>
+      <h1 class="entry-title"><a href="/blog/2013/11/21/markdown-introduction-for-title-and-list/">Markdown语法介绍-标题和列表</a></h1>
     
     
       <p class="meta">
@@ -132,7 +144,70 @@
   
 
 
-<time datetime="2013-11-21T17:15:00+08:00" pubdate data-updated="true">Nov 21<span>st</span>, 2013</time>
+<time datetime="2013-11-21T22:30:00+08:00" pubdate data-updated="true">Nov 21<span>st</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>标题</h2>
+
+<p>Markdown 支持两种标题的语法，类 Setext 和类 atx 形式。</p>
+
+<p>类 Setext 形式是用底线的形式，利用 = （最高阶标题）和 &ndash; （第二阶标题），例如：</p>
+
+<pre><code>This is an H1
+=============
+
+This is an H2
+-------------
+</code></pre>
+
+<p>任何数量的 = 和 &ndash; 都可以有效果。</p>
+
+<p>类 Atx 形式则是在行首插入 1 到 6 个 # ，对应到标题 1 到 6 阶，例如：</p>
+
+<pre><code># 这是 H1
+
+## 这是 H2
+
+###### 这是 H6 
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/11/21/markdown-introduction-for-title-and-list/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/11/21/markdown-basic-knowledge/">Markdown简介</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-11-21T22:15:00+08:00" pubdate data-updated="true">Nov 21<span>st</span>, 2013</time>
         
       </p>
     
@@ -173,7 +248,11 @@
       </li>
     
       <li class="post">
-        <a href="/blog/2013/11/21/markdown-basic-knowledge/">Markdown基本语法介绍 （标题和列表）</a>
+        <a href="/blog/2013/11/21/markdown-introduction-for-title-and-list/">Markdown语法介绍-标题和列表</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/21/markdown-basic-knowledge/">Markdown简介</a>
       </li>
     
   </ul>

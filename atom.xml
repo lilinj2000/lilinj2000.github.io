@@ -4,7 +4,7 @@
   <title><![CDATA[李林江的技术博客]]></title>
   <link href="http://lilinj2000.github.io/atom.xml" rel="self"/>
   <link href="http://lilinj2000.github.io/"/>
-  <updated>2013-11-21T23:27:11+08:00</updated>
+  <updated>2013-11-21T23:36:32+08:00</updated>
   <id>http://lilinj2000.github.io/</id>
   <author>
     <name><![CDATA[李林江]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[markdown语法介绍-链接]]></title>
+    <title type="html"><![CDATA[Markdown语法介绍-链接]]></title>
     <link href="http://lilinj2000.github.io/blog/2013/11/21/markdown-introduction-for-link/"/>
     <updated>2013-11-21T22:53:00+08:00</updated>
     <id>http://lilinj2000.github.io/blog/2013/11/21/markdown-introduction-for-link</id>
@@ -23,9 +23,6 @@
 <p>Markdown 支持两种形式的链接语法： 行内式和参考式两种形式。</p>
 
 <p>不管是哪一种，链接文字都是用 [方括号] 来标记。</p>
-
-<!-- more -->
-
 
 <p>要建立一个行内式的链接，只要在方块括号后面紧接着圆括号并插入网址链接即可，如果你还想要加上链接的 title 文字，只要在网址后面，用双引号把 title 文字包起来即可，例如：</p>
 
@@ -38,6 +35,9 @@
 
 <pre><code>See my [About](/about/) page for details.
 </code></pre>
+
+<!-- more -->
+
 
 <p>参考式的链接是在链接文字的括号后面再接上另一个方括号，而在第二个方括号里面要填入用以辨识链接的标记：</p>
 
@@ -149,30 +149,11 @@ than from [Yahoo](http://search.yahoo.com/ "Yahoo Search") or
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Markdown基本语法介绍 （标题和列表）]]></title>
-    <link href="http://lilinj2000.github.io/blog/2013/11/21/markdown-basic-knowledge/"/>
-    <updated>2013-11-21T17:15:00+08:00</updated>
-    <id>http://lilinj2000.github.io/blog/2013/11/21/markdown-basic-knowledge</id>
-    <content type="html"><![CDATA[<h2>简介</h2>
-
-<p>Markdown是一种轻量级标记语言，创始人为约翰·格鲁伯（John Gruber）和亚伦·斯沃茨（Aaron Swartz）。它允许人们“使用易读易写的纯文本格式编写文档，然后转换成有效的XHTML(或者HTML)文档”。</p>
-
-<p>这是一种[电子邮件风格]的标记语言，其主要目标就是实现[易读易写]。</p>
-
-<!-- more -->
-
-
-<p>Markdown的优点有：</p>
-
-<ul>
-<li>纯文本，所以兼容性极强，可以用所有文本编辑器打开。</li>
-<li>让你专注于文字而不是排版。</li>
-<li>格式转换方便，Markdown 的文本你可以轻松转换为 html、电子书等。</li>
-<li>Markdown 的标记语法有极好的可读性。</li>
-</ul>
-
-
-<h2>标题</h2>
+    <title type="html"><![CDATA[Markdown语法介绍-标题和列表]]></title>
+    <link href="http://lilinj2000.github.io/blog/2013/11/21/markdown-introduction-for-title-and-list/"/>
+    <updated>2013-11-21T22:30:00+08:00</updated>
+    <id>http://lilinj2000.github.io/blog/2013/11/21/markdown-introduction-for-title-and-list</id>
+    <content type="html"><![CDATA[<h2>标题</h2>
 
 <p>Markdown 支持两种标题的语法，类 Setext 和类 atx 形式。</p>
 
@@ -195,6 +176,9 @@ This is an H2
 
 ###### 这是 H6 
 </code></pre>
+
+<!-- more -->
+
 
 <h2>列表</h2>
 
@@ -245,6 +229,40 @@ This is an H2
 </code></pre>
 
 <p>你都会得到完全相同的 HTML 输出。重点在于，你可以让 Markdown 文件的列表数字和输出的结果相同，或是你懒一点，你可以完全不用在意数字的正确性。</p>
+
+<p>参考:</p>
+
+<p><a href="http://wowubuntu.com/markdown/">markdown语法说明（简体中文版）</a></p>
+
+<p><a href="http://jianshu.io/p/q81RER">献给写作者的 Markdown 新手指南</a></p>
+
+<p><a href="http://zh.wikipedia.org/wiki/Markdown">markdown-维基百科</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Markdown简介]]></title>
+    <link href="http://lilinj2000.github.io/blog/2013/11/21/markdown-basic-knowledge/"/>
+    <updated>2013-11-21T22:15:00+08:00</updated>
+    <id>http://lilinj2000.github.io/blog/2013/11/21/markdown-basic-knowledge</id>
+    <content type="html"><![CDATA[<h2>简介</h2>
+
+<p>Markdown是一种轻量级标记语言，创始人为约翰·格鲁伯（John Gruber）和亚伦·斯沃茨（Aaron Swartz）。它允许人们“使用易读易写的纯文本格式编写文档，然后转换成有效的XHTML(或者HTML)文档”。</p>
+
+<p>这是一种[电子邮件风格]的标记语言，其主要目标就是实现[易读易写]。</p>
+
+<!-- more -->
+
+
+<p>Markdown的优点有：</p>
+
+<ul>
+<li>纯文本，所以兼容性极强，可以用所有文本编辑器打开。</li>
+<li>让你专注于文字而不是排版。</li>
+<li>格式转换方便，Markdown 的文本你可以轻松转换为 html、电子书等。</li>
+<li>Markdown 的标记语法有极好的可读性。</li>
+</ul>
+
 
 <p>参考:</p>
 
