@@ -18,6 +18,8 @@ Markdown 标记区块引用是使用类似 email 中用 > 的引用方式。如�
 > Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
 > id sem consectetuer libero luctus adipiscing.
 
+<!-- more -->
+
 Markdown 也允许你偷懒只在整个段落的第一行最前面加上 > ：
 
 > This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,

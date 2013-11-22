@@ -20,6 +20,8 @@ Markdown 使用一种和链接很相似的语法来标记图片，同样也允�
 
     ![Alt text](/path/to/img.jpg "Optional title")
 
+<!-- more -->
+
 详细叙述如下：
 
 一个惊叹号 !

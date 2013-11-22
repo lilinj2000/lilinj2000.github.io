@@ -18,9 +18,11 @@ published: true
 
     <p>Use the <code>printf()</code> function.</p>
 
+<!-- more -->
+
 如果要在代码区段内**插入反引号**，你可以**用多个反引号来开启和结束代码区段**：
 
-``There is a literal backtick (`) here.``
+    ``There is a literal backtick (`) here.``
 
 这段语法会产生：
 
@@ -52,8 +54,8 @@ published: true
 
 以产生：
 
-<p><code>&amp;#8212;</code> is the decimal-encoded
-equivalent of <code>&amp;mdash;</code>.</p>
+    <p><code>&amp;#8212;</code> is the decimal-encoded
+    equivalent of <code>&amp;mdash;</code>.</p>
 
 ## 强调
 

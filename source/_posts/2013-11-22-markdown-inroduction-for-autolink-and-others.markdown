@@ -18,6 +18,8 @@ Markdown 会转为：
 
     <a href="http://example.com/">http://example.com/</a>
 
+<!-- more -->
+
 邮址的自动链接也很类似，只是 Markdown 会先做一个编码转换的过程，把文字字符转成 16 进位码的 HTML 实体，这样的格式可以糊弄一些不好的邮址收集机器人，例如：
 
     <address@example.com>
