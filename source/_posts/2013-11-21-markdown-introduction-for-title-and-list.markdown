@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Markdown语法介绍-标题和列表"
+title: "Markdown语法介绍 - 标题和列表"
 date: 2013-11-21 22:30
 comments: true
 categories: Markdown介绍
