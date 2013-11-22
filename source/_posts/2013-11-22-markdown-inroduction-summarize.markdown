@@ -75,10 +75,10 @@ Markdown 的主要目的是编写**易读易写**的纯文本格式文档，
     >   参考式链接：
     >   
     >       [github] [1]
-            [1]: http://github.com
-            or
-            [github] []
-            [github]: http://github.com  
+    >       [1]: http://github.com
+    >       or
+    >       [github] []
+    >       [github]: http://github.com  
     >
     >   自动链接 --- `<http://github.com>` or `<sb@github.com>`
         
