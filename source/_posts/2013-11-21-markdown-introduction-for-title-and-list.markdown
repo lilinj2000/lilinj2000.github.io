@@ -70,6 +70,55 @@ Markdown 支持有序列表和无序列表。
 
 你都会得到完全相同的 HTML 输出。重点在于，你可以让 Markdown 文件的列表数字和输出的结果相同，或是你懒一点，你可以完全不用在意数字的正确性。
 
+列表项目标记通常是放在最左边，但是其实也可以缩进，最多 3 个空格，项目标记后面则一定要接着至少一个空格或制表符。
+
+要让列表看起来更漂亮，你可以把内容用固定的缩进整理好：
+
+    *   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+        Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
+        viverra nec, fringilla in, laoreet vitae, risus.
+    *   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
+        Suspendisse id sem consectetuer libero luctus adipiscing.
+
+列表项目可以包含多个段落，每个项目下的段落都必须缩进 4 个空格或是 1 个制表符：
+
+    1.  This is a list item with two paragraphs. Lorem ipsum dolor
+        sit amet, consectetuer adipiscing elit. Aliquam hendrerit
+        mi posuere lectus.
+
+        Vestibulum enim wisi, viverra nec, fringilla in, laoreet
+        vitae, risus. Donec sit amet nisl. Aliquam semper ipsum
+        sit amet velit.
+
+    2.  Suspendisse id sem consectetuer libero luctus adipiscing.
+
+如果要在列表项目内放进引用，那 > 就需要缩进：
+
+    *   A list item with a blockquote:
+
+        > This is a blockquote
+        > inside a list item.
+
+如果要放代码区块的话，该区块就需要缩进两次，也就是 8 个空格或是 2 个制表符：
+
+    *   一列表项包含一个列表区块：
+
+            <代码写在这>
+
+当然，项目列表很可能会不小心产生，像是下面这样的写法：
+
+    1986. What a great season.
+
+换句话说，也就是在行首出现数字-句点-空白，要避免这样的状况，你可以在句点前面加上反斜杠。
+
+    1986\. What a great season.
+
+如果要用嵌套列表，那么下一级列表就要缩进，也就是4个空格或者1个制表符。
+
+    + list1
+        - list2
+            *   list3
+
 参考: 
 
 [markdown语法说明（简体中文版）](http://wowubuntu.com/markdown/)
