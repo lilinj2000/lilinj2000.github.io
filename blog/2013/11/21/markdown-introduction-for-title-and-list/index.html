@@ -5,13 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Markdown语法介绍-标题和列表 - 李林江的技术博客</title>
+  <title>Markdown语法介绍 - 标题和列表 - 李林江的技术博客</title>
   <meta name="author" content="李林江">
 
   
   <meta name="description" content="标题 Markdown 支持两种标题的语法，类 Setext 和类 atx 形式。 类 Setext 形式是用底线的形式，利用 = （最高阶标题）和 &ndash; （第二阶标题），例如： This is an H1
 ============= This is an H2 &hellip;">
-  
+  <meta name="keywords" content="Markdown">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -69,7 +69,7 @@
   
   <header>
     
-      <h1 class="entry-title">Markdown语法介绍-标题和列表</h1>
+      <h1 class="entry-title">Markdown语法介绍 - 标题和列表</h1>
     
     
       <p class="meta">
@@ -169,6 +169,62 @@ This is an H2
 
 <p>你都会得到完全相同的 HTML 输出。重点在于，你可以让 Markdown 文件的列表数字和输出的结果相同，或是你懒一点，你可以完全不用在意数字的正确性。</p>
 
+<p>列表项目标记通常是放在最左边，但是其实也可以缩进，最多 3 个空格，项目标记后面则一定要接着至少一个空格或制表符。</p>
+
+<p>要让列表看起来更漂亮，你可以把内容用固定的缩进整理好：</p>
+
+<pre><code>*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+    Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
+    viverra nec, fringilla in, laoreet vitae, risus.
+*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
+    Suspendisse id sem consectetuer libero luctus adipiscing.
+</code></pre>
+
+<p>列表项目可以包含多个段落，每个项目下的段落都必须缩进 4 个空格或是 1 个制表符：</p>
+
+<pre><code>1.  This is a list item with two paragraphs. Lorem ipsum dolor
+    sit amet, consectetuer adipiscing elit. Aliquam hendrerit
+    mi posuere lectus.
+
+    Vestibulum enim wisi, viverra nec, fringilla in, laoreet
+    vitae, risus. Donec sit amet nisl. Aliquam semper ipsum
+    sit amet velit.
+
+2.  Suspendisse id sem consectetuer libero luctus adipiscing.
+</code></pre>
+
+<p>如果要在列表项目内放进引用，那 > 就需要缩进：</p>
+
+<pre><code>*   A list item with a blockquote:
+
+    &gt; This is a blockquote
+    &gt; inside a list item.
+</code></pre>
+
+<p>如果要放代码区块的话，该区块就需要缩进两次，也就是 8 个空格或是 2 个制表符：</p>
+
+<pre><code>*   一列表项包含一个列表区块：
+
+        &lt;代码写在这&gt;
+</code></pre>
+
+<p>当然，项目列表很可能会不小心产生，像是下面这样的写法：</p>
+
+<pre><code>1986. What a great season.
+</code></pre>
+
+<p>换句话说，也就是在行首出现数字-句点-空白，要避免这样的状况，你可以在句点前面加上反斜杠。</p>
+
+<pre><code>1986\. What a great season.
+</code></pre>
+
+<p>如果要用嵌套列表，那么下一级列表就要缩进，也就是4个空格或者1个制表符。</p>
+
+<pre><code>+ list1
+    - list2
+        *   list3
+</code></pre>
+
 <p>参考:</p>
 
 <p><a href="http://wowubuntu.com/markdown/">markdown语法说明（简体中文版）</a></p>
@@ -221,7 +277,7 @@ This is an H2
         <a class="basic-alignment left" href="/blog/2013/11/21/markdown-basic-knowledge/" title="Previous Post: Markdown简介">&laquo; Markdown简介</a>
       
       
-        <a class="basic-alignment right" href="/blog/2013/11/21/markdown-introduction-for-link/" title="Next Post: Markdown语法介绍-链接">Markdown语法介绍-链接 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2013/11/21/markdown-introduction-for-link/" title="Next Post: Markdown语法介绍 - 链接">Markdown语法介绍 - 链接 &raquo;</a>
       
     </p>
   </footer>
@@ -237,16 +293,26 @@ This is an H2
 
 <aside class="sidebar">
   
-    <section>
+    <section> 
+  <h1>Categories</h1> 
+  <ul id="categories"> 
+    <li class='category'><a href='/blog/categories/markdownjie-shao/'>Markdown介绍 (10)</a></li>
+ 
+  </ul> 
+</section><section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/11/22/markdown-inroduction-summarize/">Markdown 小结</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/11/22/markdown-inroduction-for-code-and-em/">Markdown语法介绍 - 代码和强调</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/11/22/markdown-inroduction-for-autolink-and-others/">Markdown语法介绍 - 自动连接和其他</a>
+        <a href="/blog/2013/11/22/markdown-inroduction-for-autolink-and-others/">Markdown语法介绍 - 自动链接和其他</a>
       </li>
     
       <li class="post">
@@ -255,10 +321,6 @@ This is an H2
     
       <li class="post">
         <a href="/blog/2013/11/22/markdown-inroduction-for-code-and-seprator/">Markdown语法介绍 - 代码区块和分隔线</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/11/22/markdown-inroduction-for-section-and-newline/">Markdown语法介绍 - 段落和换行</a>
       </li>
     
   </ul>
@@ -271,8 +333,6 @@ This is an H2
 
     </ul>
 </section>
-
-
   
 </aside>
 

@@ -9,7 +9,7 @@
   <meta name="author" content="李林江">
 
   
-  <meta name="description" content="代码区块 和程序相关的写作或是标签语言原始码通常会有已经排版好的代码区块，通常这些区块我们并不希望它以一般段落文件的方式去排版，而是照原来的样子显示，Markdown 会用 和 标签来把代码区块包起来。 要在 Markdown 中建立代码区块很简单，只要简单地缩进 4 个空格或是 1 &hellip;">
+  <meta name="description" content="代码区块 和程序相关的写作或是标签语言原始码通常会有已经排版好的代码区块，通常这些区块我们并不希望它以一般段落文件的方式去排版，而是照原来的样子显示，Markdown 会用 &lt;pre&gt; 和 &lt;code&gt; 标签来把代码区块包起来。 要在 Markdown 中建立代码区块很简单 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -93,7 +93,7 @@
 
 <div class="entry-content"><h2>代码区块</h2>
 
-<p>和程序相关的写作或是标签语言原始码通常会有已经排版好的代码区块，通常这些区块我们并不希望它以一般段落文件的方式去排版，而是照原来的样子显示，Markdown 会用 <pre> 和 <code> 标签来把代码区块包起来。</p>
+<p>和程序相关的写作或是标签语言原始码通常会有已经排版好的代码区块，通常这些区块我们并不希望它以一般段落文件的方式去排版，而是照原来的样子显示，Markdown 会用 <code>&lt;pre&gt;</code> 和 <code>&lt;code&gt;</code> 标签来把代码区块包起来。</p>
 
 <!-- more -->
 
@@ -236,16 +236,26 @@ end tell
 
 <aside class="sidebar">
   
-    <section>
+    <section> 
+  <h1>Categories</h1> 
+  <ul id="categories"> 
+    <li class='category'><a href='/blog/categories/markdownjie-shao/'>Markdown介绍 (10)</a></li>
+ 
+  </ul> 
+</section><section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/11/22/markdown-inroduction-summarize/">Markdown 小结</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/11/22/markdown-inroduction-for-code-and-em/">Markdown语法介绍 - 代码和强调</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/11/22/markdown-inroduction-for-autolink-and-others/">Markdown语法介绍 - 自动连接和其他</a>
+        <a href="/blog/2013/11/22/markdown-inroduction-for-autolink-and-others/">Markdown语法介绍 - 自动链接和其他</a>
       </li>
     
       <li class="post">
@@ -254,10 +264,6 @@ end tell
     
       <li class="post">
         <a href="/blog/2013/11/22/markdown-inroduction-for-code-and-seprator/">Markdown语法介绍 - 代码区块和分隔线</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/11/22/markdown-inroduction-for-section-and-newline/">Markdown语法介绍 - 段落和换行</a>
       </li>
     
   </ul>
@@ -270,8 +276,6 @@ end tell
 
     </ul>
 </section>
-
-
   
 </aside>
 

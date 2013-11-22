@@ -4,14 +4,122 @@
   <title><![CDATA[Tag: Markdown | 李林江的技术博客]]></title>
   <link href="http://lilinj2000.github.io/tags/markdown/atom.xml" rel="self"/>
   <link href="http://lilinj2000.github.io/"/>
-  <updated>2013-11-22T14:34:17+08:00</updated>
+  <updated>2013-11-23T01:08:10+08:00</updated>
   <id>http://lilinj2000.github.io/</id>
   <author>
     <name><![CDATA[李林江]]></name>
-    
+    <email><![CDATA[lilinj2000@163.com]]></email>
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Markdown 小结]]></title>
+    <link href="http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-summarize/"/>
+    <updated>2013-11-22T14:28:00+08:00</updated>
+    <id>http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-summarize</id>
+    <content type="html"><![CDATA[<h2>背景</h2>
+
+<p>偶然发现 githup 上提供自己搭建博客的功能，同时又有 octopress 这么好的一个工具可以使用。</p>
+
+<p>终于，迫不及待的想尝试一下，自己来搭建一个博客。</p>
+
+<p>一来可以和大家一起交流，</p>
+
+<p>同时也是记录自己学习的一个过程。</p>
+
+<p>octopress 默认是用 Markdown 语言来写的。</p>
+
+<p>所以，我的博客就从学习 Markdown &ndash; 这个轻量级标记语言来开始。</p>
+
+<!-- more -->
+
+
+<h2>Markdown 基本思想</h2>
+
+<p>Markdown 是一种轻量级的标记语言，同时其又是一个电子邮件风格的标记语言。</p>
+
+<p>Markdown 的主要目的是编写<strong>易读易写</strong>的纯文本格式文档，
+它让用户专注于文档的内容，而不要过于在文档的格式上花费太多的精力和时间。</p>
+
+<p>其本身的语法就是使用最简单，同时也是最容易被理解的符号来标注，
+让人易学易用，期望可以成为<strong>一种网络上的流行书写语言</strong>。</p>
+
+<p><em>简单，易学，易用，易理解，易读，同时也易维护</em>。</p>
+
+<h2>Markdown 语法小结</h2>
+
+<ul>
+<li><p>区块元素</p>
+
+<ul>
+<li><p>标题</p>
+
+<blockquote><p>  类 Setext 形式是用底线的形式，利用 = （最高阶标题）和 &ndash;
+（第二阶标题）。</p>
+
+<p>  类 Atx 形式则是在行首插入 1 到 6 个 # ，对应到标题 1 到 6 阶。</p></blockquote></li>
+<li><p>列表</p>
+
+<blockquote><p>  无序列表： 用符号 *, +, -</p>
+
+<p>  有序列表： 数字 - 点起始。 <code>1. list1</code></p>
+
+<p>  嵌套列表，下一级列表由 4 个空格或者 1 个制表符缩进；
+对于嵌套代码区块需要8个空格或者2个制表符缩进。</p></blockquote></li>
+<li><p>段落和换行</p>
+
+<blockquote><p>  段落是一个或者多个连续的文本行组成，由一个或者一个以上的空行来分隔。</p>
+
+<p>  换行是插入两个或者两个以上的空格，再按回车。</p></blockquote></li>
+<li><p>区块引用： 由符号 > 作为引用标记。</p></li>
+<li><p>代码区块：由 4 个空格符或者 1 个制表符开始。</p></li>
+<li><p>分割线：由3个或者3个以上的符号 *， -， _ 单独组成的一行，形成分割线。</p></li>
+</ul>
+</li>
+<li><p>区块内元素</p>
+
+<ul>
+<li><p>代码：由 1 个或者多个 ` 反引号开始，和对应的 1
+    个或者多个反引号结束。</p></li>
+<li><p>强调：由两个 *，或者是两个 _ 包含的内容。 斜体则是由一个 *，
+或者是一个 _ 包含的内容。</p></li>
+<li><p>链接</p>
+
+<blockquote><p>  行内链接 &mdash;&ndash; <code>[github](http://github.com)</code></p>
+
+<p>  参考式链接：</p>
+
+<pre><code>  [github] [1]
+  [1]: http://github.com
+  or
+  [github] []
+  [github]: http://github.com  
+</code></pre>
+
+<p>  自动链接 &mdash;&ndash; <code>&lt;http://github.com&gt;</code> or <code>&lt;sb@github.com&gt;</code></p></blockquote></li>
+<li><p>图片：类似于链接，只是在 [] 前面多一个 !</p></li>
+<li><p>支持用 \ 转义的符号有：</p>
+
+<blockquote><pre><code>  \   反斜线
+  `   反引号
+  *   星号
+  _   底线
+  {}  花括号
+  []  方括号
+  ()  括弧
+  #   井字号
+  +   加号
+  -   减号
+  .   英文句点
+  !   惊叹号
+</code></pre></blockquote></li>
+</ul>
+</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Markdown语法介绍 - 代码和强调]]></title>
@@ -123,7 +231,7 @@ __double underscores__
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Markdown语法介绍 - 自动连接和其他]]></title>
+    <title type="html"><![CDATA[Markdown语法介绍 - 自动链接和其他]]></title>
     <link href="http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-for-autolink-and-others/"/>
     <updated>2013-11-22T13:55:00+08:00</updated>
     <id>http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-for-autolink-and-others</id>
@@ -155,13 +263,13 @@ __double underscores__
 &amp;#109;&amp;#x70;&amp;#x6C;e&amp;#x2E;&amp;#99;&amp;#111;&amp;#109;&lt;/a&gt;
 </code></pre>
 
-<p>在浏览器里面，这段字串（其实是 &lsquo;<a href="mailto:address@example.com"><a href="&#x6d;&#x61;&#105;&#x6c;&#116;&#111;&#x3a;&#97;&#100;&#x64;&#114;&#x65;&#x73;&#x73;&#x40;&#x65;&#x78;&#x61;&#x6d;&#112;&#x6c;&#x65;&#x2e;&#99;&#111;&#x6d;">&#x61;&#100;&#x64;&#114;&#x65;&#115;&#115;&#x40;&#101;&#x78;&#97;&#x6d;&#x70;&#x6c;&#x65;&#46;&#x63;&#111;&#109;</a></a>'）会变成一个可以点击的「'<a href="&#109;&#x61;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#97;&#x64;&#100;&#x72;&#x65;&#115;&#x73;&#64;&#x65;&#x78;&#97;&#109;&#x70;&#108;&#101;&#46;&#x63;&#x6f;&#109;">&#97;&#x64;&#x64;&#114;&#x65;&#115;&#x73;&#64;&#101;&#x78;&#x61;&#109;&#x70;&#x6c;&#101;&#x2e;&#x63;&#111;&#109;</a>'」链接。</p>
+<p>在浏览器里面，这段字串（其实是 <code>&lt;a href="mailto:address@example.com"&gt;address@example.com&lt;/a&gt;</code>）会变成一个可以点击的「address@example.com」链接。</p>
 
 <p>（这种作法虽然可以糊弄不少的机器人，但并不能全部挡下来，不过总比什么都不做好些。不管怎样，公开你的信箱终究会引来广告信件的。）</p>
 
 <h2>反斜杠</h2>
 
-<p>Markdown 可以利用反斜杠来插入一些在语法中有其它意义的符号，例如：如果你想要用星号加在文字旁边的方式来做出强调效果（但不用 <em> 标签），你可以在星号的前面加上反斜杠：</p>
+<p>Markdown 可以利用反斜杠来插入一些在语法中有其它意义的符号，例如：如果你想要用星号加在文字旁边的方式来做出强调效果（但不用 <code>&lt;em&gt;</code> 标签），你可以在星号的前面加上反斜杠：</p>
 
 <pre><code>\*literal asterisks\*
 </code></pre>
@@ -223,7 +331,7 @@ _   底线
 [id]: url/to/image  "Optional title attribute"
 </code></pre>
 
-<p>到目前为止， Markdown 还<em>没有办法指定图片的宽高，如果你需要的话，你可以使用普通的 <img> 标签</em>。</p>
+<p>到目前为止， Markdown 还<em>没有办法指定图片的宽高，如果你需要的话，你可以使用普通的 <code>&lt;img&gt;</code> 标签</em>。</p>
 
 <p>参考:</p>
 
@@ -238,7 +346,7 @@ _   底线
     <id>http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-for-code-and-seprator</id>
     <content type="html"><![CDATA[<h2>代码区块</h2>
 
-<p>和程序相关的写作或是标签语言原始码通常会有已经排版好的代码区块，通常这些区块我们并不希望它以一般段落文件的方式去排版，而是照原来的样子显示，Markdown 会用 <pre> 和 <code> 标签来把代码区块包起来。</p>
+<p>和程序相关的写作或是标签语言原始码通常会有已经排版好的代码区块，通常这些区块我们并不希望它以一般段落文件的方式去排版，而是照原来的样子显示，Markdown 会用 <code>&lt;pre&gt;</code> 和 <code>&lt;code&gt;</code> 标签来把代码区块包起来。</p>
 
 <!-- more -->
 
@@ -312,30 +420,6 @@ end tell
 </code></pre>
 
 <hr />
-
-<p>参考:</p>
-
-<p><a href="http://wowubuntu.com/markdown/">markdown语法说明（简体中文版）</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Markdown语法介绍 - 段落和换行]]></title>
-    <link href="http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-for-section-and-newline/"/>
-    <updated>2013-11-22T13:52:00+08:00</updated>
-    <id>http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-for-section-and-newline</id>
-    <content type="html"><![CDATA[<h2>段落和换行</h2>
-
-<p>一个 Markdown 段落是由一个或多个连续的文本行组成，它的前后要有<strong>一个或一个以上的空行</strong>（空行的定义是显示上看起来像是空的，便会被视为空行。比方说，若某一行只包含空格和制表符，则该行也会被视为空行）。<em>普通段落不该用空格或制表符来缩进</em>。</p>
-
-<p>「由一个或多个连续的文本行组成」这句话其实暗示了 Markdown 允许段落内的强迫换行（插入换行符），这个特性和其他大部分的 text-to-HTML 格式不一样（包括 Movable Type 的「Convert Line Breaks」选项），其它的格式会把每个换行符都转成 <br /> 标签。</p>
-
-<!-- more -->
-
-
-<p>如果你确实想要依赖 Markdown 来插入 <br /> 标签的话，在插入处先按入<strong>两个以上的空格然后回车</strong>。</p>
-
-<p>的确，需要多费点事（多加空格）来产生 <br /> ，但是简单地「每个换行都转换为 <br />」的方法在 Markdown 中并不适合， Markdown 中 email 式的 区块引用 和多段落的 列表 在使用换行来排版的时候，不但更好用，还更方便阅读。</p>
 
 <p>参考:</p>
 
