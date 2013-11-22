@@ -48,9 +48,9 @@ Markdown 支持两种形式的链接语法： 行内式和参考式两种形式�
 
 下面这三种链接的定义都是相同：
 
- [foo]: http://example.com/  "Optional Title Here"
- [foo]: http://example.com/  'Optional Title Here'
- [foo]: http://example.com/  (Optional Title Here)
+    [foo]: http://example.com/  "Optional Title Here"
+    [foo]: http://example.com/  'Optional Title Here'
+    [foo]: http://example.com/  (Optional Title Here)
 
 请注意：有一个已知的问题是 Markdown.pl 1.0.1 会忽略单引号包起来的链接 title。
 
@@ -119,8 +119,4 @@ Markdown 支持两种形式的链接语法： 行内式和参考式两种形式�
 参考: 
 
 [markdown语法说明（简体中文版）](http://wowubuntu.com/markdown/)
-
-[献给写作者的 Markdown 新手指南](http://jianshu.io/p/q81RER)
-
-[markdown-维基百科](http://zh.wikipedia.org/wiki/Markdown)
 

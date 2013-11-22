@@ -120,6 +120,7 @@ task :new_post, :title, :title_alias do |t, args|
     post.puts "date: #{Time.now.strftime('%Y-%m-%d %H:%M')}"
     post.puts "comments: true"
     post.puts "categories: "
+    post.puts "tags: "
     post.puts "published: false"
     post.puts "---"
   end

@@ -72,8 +72,3 @@ Markdown 支持有序列表和无序列表。
 参考: 
 
 [markdown语法说明（简体中文版）](http://wowubuntu.com/markdown/)
-
-[献给写作者的 Markdown 新手指南](http://jianshu.io/p/q81RER)
-
-[markdown-维基百科](http://zh.wikipedia.org/wiki/Markdown)
-
