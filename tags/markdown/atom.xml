@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Markdown | 李林江的技术博客]]></title>
   <link href="http://lilinj2000.github.io/tags/markdown/atom.xml" rel="self"/>
   <link href="http://lilinj2000.github.io/"/>
-  <updated>2013-11-22T16:58:10+08:00</updated>
+  <updated>2013-11-22T17:10:20+08:00</updated>
   <id>http://lilinj2000.github.io/</id>
   <author>
     <name><![CDATA[李林江]]></name>
@@ -161,30 +161,26 @@ __double underscores__
 
 <h2>反斜杠</h2>
 
-<p>Markdown 可以利用反斜杠来插入一些在语法中有其它意义的符号，例如：如果你想要用星号加在文字旁边的方式来做出强调效果（但不用 <em> 标签），你可以在星号的前面加上反斜杠：</p>
+<p>Markdown 可以利用反斜杠来插入一些在语法中有其它意义的符号，例如：如果你想要用星号加在文字旁边的方式来做出强调效果（但不用 <code>&lt;em&gt;</code> 标签），你可以在星号的前面加上反斜杠：</p>
 
 <pre><code>\*literal asterisks\*
 </code></pre>
 
 <p>Markdown 支持以下这些符号前面加上反斜杠来帮助插入普通的符号：</p>
 
-<p>\   反斜线
+<pre><code>\   反斜线
 `   反引号
 *   星号
 _   底线
 {}  花括号
 []  方括号
-()  括弧</p>
-
-<h1>井字号</h1>
-
-<ul>
-<li>加号</li>
-<li>减号
+()  括弧
+#   井字号
++   加号
+-   减号
 .   英文句点
-!   惊叹号</li>
-</ul>
-
+!   惊叹号
+</code></pre>
 
 <p>参考:</p>
 
