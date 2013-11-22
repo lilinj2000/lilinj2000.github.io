@@ -3,7 +3,8 @@ layout: post
 title: "Markdown简介"
 date: 2013-11-21 22:15
 comments: true
-categories: 
+categories: Markdown介绍
+tags: Markdown
 published: true
 ---
 
