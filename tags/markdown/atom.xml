@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Markdown | 李林江的技术博客]]></title>
   <link href="http://lilinj2000.github.io/tags/markdown/atom.xml" rel="self"/>
   <link href="http://lilinj2000.github.io/"/>
-  <updated>2013-11-23T01:01:38+08:00</updated>
+  <updated>2013-11-23T01:08:10+08:00</updated>
   <id>http://lilinj2000.github.io/</id>
   <author>
     <name><![CDATA[李林江]]></name>
@@ -61,9 +61,9 @@
 <p>  类 Atx 形式则是在行首插入 1 到 6 个 # ，对应到标题 1 到 6 阶。</p></blockquote></li>
 <li><p>列表</p>
 
-<blockquote><p>  无序列表： *, +, -</p>
+<blockquote><p>  无序列表： 用符号 *, +, -</p>
 
-<p>  有序列表： 数字-点起始。 <code>1. list1</code></p>
+<p>  有序列表： 数字 - 点起始。 <code>1. list1</code></p>
 
 <p>  嵌套列表，下一级列表由 4 个空格或者 1 个制表符缩进；
 对于嵌套代码区块需要8个空格或者2个制表符缩进。</p></blockquote></li>
