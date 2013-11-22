@@ -9,7 +9,7 @@
   <meta name="author" content="李林江">
 
   
-  <meta name="description" content="代码 如果要标记一小段行内代码，你可以用反引号把它包起来（`），例如： Use the `printf()` function. 会产生： &lt;p&gt;Use the &lt;code&gt;printf()&lt;/code&gt; function.&lt;/p&gt; &hellip;">
+  <meta name="description" content="代码 如果要标记一小段行内代码，你可以用反引号把它包起来（`），例如： Use the `printf()` function. 会产生： &lt;p&gt;Use the &lt;code&gt;printf()&lt;/code&gt; function.&lt;/p&gt; ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -106,93 +106,12 @@
 <pre><code>&lt;p&gt;Use the &lt;code&gt;printf()&lt;/code&gt; function.&lt;/p&gt;
 </code></pre>
 
-<p>如果要在代码区段内<strong>插入反引号</strong>，你可以<strong>用多个反引号来开启和结束代码区段</strong>：</p>
-
-<p><code>There is a literal backtick (`) here.</code></p>
-
-<p>这段语法会产生：</p>
-
-<pre><code>&lt;p&gt;&lt;code&gt;There is a literal backtick (`) here.&lt;/code&gt;&lt;/p&gt;
-</code></pre>
-
-<p>代码区段的起始和结束端都可以放入一个空白，起始端后面一个，结束端前面一个，这样你就可以在区段的一开始就插入反引号：</p>
-
-<pre><code>A single backtick in a code span: `` ` ``
-
-A backtick-delimited string in a code span: `` `foo` ``
-</code></pre>
-
-<p>会产生：</p>
-
-<pre><code>&lt;p&gt;A single backtick in a code span: &lt;code&gt;`&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;A backtick-delimited string in a code span: &lt;code&gt;`foo`&lt;/code&gt;&lt;/p&gt;
-</code></pre>
-
-<p>在代码区段内，&amp; 和方括号都会被自动地转成 HTML 实体，这使得插入 HTML 原始码变得很容易，Markdown 会把下面这段：</p>
-
-<pre><code>Please don't use any `&lt;blink&gt;` tags.
-</code></pre>
-
-<p>转为：</p>
-
-<pre><code>&lt;p&gt;Please don't use any &lt;code&gt;&amp;lt;blink&amp;gt;&lt;/code&gt; tags.&lt;/p&gt;
-</code></pre>
-
-<p>你也可以这样写：</p>
-
-<pre><code>`&amp;#8212;` is the decimal-encoded equivalent of `&amp;mdash;`.
-</code></pre>
-
-<p>以产生：</p>
-
-<p><code>&amp;#8212;</code> is the decimal-encoded
-equivalent of <code>&amp;mdash;</code>.</p>
-
-
-<h2>强调</h2>
-
-<p>Markdown 使用星号（*）和底线（_）作为标记强调字词的符号，被 * 或 _ 包围的字词会被转成用 <em> 标签包围，用两个 * 或 _ 包起来的话，则会被转成 <strong>，例如：</p>
-
-<pre><code>*single asterisks*
-
-_single underscores_
-
-**double asterisks**
-
-__double underscores__
-</code></pre>
-
-<p>会转成：</p>
-
-<pre><code>&lt;em&gt;single asterisks&lt;/em&gt;
-
-&lt;em&gt;single underscores&lt;/em&gt;
-
-&lt;strong&gt;double asterisks&lt;/strong&gt;
-
-&lt;strong&gt;double underscores&lt;/strong&gt;
-</code></pre>
-
-<p>你可以随便用你喜欢的样式，唯一的限制是，你用什么符号开启标签，就要用什么符号结束。</p>
-
-<p>强调也可以直接插在文字中间：</p>
-
-<pre><code>un*frigging*believable
-</code></pre>
-
-<p>但是如果你的 * 和 _ 两边都有空白的话，它们就只会被当成普通的符号。</p>
-
-<p>如果要在文字前后直接插入普通的星号或底线，你可以用反斜线：</p>
-
-<pre><code>\*this text is surrounded by literal asterisks\*
-</code></pre>
-
-<p>参考:</p>
-
-<p><a href="http://wowubuntu.com/markdown/">markdown语法说明（简体中文版）</a></p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/11/22/markdown-inroduction-for-code-and-em/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -238,51 +157,12 @@ __double underscores__
 <pre><code>&lt;a href="http://example.com/"&gt;http://example.com/&lt;/a&gt;
 </code></pre>
 
-<p>邮址的自动链接也很类似，只是 Markdown 会先做一个编码转换的过程，把文字字符转成 16 进位码的 HTML 实体，这样的格式可以糊弄一些不好的邮址收集机器人，例如：</p>
-
-<pre><code>&lt;address@example.com&gt;
-</code></pre>
-
-<p>Markdown 会转成：</p>
-
-<pre><code>&lt;a href="&amp;#x6D;&amp;#x61;i&amp;#x6C;&amp;#x74;&amp;#x6F;:&amp;#x61;&amp;#x64;&amp;#x64;&amp;#x72;&amp;#x65;
-&amp;#115;&amp;#115;&amp;#64;&amp;#101;&amp;#120;&amp;#x61;&amp;#109;&amp;#x70;&amp;#x6C;e&amp;#x2E;&amp;#99;&amp;#111;
-&amp;#109;"&gt;&amp;#x61;&amp;#x64;&amp;#x64;&amp;#x72;&amp;#x65;&amp;#115;&amp;#115;&amp;#64;&amp;#101;&amp;#120;&amp;#x61;
-&amp;#109;&amp;#x70;&amp;#x6C;e&amp;#x2E;&amp;#99;&amp;#111;&amp;#109;&lt;/a&gt;
-</code></pre>
-
-<p>在浏览器里面，这段字串（其实是 &lsquo;<a href="mailto:address@example.com"><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#x3a;&#x61;&#100;&#x64;&#x72;&#101;&#115;&#x73;&#x40;&#x65;&#x78;&#x61;&#109;&#x70;&#108;&#x65;&#46;&#99;&#x6f;&#109;">&#x61;&#100;&#100;&#x72;&#101;&#115;&#115;&#64;&#x65;&#120;&#97;&#x6d;&#x70;&#108;&#x65;&#x2e;&#99;&#111;&#x6d;</a></a>&#8216;）会变成一个可以点击的「&#8217;<a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#111;&#x3a;&#x61;&#x64;&#x64;&#x72;&#x65;&#115;&#115;&#x40;&#101;&#120;&#x61;&#109;&#x70;&#108;&#101;&#46;&#x63;&#x6f;&#109;">&#97;&#x64;&#x64;&#114;&#101;&#115;&#115;&#64;&#101;&#x78;&#x61;&#x6d;&#x70;&#108;&#101;&#x2e;&#99;&#x6f;&#x6d;</a>&#8216;」链接。</p>
-
-<p>（这种作法虽然可以糊弄不少的机器人，但并不能全部挡下来，不过总比什么都不做好些。不管怎样，公开你的信箱终究会引来广告信件的。）</p>
-
-<h2>反斜杠</h2>
-
-<p>Markdown 可以利用反斜杠来插入一些在语法中有其它意义的符号，例如：如果你想要用星号加在文字旁边的方式来做出强调效果（但不用 <em> 标签），你可以在星号的前面加上反斜杠：</p>
-
-<pre><code>\*literal asterisks\*
-</code></pre>
-
-<p>Markdown 支持以下这些符号前面加上反斜杠来帮助插入普通的符号：</p>
-
-<pre><code>\   反斜线
-`   反引号
-*   星号
-_   底线
-{}  花括号
-[]  方括号
-()  括弧
-#   井字号
-+   加号
--   减号
-.   英文句点
-!   惊叹号
-</code></pre>
-
-<p>参考:</p>
-
-<p><a href="http://wowubuntu.com/markdown/">markdown语法说明（简体中文版）</a></p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/11/22/markdown-inroduction-for-autolink-and-others/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -329,27 +209,12 @@ _   底线
 ![Alt text](/path/to/img.jpg "Optional title")
 </code></pre>
 
-<p>详细叙述如下：</p>
-
-<p>一个惊叹号 !
-接着一个方括号，里面放上图片的替代文字
-接着一个普通括号，里面放上图片的网址，最后还可以用引号包住并加上 选择性的 &lsquo;title&rsquo; 文字。</p>
-
-<p>参考式的图片语法则长得像这样：</p>
-
-<pre><code>![Alt text][id]
-「id」是图片参考的名称，图片参考的定义方式则和连结参考一样：
-
-[id]: url/to/image  "Optional title attribute"
-</code></pre>
-
-<p>到目前为止， Markdown 还<em>没有办法指定图片的宽高，如果你需要的话，你可以使用普通的 <img> 标签</em>。</p>
-
-<p>参考:</p>
-
-<p><a href="http://wowubuntu.com/markdown/">markdown语法说明（简体中文版）</a></p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/11/22/markdown-inroduction-for-image/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -387,81 +252,12 @@ _   底线
 
 <p>和程序相关的写作或是标签语言原始码通常会有已经排版好的代码区块，通常这些区块我们并不希望它以一般段落文件的方式去排版，而是照原来的样子显示，Markdown 会用 <pre> 和 <code> 标签来把代码区块包起来。</p>
 
-<p>要在 Markdown 中建立代码区块很简单，只要<strong>简单地缩进 4 个空格或是 1 个制表符</strong>就可以，例如，下面的输入：</p>
-
-<p>这是一个普通段落：</p>
-
-<pre><code>这是一个代码区块。
-</code></pre>
-
-<p>Markdown 会转换成：</p>
-
-<pre><code>&lt;p&gt;这是一个普通段落：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;这是一个代码区块。
-&lt;/code&gt;&lt;/pre&gt;
-</code></pre>
-
-<p>这个每行一阶的缩进（4 个空格或是 1 个制表符），都会被移除，例如：</p>
-
-<pre><code>Here is an example of AppleScript:
-
-    tell application "Foo"
-        beep
-    end tell
-</code></pre>
-
-<p>会被转换为：</p>
-
-<pre><code>&lt;p&gt;Here is an example of AppleScript:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;tell application "Foo"
-    beep
-end tell
-&lt;/code&gt;&lt;/pre&gt;
-</code></pre>
-
-<p>一个代码区块会一直持续到没有缩进的那一行（或是文件结尾）。</p>
-
-<p>在代码区块里面， <em>&amp; 、 &lt; 和 > 会自动转成 HTML 实体</em>，这样的方式让你非常容易使用 Markdown 插入范例用的 HTML 原始码，只需要复制贴上，再加上缩进就可以了，剩下的 Markdown 都会帮你处理，例如：</p>
-
-<pre><code>&lt;div class="footer"&gt;
-    &amp;copy; 2004 Foo Corporation
-&lt;/div&gt;
-</code></pre>
-
-<p>会被转换为：</p>
-
-<pre><code>&lt;pre&gt;&lt;code&gt;&amp;lt;div class="footer"&amp;gt;
-    &amp;amp;copy; 2004 Foo Corporation
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-</code></pre>
-
-<p>代码区块中，一般的 Markdown 语法不会被转换，像是星号便只是星号，这表示你可以很容易地以 Markdown 语法撰写 Markdown 语法相关的文件。</p>
-
-<h2>分隔线</h2>
-
-<p>你可以在<strong>一行中用三个以上的星号、减号、底线</strong>来建立一个分隔线，<em>行内不能有其他东西</em>。你<em>也可以在星号或是减号中间插入空格</em>。下面每种写法都可以建立分隔线：</p>
-
-<pre><code>* * *
-
-***
-
-*****
-
-- - -
-
----------------------------------------
-</code></pre>
-
-<hr />
-
-<p>参考:</p>
-
-<p><a href="http://wowubuntu.com/markdown/">markdown语法说明（简体中文版）</a></p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/11/22/markdown-inroduction-for-code-and-seprator/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -501,15 +297,12 @@ end tell
 
 <p>「由一个或多个连续的文本行组成」这句话其实暗示了 Markdown 允许段落内的强迫换行（插入换行符），这个特性和其他大部分的 text-to-HTML 格式不一样（包括 Movable Type 的「Convert Line Breaks」选项），其它的格式会把每个换行符都转成 <br /> 标签。</p>
 
-<p>如果你确实想要依赖 Markdown 来插入 <br /> 标签的话，在插入处先按入<strong>两个以上的空格然后回车</strong>。</p>
-
-<p>的确，需要多费点事（多加空格）来产生 <br /> ，但是简单地「每个换行都转换为 <br />」的方法在 Markdown 中并不适合， Markdown 中 email 式的 区块引用 和多段落的 列表 在使用换行来排版的时候，不但更好用，还更方便阅读。</p>
-
-<p>参考:</p>
-
-<p><a href="http://wowubuntu.com/markdown/">markdown语法说明（简体中文版）</a></p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/11/22/markdown-inroduction-for-section-and-newline/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -554,45 +347,12 @@ Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.</p>
 <p>Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
 id sem consectetuer libero luctus adipiscing.</p></blockquote>
 
-<p>Markdown 也允许你偷懒只在整个段落的第一行最前面加上 > ：</p>
-
-<blockquote><p>This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
-consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
-Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.</p>
-
-<p>Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
-id sem consectetuer libero luctus adipiscing.</p></blockquote>
-
-<p>区块引用可以嵌套（例如：引用内的引用），只要根据层次加上不同数量的 > ：</p>
-
-<blockquote><p>This is the first level of quoting.</p>
-
-<blockquote><p>This is nested blockquote.</p></blockquote>
-
-<p>Back to the first level.</p></blockquote>
-
-<p>引用的区块内也可以使用其他的 Markdown 语法，包括标题、列表、代码区块等：</p>
-
-<blockquote><h2>这是一个标题。</h2>
-
-<ol>
-<li> 这是第一行列表项。</li>
-<li> 这是第二行列表项。</li>
-</ol>
-
-
-<p>给出一些例子代码：</p>
-
-<pre><code>return shell_exec("echo $input | $markdown_script");
-</code></pre></blockquote>
-
-<p>任何像样的文本编辑器都能轻松地建立 email 型的引用。例如在 BBEdit 中，你可以选取文字后然后从选单中选择增加引用阶层。</p>
-
-<p>参考:</p>
-
-<p><a href="http://wowubuntu.com/markdown/">markdown语法说明（简体中文版）</a></p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/11/22/markdown-inroduction-for-quote/">Read on &rarr;</a>
+    </footer>
   
 
 
