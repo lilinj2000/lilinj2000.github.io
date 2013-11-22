@@ -4,7 +4,7 @@
   <title><![CDATA[李林江的技术博客]]></title>
   <link href="http://lilinj2000.github.io/atom.xml" rel="self"/>
   <link href="http://lilinj2000.github.io/"/>
-  <updated>2013-11-22T16:42:04+08:00</updated>
+  <updated>2013-11-22T16:58:10+08:00</updated>
   <id>http://lilinj2000.github.io/</id>
   <author>
     <name><![CDATA[李林江]]></name>
@@ -168,19 +168,23 @@ __double underscores__
 
 <p>Markdown 支持以下这些符号前面加上反斜杠来帮助插入普通的符号：</p>
 
-<pre><code>\   反斜线
+<p>\   反斜线
 `   反引号
 *   星号
 _   底线
 {}  花括号
 []  方括号
-()  括弧
-#   井字号
-+   加号
--   减号
+()  括弧</p>
+
+<h1>井字号</h1>
+
+<ul>
+<li>加号</li>
+<li>减号
 .   英文句点
-!   惊叹号
-</code></pre>
+!   惊叹号</li>
+</ul>
+
 
 <p>参考:</p>
 
