@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Markdown简介 - 李林江的技术博客</title>
+  <title>Markdown语法介绍 - 图片 - 李林江的技术博客</title>
   <meta name="author" content="李林江">
 
   
-  <meta name="description" content="简介 Markdown是一种轻量级标记语言，创始人为约翰·格鲁伯（John Gruber）和亚伦·斯沃茨（Aaron Swartz）。它允许人们“使用易读易写的纯文本格式编写文档，然后转换成有效的XHTML(或者HTML)文档”。 Markdown同时还是一个由Gruber编写的Perl脚本： &hellip;">
+  <meta name="description" content="图片 很明显地，要在纯文字应用中设计一个「自然」的语法来插入图片是有一定难度的。 Markdown 使用一种和链接很相似的语法来标记图片，同样也允许两种样式： 行内式和参考式。 行内式的图片语法看起来像是： ![Alt text](/path/to/img.jpg) ![Alt text](/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://lilinj2000.github.io/blog/2013/11/21/markdown-basic-knowledge">
+  <link rel="canonical" href="http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-for-image">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="李林江的技术博客" type="application/atom+xml">
@@ -68,7 +68,7 @@
   
   <header>
     
-      <h1 class="entry-title">Markdown简介</h1>
+      <h1 class="entry-title">Markdown语法介绍 - 图片</h1>
     
     
       <p class="meta">
@@ -84,74 +84,45 @@
   
 
 
-<time datetime="2013-11-21T22:15:00+08:00" pubdate data-updated="true">Nov 21<span>st</span>, 2013</time>
+<time datetime="2013-11-22T13:54:00+08:00" pubdate data-updated="true">Nov 22<span>nd</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><h2>简介</h2>
+<div class="entry-content"><h2>图片</h2>
 
-<p>Markdown是一种轻量级标记语言，创始人为约翰·格鲁伯（John Gruber）和亚伦·斯沃茨（Aaron Swartz）。它允许人们“使用易读易写的纯文本格式编写文档，然后转换成有效的XHTML(或者HTML)文档”。</p>
+<p>很明显地，要在纯文字应用中设计一个「自然」的语法来插入图片是有一定难度的。</p>
 
-<p>Markdown同时还是一个由Gruber编写的Perl脚本：Markdown.pl。它把用markdown语法编写的内容转换成有效的、结构良好的XHTML或HTML内容，并将左尖括号(&lsquo;&lt;&rsquo;)和&amp;号替换成它们各自的字符实体引用。它可以用作单独的脚本，Blosxom和Movable Type的插件又或者BBEdit的文本过滤器.</p>
+<p>Markdown 使用一种和链接很相似的语法来标记图片，同样也允许两种样式： <strong>行内式和参考式</strong>。</p>
 
-<!-- more -->
+<p>行内式的图片语法看起来像是：</p>
 
+<pre><code>![Alt text](/path/to/img.jpg)
 
-<p>Markdown也已经被其他人用Perl和别的编程语言重新实现，其中一个Perl模块放在了CPAN(Text::Markdown)上。它基于一个BSD风格的许可证分发并可以作为几个内容管理系统的插件。</p>
-
-<p>这是一种[电子邮件风格]的标记语言，其主要目标就是实现[易读易写]。</p>
-
-<p>Markdown的优点有：</p>
-
-<ul>
-<li>纯文本，所以兼容性极强，可以用所有文本编辑器打开。</li>
-<li>让你专注于文字而不是排版。</li>
-<li>格式转换方便，Markdown 的文本你可以轻松转换为 html、电子书等。</li>
-<li>Markdown 的标记语法有极好的可读性。</li>
-</ul>
-
-
-<h2>兼容 HTML</h2>
-
-<p>Markdown 语法的目标是：<strong>成为一种适用于网络的书写语言</strong>。</p>
-
-<p>Markdown 不是想要取代 HTML，甚至也没有要和它相近，它的语法种类很少，只对应 HTML 标记的一小部分。Markdown 的构想不是要使得 HTML 文档更容易书写。</p>
-
-<p>Markdown 的理念是，能让文档更容易读、写和随意改。HTML 是一种发布的格式，Markdown 是一种书写的格式。就这样，<strong>Markdown 的格式语法只涵盖纯文本可以涵盖的范围</strong>。</p>
-
-<p>不在 Markdown 涵盖范围之内的标签，都可以直接在文档里面用 HTML 撰写。不需要额外标注这是 HTML 或是 Markdown；只要直接加标签就可以了。</p>
-
-<p>要制约的只有一些 HTML 区块元素――比如 <div>、<table>、<pre>、<p> 等标签，必须在前后加上空行与其它内容区隔开，还要求它们的<em>开始标签与结尾标签不能用制表符或空格来缩进</em>。Markdown 的生成器有足够智能，不会在 HTML 区块标签外加上不必要的 <p> 标签。</p>
-
-<p>例子如下，在 Markdown 文件里加上一段 HTML 表格：</p>
-
-<pre><code>这是一个普通段落。
-
-&lt;table&gt;
-    &lt;tr&gt;
-        &lt;td&gt;Foo&lt;/td&gt;
-    &lt;/tr&gt;
-&lt;/table&gt;
-
-这是另一个普通段落。
+![Alt text](/path/to/img.jpg "Optional title")
 </code></pre>
 
-<p>请注意，在 HTML 区块标签间的 Markdown 格式语法将不会被处理。比如，你在 HTML 区块内使用 Markdown 样式的<em>强调</em>会没有效果。</p>
+<p>详细叙述如下：</p>
 
-<p>HTML 的区段（行内）标签如 <span>、<cite>、<del> 可以在 Markdown 的段落、列表或是标题里随意使用。依照个人习惯，甚至可以不用 Markdown 格式，而直接采用 HTML 标签来格式化。举例说明：如果比较喜欢 HTML 的 <a> 或 <img> 标签，可以直接使用这些标签，而不用 Markdown 提供的链接或是图像标签语法。</p>
+<p>一个惊叹号 !
+接着一个方括号，里面放上图片的替代文字
+接着一个普通括号，里面放上图片的网址，最后还可以用引号包住并加上 选择性的 &lsquo;title&rsquo; 文字。</p>
 
-<p>和处在 HTML 区块标签间不同，<strong>Markdown 语法在 HTML 区段标签间是有效的</strong>。</p>
+<p>参考式的图片语法则长得像这样：</p>
+
+<pre><code>![Alt text][id]
+「id」是图片参考的名称，图片参考的定义方式则和连结参考一样：
+
+[id]: url/to/image  "Optional title attribute"
+</code></pre>
+
+<p>到目前为止， Markdown 还<em>没有办法指定图片的宽高，如果你需要的话，你可以使用普通的 <img> 标签</em>。</p>
 
 <p>参考:</p>
 
 <p><a href="http://wowubuntu.com/markdown/">markdown语法说明（简体中文版）</a></p>
-
-<p><a href="http://jianshu.io/p/q81RER">献给写作者的 Markdown 新手指南</a></p>
-
-<p><a href="http://zh.wikipedia.org/wiki/Markdown">markdown-维基百科</a></p>
 </div>
 
 
@@ -174,7 +145,7 @@
   
 
 
-<time datetime="2013-11-21T22:15:00+08:00" pubdate data-updated="true">Nov 21<span>st</span>, 2013</time>
+<time datetime="2013-11-22T13:54:00+08:00" pubdate data-updated="true">Nov 22<span>nd</span>, 2013</time>
       
 
 <span class="categories">
@@ -198,8 +169,10 @@
     
     <p class="meta">
       
+        <a class="basic-alignment left" href="/blog/2013/11/22/markdown-inroduction-for-code-and-seprator/" title="Previous Post: Markdown语法介绍 - 代码区块和分隔线">&laquo; Markdown语法介绍 - 代码区块和分隔线</a>
       
-        <a class="basic-alignment right" href="/blog/2013/11/21/markdown-introduction-for-title-and-list/" title="Next Post: Markdown语法介绍-标题和列表">Markdown语法介绍-标题和列表 &raquo;</a>
+      
+        <a class="basic-alignment right" href="/blog/2013/11/22/markdown-inroduction-for-autolink-and-others/" title="Next Post: Markdown语法介绍 - 自动连接和其他">Markdown语法介绍 - 自动连接和其他 &raquo;</a>
       
     </p>
   </footer>
@@ -270,8 +243,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://lilinj2000.github.io/blog/2013/11/21/markdown-basic-knowledge/';
-        var disqus_url = 'http://lilinj2000.github.io/blog/2013/11/21/markdown-basic-knowledge/';
+        var disqus_identifier = 'http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-for-image/';
+        var disqus_url = 'http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-for-image/';
         var disqus_script = 'embed.js';
       
     (function () {
