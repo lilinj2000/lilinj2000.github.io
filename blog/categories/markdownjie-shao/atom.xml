@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[李林江的技术博客]]></title>
-  <link href="http://lilinj2000.github.io/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Markdown介绍 | 李林江的技术博客]]></title>
+  <link href="http://lilinj2000.github.io/blog/categories/markdownjie-shao/atom.xml" rel="self"/>
   <link href="http://lilinj2000.github.io/"/>
   <updated>2013-11-22T13:29:26+08:00</updated>
   <id>http://lilinj2000.github.io/</id>
