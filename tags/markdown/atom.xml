@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Markdown | 李林江的技术博客]]></title>
   <link href="http://lilinj2000.github.io/tags/markdown/atom.xml" rel="self"/>
   <link href="http://lilinj2000.github.io/"/>
-  <updated>2013-11-22T15:41:34+08:00</updated>
+  <updated>2013-11-22T16:42:04+08:00</updated>
   <id>http://lilinj2000.github.io/</id>
   <author>
     <name><![CDATA[李林江]]></name>
@@ -155,7 +155,7 @@ __double underscores__
 &amp;#109;&amp;#x70;&amp;#x6C;e&amp;#x2E;&amp;#99;&amp;#111;&amp;#109;&lt;/a&gt;
 </code></pre>
 
-<p>在浏览器里面，这段字串（其实是 <code>&lt;a href="mailto:address@example.com"&gt;address@example.com&lt;/a&gt;</code>）会变成一个可以点击的「'<a href="&#x6d;&#x61;&#105;&#x6c;&#116;&#x6f;&#x3a;&#x61;&#x64;&#100;&#x72;&#x65;&#x73;&#x73;&#64;&#101;&#x78;&#97;&#109;&#x70;&#108;&#101;&#x2e;&#99;&#111;&#x6d;">&#97;&#100;&#100;&#114;&#101;&#x73;&#115;&#x40;&#101;&#120;&#97;&#109;&#x70;&#x6c;&#x65;&#x2e;&#x63;&#111;&#x6d;</a>'」链接。</p>
+<p>在浏览器里面，这段字串（其实是 <code>&lt;a href="mailto:address@example.com"&gt;address@example.com&lt;/a&gt;</code>）会变成一个可以点击的「address@example.com」链接。</p>
 
 <p>（这种作法虽然可以糊弄不少的机器人，但并不能全部挡下来，不过总比什么都不做好些。不管怎样，公开你的信箱终究会引来广告信件的。）</p>
 
@@ -238,7 +238,7 @@ _   底线
     <id>http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-for-code-and-seprator</id>
     <content type="html"><![CDATA[<h2>代码区块</h2>
 
-<p>和程序相关的写作或是标签语言原始码通常会有已经排版好的代码区块，通常这些区块我们并不希望它以一般段落文件的方式去排版，而是照原来的样子显示，Markdown 会用 <pre> 和 <code> 标签来把代码区块包起来。</p>
+<p>和程序相关的写作或是标签语言原始码通常会有已经排版好的代码区块，通常这些区块我们并不希望它以一般段落文件的方式去排版，而是照原来的样子显示，Markdown 会用 <code>&lt;pre&gt;</code> 和 <code>&lt;code&gt;</code> 标签来把代码区块包起来。</p>
 
 <!-- more -->
 
