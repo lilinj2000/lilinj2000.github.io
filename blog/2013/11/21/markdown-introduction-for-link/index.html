@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>markdown语法介绍-链接 - 李林江的技术博客</title>
+  <title>Markdown语法介绍-链接 - 李林江的技术博客</title>
   <meta name="author" content="李林江">
 
   
@@ -97,9 +97,6 @@
 
 <p>不管是哪一种，链接文字都是用 [方括号] 来标记。</p>
 
-<!-- more -->
-
-
 <p>要建立一个行内式的链接，只要在方块括号后面紧接着圆括号并插入网址链接即可，如果你还想要加上链接的 title 文字，只要在网址后面，用双引号把 title 文字包起来即可，例如：</p>
 
 <pre><code>This is [an example](http://example.com/ "Title") inline link.
@@ -111,6 +108,9 @@
 
 <pre><code>See my [About](/about/) page for details.
 </code></pre>
+
+<!-- more -->
+
 
 <p>参考式的链接是在链接文字的括号后面再接上另一个方括号，而在第二个方括号里面要填入用以辨识链接的标记：</p>
 
@@ -136,6 +136,11 @@
 选择性地接着 title 内容，可以用单引号、双引号或是括弧包着</p>
 
 <p>下面这三种链接的定义都是相同：</p>
+
+<pre><code>[foo]: http://example.com/  "Optional Title Here"
+[foo]: http://example.com/  'Optional Title Here'
+[foo]: http://example.com/  (Optional Title Here)
+</code></pre>
 
 <p>请注意：有一个已知的问题是 Markdown.pl 1.0.1 会忽略单引号包起来的链接 title。</p>
 
@@ -214,10 +219,6 @@ than from [Yahoo](http://search.yahoo.com/ "Yahoo Search") or
 <p>参考:</p>
 
 <p><a href="http://wowubuntu.com/markdown/">markdown语法说明（简体中文版）</a></p>
-
-<p><a href="http://jianshu.io/p/q81RER">献给写作者的 Markdown 新手指南</a></p>
-
-<p><a href="http://zh.wikipedia.org/wiki/Markdown">markdown-维基百科</a></p>
 </div>
 
 
@@ -243,6 +244,12 @@ than from [Yahoo](http://search.yahoo.com/ "Yahoo Search") or
 <time datetime="2013-11-21T22:53:00+08:00" pubdate data-updated="true">Nov 21<span>st</span>, 2013</time>
       
 
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/markdownjie-shao/'>Markdown介绍</a>
+  
+</span>
+
 
     </p>
     
@@ -250,13 +257,18 @@ than from [Yahoo](http://search.yahoo.com/ "Yahoo Search") or
   
   
   
+
+  <a class="bshareDiv" href="http://www.bshare.cn/share">Sharing</a>
+  <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#uuid=25fcdf85-62f9-400e-b053-627f102edf5a&style=999&img=http%3A%2F%2Fstatic.bshare.cn%2Fimages%2Fbuttons%2Fbox-shareTo-zh.gif&w=147&h=21"></script>
 </div>
 
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/11/21/markdown-basic-knowledge/" title="Previous Post: Markdown基本语法介绍 （标题和列表）">&laquo; Markdown基本语法介绍 （标题和列表）</a>
+        <a class="basic-alignment left" href="/blog/2013/11/21/markdown-introduction-for-title-and-list/" title="Previous Post: Markdown语法介绍-标题和列表">&laquo; Markdown语法介绍-标题和列表</a>
       
+      
+        <a class="basic-alignment right" href="/blog/2013/11/22/markdown-inroduction-for-quote/" title="Next Post: Markdown语法介绍 - 区块引用">Markdown语法介绍 - 区块引用 &raquo;</a>
       
     </p>
   </footer>
@@ -277,18 +289,35 @@ than from [Yahoo](http://search.yahoo.com/ "Yahoo Search") or
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/11/21/markdown-introduction-for-link/">Markdown语法介绍-链接</a>
+        <a href="/blog/2013/11/22/markdown-inroduction-for-code-and-em/">Markdown语法介绍 - 代码和强调</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/11/21/markdown-basic-knowledge/">Markdown基本语法介绍 （标题和列表）</a>
+        <a href="/blog/2013/11/22/markdown-inroduction-for-autolink-and-others/">Markdown语法介绍 - 自动连接和其他</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/22/markdown-inroduction-for-image/">Markdown语法介绍 - 图片</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/22/markdown-inroduction-for-code-and-seprator/">Markdown语法介绍 - 代码区块和分隔线</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/22/markdown-inroduction-for-section-and-newline/">Markdown语法介绍 - 段落和换行</a>
       </li>
     
   </ul>
 </section>
 
+<section>
+    <h1>Tags</h1>
+    <ul class="tag-cloud">
+        <a style="font-size: NaN%" href="/tags/markdown/">Markdown</a>
 
-
+    </ul>
+</section>
 
 
   
