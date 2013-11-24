@@ -21,6 +21,8 @@ memcached是一个**免费，开源，高性能，分布式**的内存对象cach
 
 memcached是一个**简单，强大**的key/value存储。
 
+<!-- more -->
+
 ## memcached的历史
 
 official web site: <http://www.memcached.org/>
