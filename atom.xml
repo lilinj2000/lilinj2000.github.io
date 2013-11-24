@@ -4,7 +4,7 @@
   <title><![CDATA[李林江的技术博客]]></title>
   <link href="http://lilinj2000.github.io/atom.xml" rel="self"/>
   <link href="http://lilinj2000.github.io/"/>
-  <updated>2013-11-24T20:14:43+08:00</updated>
+  <updated>2013-11-24T20:16:13+08:00</updated>
   <id>http://lilinj2000.github.io/</id>
   <author>
     <name><![CDATA[李林江]]></name>
@@ -31,6 +31,9 @@
 <p>memcached是一个<strong>免费，开源，高性能，分布式</strong>的内存对象cache系统。</p>
 
 <p>memcached是一个<strong>简单，强大</strong>的key/value存储。</p>
+
+<!-- more -->
+
 
 <h2>memcached的历史</h2>
 
