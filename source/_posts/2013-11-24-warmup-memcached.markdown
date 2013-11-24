@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "初识memcached"
-date: 2013-11-21 16:13
+date: 2013-11-24 16:13
 comments: true
 categories: memcached
 tags: memcached
