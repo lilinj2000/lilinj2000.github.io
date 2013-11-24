@@ -1,6 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
+        <loc>http://lilinj2000.github.io/blog/2013/11/21/warmup-memcached/</loc>
+        <lastmod>2013-11-24T20:07:48+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://lilinj2000.github.io/blog/2013/11/21/markdown-basic-knowledge/</loc>
         <lastmod>2013-11-22T16:45:20+08:00</lastmod>
     </url>
@@ -51,12 +55,16 @@
         <lastmod>2013-11-23T01:04:25+08:00</lastmod>
     </url>
     <url>
+        <loc>http://lilinj2000.github.io/blog/2013/11/24/warmup-memcached/</loc>
+        <lastmod>2013-11-24T20:11:14+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://lilinj2000.github.io/blog/archives/</loc>
-        <lastmod>2013-11-23T01:04:25+08:00</lastmod>
+        <lastmod>2013-11-24T20:11:14+08:00</lastmod>
     </url>
     <url>
         <loc>http://lilinj2000.github.io/</loc>
-        <lastmod>2013-11-23T01:04:25+08:00</lastmod>
+        <lastmod>2013-11-24T20:11:14+08:00</lastmod>
     </url>
     <url>
         <loc>http://lilinj2000.github.io/robots.txt</loc>
