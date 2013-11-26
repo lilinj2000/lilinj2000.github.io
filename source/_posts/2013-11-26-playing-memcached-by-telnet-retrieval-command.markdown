@@ -16,7 +16,7 @@ published: true
     get <key>*\r\n
     gets <key>*\r\n
 
-- <key>* 一个或者多个key，由空白符分隔。
+- <key\>\* 一个或者多个key，由空白符分隔。
 
 在零个或者多个key/value被返回后，server端会返回字符串"END\r\n"指示返回结束。
 
@@ -33,9 +33,9 @@ published: true
 
 - <bytes\> 存储的数据长度，不包括分隔符 `\r\n`
 
-- \[<cas unique>\] 唯一标识的64位整数，在Command `cas` 中被使用。
+- \[<cas unique\>\] 唯一标识的64位整数，在Command `cas` 中被使用
 
-- <data block\> 数据值.
+- <data block\> 数据块
 
 数据不能被获取的情况有：
 
@@ -49,7 +49,7 @@ published: true
 
 ### Command get
 
-获取一个或者多个key的值，不返回`<cas unique>`
+获取一个或者多个key的值，**不返回**`<cas unique>`
 
     get key1
     VALUE key1 0 2
@@ -68,7 +68,7 @@ published: true
 
 ### Command gets
 
-获取一个或者多个key的值，返回`<cas unique>`
+获取一个或者多个key的值，**返回**`<cas unique>`
 
     gets key1
     VALUE key1 0 2 7
