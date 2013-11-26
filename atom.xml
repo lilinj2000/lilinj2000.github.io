@@ -4,7 +4,7 @@
   <title><![CDATA[李林江的技术博客]]></title>
   <link href="http://lilinj2000.github.io/atom.xml" rel="self"/>
   <link href="http://lilinj2000.github.io/"/>
-  <updated>2013-11-26T16:44:28+08:00</updated>
+  <updated>2013-11-26T16:49:08+08:00</updated>
   <id>http://lilinj2000.github.io/</id>
   <author>
     <name><![CDATA[李林江]]></name>
@@ -101,9 +101,7 @@ ab
 END
 </code></pre>
 
-<p>参考：</p>
-
-<p><a href="https://github.com/lilinj2000/memcached/blob/master/doc/protocol.txt">memcached potocol text</a></p>
+<p><a href="https://github.com/lilinj2000/memcached/blob/master/doc/protocol.txt">更详细信息请参考这里</a></p>
 ]]></content>
   </entry>
   
@@ -272,9 +270,7 @@ cas key3 0 0 2 8
 NOT_FOUND
 </code></pre>
 
-<p>参考：</p>
-
-<p><a href="https://github.com/lilinj2000/memcached/blob/master/doc/protocol.txt">memcached potocol text</a></p>
+<p><a href="https://github.com/lilinj2000/memcached/blob/master/doc/protocol.txt">更详细信息请参考这里</a></p>
 ]]></content>
   </entry>
   
