@@ -109,7 +109,7 @@ published: true
 
 ### Command cas
 
-check and set, 当此数据自上次获取以后没有被更新，才设置数据。
+check and set, 只有此数据自上次获取以后没有被更新，才设置数据。
 
 格式：
     
@@ -124,7 +124,7 @@ check and set, 当此数据自上次获取以后没有被更新，才设置数�
 - "NOT_FOUND\r\n" 指示试图存储的数据不存在，命令存储失败.
 
    gets key1
-   VALUE key1 0 6 6
+   VALUE key1 0 6 6 #最后一项是<cas unique>值
    cd12ab
    END
 
@@ -137,7 +137,7 @@ check and set, 当此数据自上次获取以后没有被更新，才设置数�
    EXISTS
 
    gets key1
-   VALUE key1 0 2 7
+   VALUE key1 0 2 7 #<cas unique>值已经变成7
    ab
    END
 
