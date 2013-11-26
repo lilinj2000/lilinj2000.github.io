@@ -10,7 +10,7 @@
 
   
   <meta name="description" content="获取Command &ndash; Retrieval commands Command格式： get &lt;key&gt;*\r\n
-gets &lt;key&gt;*\r\n * 一个或者多个key，由空白符分隔。 在零个或者多个key/value被返回后，server端会返回字符串&# &hellip;">
+gets &lt;key&gt;*\r\n &lt;key>* 一个或者多个key，由空白符分隔。 在零个或者多个key/value被返回后， &hellip;">
   <meta name="keywords" content="memcached">
 
   <!-- http://t.co/dKP3o1e -->
@@ -101,7 +101,7 @@ gets &lt;key&gt;*\r\n
 </code></pre>
 
 <ul>
-<li><key>* 一个或者多个key，由空白符分隔。</li>
+<li>&lt;key>* 一个或者多个key，由空白符分隔。</li>
 </ul>
 
 
@@ -120,8 +120,8 @@ gets &lt;key&gt;*\r\n
 <li><p>&lt;key> 发送的key值</p></li>
 <li><p>&lt;flags> 在数据被存储时，设置的flags信息</p></li>
 <li><p>&lt;bytes> 存储的数据长度，不包括分隔符 <code>\r\n</code></p></li>
-<li><p>[<cas unique>] 唯一标识的64位整数，在Command <code>cas</code> 中被使用。</p></li>
-<li><p><data block\> 数据值.</p></li>
+<li><p>[<cas unique\>] 唯一标识的64位整数，在Command <code>cas</code> 中被使用</p></li>
+<li><p><data block\> 数据块</p></li>
 </ul>
 
 
@@ -137,7 +137,7 @@ gets &lt;key&gt;*\r\n
 
 <h3>Command get</h3>
 
-<p>获取一个或者多个key的值，不返回<code>&lt;cas unique&gt;</code></p>
+<p>获取一个或者多个key的值，<strong>不返回</strong><code>&lt;cas unique&gt;</code></p>
 
 <pre><code>get key1
 VALUE key1 0 2
@@ -157,7 +157,7 @@ END
 
 <h3>Command gets</h3>
 
-<p>获取一个或者多个key的值，返回<code>&lt;cas unique&gt;</code></p>
+<p>获取一个或者多个key的值，<strong>返回</strong><code>&lt;cas unique&gt;</code></p>
 
 <pre><code>gets key1
 VALUE key1 0 2 7
