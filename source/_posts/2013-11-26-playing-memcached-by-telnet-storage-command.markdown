@@ -151,6 +151,5 @@ check and set, 只有此数据自上次获取以后没有被更新，才设置�
     12
     NOT_FOUND
 
-参考：
 
-[memcached potocol text](https://github.com/lilinj2000/memcached/blob/master/doc/protocol.txt)
+[更详细信息请参考这里](https://github.com/lilinj2000/memcached/blob/master/doc/protocol.txt)

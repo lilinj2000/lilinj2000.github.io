@@ -85,6 +85,5 @@ published: true
     ab
     END
 
-参考：
 
-[memcached potocol text](https://github.com/lilinj2000/memcached/blob/master/doc/protocol.txt)
+[更详细信息请参考这里](https://github.com/lilinj2000/memcached/blob/master/doc/protocol.txt)
