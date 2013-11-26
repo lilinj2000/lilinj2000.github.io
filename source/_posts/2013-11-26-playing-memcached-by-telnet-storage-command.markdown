@@ -26,6 +26,8 @@ published: true
         
         > telnet localhost 11211
 
+<!-- more -->
+
 ## 存储Command - Storage commands
 
 ### Command格式：
@@ -114,6 +116,7 @@ check and set, 只有此数据自上次获取以后没有被更新，才设置�
 格式：
     
     cas <key> <flags> <exptime> <bytes> <cas unique> [noreply]\r\n
+    <data block>\r\n
 
 - <cas unique> 一个64位的唯一的已经存在的entry, 此值是通过`gets`命令获得的.
 
@@ -123,27 +126,29 @@ check and set, 只有此数据自上次获取以后没有被更新，才设置�
 
 - "NOT_FOUND\r\n" 指示试图存储的数据不存在，命令存储失败.
 
-   gets key1
-   VALUE key1 0 6 6 #最后一项是<cas unique>值
-   cd12ab
-   END
+示例：
 
-   cas key1 0 0 2 6
-   ab
-   STORED
+    gets key1
+    VALUE key1 0 6 6 #最后一项是<cas unique>值
+    cd12ab
+    END
 
-   cas key1 0 0 2 6
-   cd
-   EXISTS
+    cas key1 0 0 2 6
+    ab
+    STORED
 
-   gets key1
-   VALUE key1 0 2 7 #<cas unique>值已经变成7
-   ab
-   END
+    cas key1 0 0 2 6
+    cd
+    EXISTS
 
-   cas key3 0 0 2 8
-   12
-   NOT_FOUND
+    gets key1
+    VALUE key1 0 2 7 #<cas unique>值已经变成7
+    ab
+    END
+
+    cas key3 0 0 2 8
+    12
+    NOT_FOUND
 
 参考：
 
