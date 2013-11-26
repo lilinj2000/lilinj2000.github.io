@@ -1,10 +1,11 @@
 ---
 layout: post
 title: "玩转memcached by telnet之存储Command"
-date: 2013-11-26 16:14
+date: 2013-11-26 14:14
 comments: true
 categories: Memcached
 tags: Memcached
+keywords: memcached
 published: true
 ---
 
