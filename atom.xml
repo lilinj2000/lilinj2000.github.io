@@ -4,7 +4,7 @@
   <title><![CDATA[李林江的技术博客]]></title>
   <link href="http://lilinj2000.github.io/atom.xml" rel="self"/>
   <link href="http://lilinj2000.github.io/"/>
-  <updated>2013-11-26T15:52:56+08:00</updated>
+  <updated>2013-11-26T15:57:21+08:00</updated>
   <id>http://lilinj2000.github.io/</id>
   <author>
     <name><![CDATA[李林江]]></name>
@@ -197,35 +197,38 @@ NOT_FOUND
 
 <p>Source code: <a href="https://github.com/ttscoff/MarkdownEditing">https://github.com/ttscoff/MarkdownEditing</a></p>
 
+<!-- more -->
+
+
 <h2>MarkdownEditing的功能</h2>
 
 <h3>语法增强类</h3>
 
 <ul>
-<li>星号*、下划线_和反引号`自动配对</li>
-<li>如输入的自动配对符号中间内容为空时，删除第一个符号时将直接删除整对符号</li>
-<li>如输入自动配对符号后直接输入空格，则自动删除后面自动配对的符号</li>
-<li>波浪线 ~ 包围的内容将转换为HTML中的 标签</li>
-<li>当创建了列表后，回车将自动添加一个列表项。如列表项为空，再次回车将删除该列表项.</li>
+<li><p>星号*、下划线_和反引号`自动配对</p></li>
+<li><p>如输入的自动配对符号中间内容为空时，删除第一个符号时将直接删除整对符号</p></li>
+<li><p>如输入自动配对符号后直接输入空格，则自动删除后面自动配对的符号</p></li>
+<li><p>波浪线 ~ 包围的内容将转换为HTML中的 标签</p></li>
+<li><p>当创建了列表后，回车将自动添加一个列表项。如列表项为空，再次回车将删除该列表项.</p></li>
 </ul>
 
 
 <h3>MarkdownEditing在Windows下面的快捷键</h3>
 
 <ul>
-<li>Ctrl+Win+V <em>选中的内容</em>将自动转换为<strong>行内式超链接</strong>，链接到剪贴板中的内容</li>
-<li>Ctrl+Win+R <em>选中的内容将</em>自动转换为<strong>参考式超链接</strong>，链接到剪贴板中的内容</li>
-<li>Ctrl+Win+K 插入一个<strong>标准的行内式超链接</strong></li>
-<li>Shift+Win+K 插入一个<strong>标准的行内式图片</strong>（此快捷键可能与输入法有冲突）</li>
-<li>Ctrl+1 至 Ctrl+6 插入一级至六级标题</li>
-<li>Ctrl+I 选中的内容转换为<em>斜体</em></li>
-<li>Ctrl+B 选中的内容转换为<strong>粗体</strong></li>
-<li>Ctrl+Shift+6 自动插入一个脚注，并跳转到该脚注的定义中。</li>
-<li>Alt+Shift+F 查找没有定义的脚注并自动添加其定义链接</li>
-<li>Alt+Shift+G 查找没有定义的参考式超链接并自动添加其定义链接</li>
-<li>Ctrl+Alt+S 脚注排序</li>
-<li>Ctrl+Shift+. 缩进当前内容</li>
-<li>Ctrl+Shift+, 提前当前内容</li>
+<li><p>Ctrl+Win+V <em>选中的内容</em>将自动转换为<strong>行内式超链接</strong>，链接到剪贴板中的内容</p></li>
+<li><p>Ctrl+Win+R <em>选中的内容将</em>自动转换为<strong>参考式超链接</strong>，链接到剪贴板中的内容</p></li>
+<li><p>Ctrl+Win+K 插入一个<strong>标准的行内式超链接</strong></p></li>
+<li><p>Shift+Win+K 插入一个<strong>标准的行内式图片</strong>（此快捷键可能与输入法有冲突）</p></li>
+<li><p>Ctrl+1 至 Ctrl+6 插入一级至六级标题</p></li>
+<li><p>Ctrl+I 选中的内容转换为<em>斜体</em></p></li>
+<li><p>Ctrl+B 选中的内容转换为<strong>粗体</strong></p></li>
+<li><p>Ctrl+Shift+6 自动插入一个脚注，并跳转到该脚注的定义中。</p></li>
+<li><p>Alt+Shift+F 查找没有定义的脚注并自动添加其定义链接</p></li>
+<li><p>Alt+Shift+G 查找没有定义的参考式超链接并自动添加其定义链接</p></li>
+<li><p>Ctrl+Alt+S 脚注排序</p></li>
+<li><p>Ctrl+Shift+. 缩进当前内容</p></li>
+<li><p>Ctrl+Shift+, 提前当前内容</p></li>
 </ul>
 
 
