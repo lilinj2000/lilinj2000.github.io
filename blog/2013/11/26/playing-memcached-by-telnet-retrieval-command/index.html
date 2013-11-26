@@ -5,12 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Markdown editing介绍 - sublime text 2插件 - 李林江的技术博客</title>
+  <title>玩转memcached by telnet之获取Command - 李林江的技术博客</title>
   <meta name="author" content="李林江">
 
   
-  <meta name="description" content="简介 MarkdownEditing是ttscoff编写的一个Sublime Text 2插件，用于在ST2中进行Markdown文件的编写。插件中添加一系列的快捷键和自动处理，方便大家在ST2中进行MD的编写。 Markdown Editing for Sublime Text 2: &hellip;">
-  
+  <meta name="description" content="获取Command &ndash; Retrieval commands Command格式： get &lt;key&gt;*\r\n
+gets &lt;key&gt;*\r\n * 一个或者多个key，由空白符分隔。 在零个或者多个key/value被返回后，server端会返回字符串&# &hellip;">
+  <meta name="keywords" content="memcached">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://lilinj2000.github.io/blog/2013/11/26/introducing-markdown-editing-plugin-for-sublime-text2">
+  <link rel="canonical" href="http://lilinj2000.github.io/blog/2013/11/26/playing-memcached-by-telnet-retrieval-command">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="李林江的技术博客" type="application/atom+xml">
@@ -68,7 +69,7 @@
   
   <header>
     
-      <h1 class="entry-title">Markdown Editing介绍 - Sublime Text 2插件</h1>
+      <h1 class="entry-title">玩转memcached by telnet之获取Command</h1>
     
     
       <p class="meta">
@@ -84,59 +85,99 @@
   
 
 
-<time datetime="2013-11-26T10:50:00+08:00" pubdate data-updated="true">Nov 26<span>th</span>, 2013</time>
+<time datetime="2013-11-26T16:06:00+08:00" pubdate data-updated="true">Nov 26<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><h2>简介</h2>
+<div class="entry-content"><h2>获取Command &ndash; Retrieval commands</h2>
 
-<p>MarkdownEditing是ttscoff编写的一个Sublime Text 2插件，用于在ST2中进行Markdown文件的编写。插件中添加一系列的快捷键和自动处理，方便大家在ST2中进行MD的编写。</p>
+<h3>Command格式：</h3>
 
-<p><a href="http://brettterpstra.com/2012/05/17/markdown-editing-for-sublime-text-2-humble-beginnings/">Markdown Editing for Sublime Text 2: humble beginnings</a></p>
+<pre><code>get &lt;key&gt;*\r\n
+gets &lt;key&gt;*\r\n
+</code></pre>
 
-<p>Source code: <a href="https://github.com/ttscoff/MarkdownEditing">https://github.com/ttscoff/MarkdownEditing</a></p>
+<ul>
+<li><key>* 一个或者多个key，由空白符分隔。</li>
+</ul>
+
+
+<p>在零个或者多个key/value被返回后，server端会返回字符串&#8221;END\r\n&#8221;指示返回结束。</p>
 
 <!-- more -->
 
 
-<h2>MarkdownEditing的功能</h2>
+<h3>返回信息：</h3>
 
-<h3>语法增强类</h3>
+<pre><code>VALUE &lt;key&gt; &lt;flags&gt; &lt;bytes&gt; [&lt;cas unique&gt;]\r\n
+&lt;data block&gt;\r\n
+</code></pre>
 
 <ul>
-<li><p>星号*、下划线_和反引号`自动配对</p></li>
-<li><p>如输入的自动配对符号中间内容为空时，删除第一个符号时将直接删除整对符号</p></li>
-<li><p>如输入自动配对符号后直接输入空格，则自动删除后面自动配对的符号</p></li>
-<li><p>波浪线 ~ 包围的内容将转换为HTML中的 标签</p></li>
-<li><p>当创建了列表后，回车将自动添加一个列表项。如列表项为空，再次回车将删除该列表项.</p></li>
+<li><p>&lt;key> 发送的key值</p></li>
+<li><p>&lt;flags> 在数据被存储时，设置的flags信息</p></li>
+<li><p>&lt;bytes> 存储的数据长度，不包括分隔符 <code>\r\n</code></p></li>
+<li><p>[<cas unique>] 唯一标识的64位整数，在Command <code>cas</code> 中被使用。</p></li>
+<li><p><data block\> 数据值.</p></li>
 </ul>
 
 
-<h3>MarkdownEditing在Windows下面的快捷键</h3>
+<p>数据不能被获取的情况有：</p>
 
 <ul>
-<li><p>Ctrl+Win+V <em>选中的内容</em>将自动转换为<strong>行内式超链接</strong>，链接到剪贴板中的内容</p></li>
-<li><p>Ctrl+Win+R <em>选中的内容将</em>自动转换为<strong>参考式超链接</strong>，链接到剪贴板中的内容</p></li>
-<li><p>Ctrl+Win+K 插入一个<strong>标准的行内式超链接</strong></p></li>
-<li><p>Shift+Win+K 插入一个<strong>标准的行内式图片</strong>（此快捷键可能与输入法有冲突）</p></li>
-<li><p>Ctrl+1 至 Ctrl+6 插入一级至六级标题</p></li>
-<li><p>Ctrl+I 选中的内容转换为<em>斜体</em></p></li>
-<li><p>Ctrl+B 选中的内容转换为<strong>粗体</strong></p></li>
-<li><p>Ctrl+Shift+6 自动插入一个脚注，并跳转到该脚注的定义中。</p></li>
-<li><p>Alt+Shift+F 查找没有定义的脚注并自动添加其定义链接</p></li>
-<li><p>Alt+Shift+G 查找没有定义的参考式超链接并自动添加其定义链接</p></li>
-<li><p>Ctrl+Alt+S 脚注排序</p></li>
-<li><p>Ctrl+Shift+. 缩进当前内容</p></li>
-<li><p>Ctrl+Shift+, 提前当前内容</p></li>
+<li><p>数据从来没有被存储</p></li>
+<li><p>数据被存储，但是获取时已经过期</p></li>
+<li><p>数据被存储，数据已经显示被删除了</p></li>
+<li><p>数据被存储，由于内存原因，基于LRU算法，数据已经被系统删除</p></li>
 </ul>
 
+
+<h3>Command get</h3>
+
+<p>获取一个或者多个key的值，不返回<code>&lt;cas unique&gt;</code></p>
+
+<pre><code>get key1
+VALUE key1 0 2
+ab
+END
+get key1 key2
+VALUE key1 0 2
+ab
+VALUE key2 0 3
+abc
+END
+get key1 key3  #without stored key3
+VALUE key1 0 2
+ab
+END
+</code></pre>
+
+<h3>Command gets</h3>
+
+<p>获取一个或者多个key的值，返回<code>&lt;cas unique&gt;</code></p>
+
+<pre><code>gets key1
+VALUE key1 0 2 7
+ab
+END
+gets key1 key2
+VALUE key1 0 2 7
+ab
+VALUE key2 0 3 3
+abc
+END
+gets key1 key3
+VALUE key1 0 2 7
+ab
+END
+</code></pre>
 
 <p>参考：</p>
 
-<p><a href="http://blog.edi-c.com/post/mod-mdediting-for-win">在Windows下面使用MarkdownEditing</a></p>
+<p><a href="https://github.com/lilinj2000/memcached/blob/master/doc/protocol.txt">memcached potocol text</a></p>
 </div>
 
 
@@ -159,12 +200,12 @@
   
 
 
-<time datetime="2013-11-26T10:50:00+08:00" pubdate data-updated="true">Nov 26<span>th</span>, 2013</time>
+<time datetime="2013-11-26T16:06:00+08:00" pubdate data-updated="true">Nov 26<span>th</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/markdownjie-shao/'>Markdown介绍</a>
+    <a class='category' href='/blog/categories/memcached/'>Memcached</a>
   
 </span>
 
@@ -183,10 +224,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/11/24/warmup-memcached/" title="Previous Post: 初识 Memcached">&laquo; 初识 Memcached</a>
+        <a class="basic-alignment left" href="/blog/2013/11/26/playing-memcached-by-telnet-storage-command/" title="Previous Post: 玩转memcached by telnet之存储Command">&laquo; 玩转memcached by telnet之存储Command</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/11/26/playing-memcached-by-telnet-storage-command/" title="Next Post: 玩转memcached by telnet之存储Command">玩转memcached by telnet之存储Command &raquo;</a>
       
     </p>
   </footer>
@@ -263,8 +302,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://lilinj2000.github.io/blog/2013/11/26/introducing-markdown-editing-plugin-for-sublime-text2/';
-        var disqus_url = 'http://lilinj2000.github.io/blog/2013/11/26/introducing-markdown-editing-plugin-for-sublime-text2/';
+        var disqus_identifier = 'http://lilinj2000.github.io/blog/2013/11/26/playing-memcached-by-telnet-retrieval-command/';
+        var disqus_url = 'http://lilinj2000.github.io/blog/2013/11/26/playing-memcached-by-telnet-retrieval-command/';
         var disqus_script = 'embed.js';
       
     (function () {
