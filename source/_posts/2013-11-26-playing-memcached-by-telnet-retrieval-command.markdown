@@ -33,9 +33,9 @@ published: true
 
 - <bytes\> 存储的数据长度，不包括分隔符 `\r\n`
 
-- \[<cas unique\>\] 唯一标识的64位整数，在Command `cas` 中被使用
+- \[\<cas unique\>\] 唯一标识的64位整数，在Command `cas` 中被使用
 
-- <data block\> 数据块
+- \<data block\> 数据块
 
 数据不能被获取的情况有：
 
