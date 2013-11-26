@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Markdown editing插件介绍 - sublime text 2"
+title: "Markdown editing介绍 - sublime text 2插件"
 date: 2013-11-26 10:50
 comments: true
 categories: Markdown介绍
