@@ -4,7 +4,7 @@
   <title><![CDATA[李林江的技术博客]]></title>
   <link href="http://lilinj2000.github.io/atom.xml" rel="self"/>
   <link href="http://lilinj2000.github.io/"/>
-  <updated>2013-11-26T16:32:41+08:00</updated>
+  <updated>2013-11-26T16:44:28+08:00</updated>
   <id>http://lilinj2000.github.io/</id>
   <author>
     <name><![CDATA[李林江]]></name>
@@ -46,8 +46,8 @@ gets &lt;key&gt;*\r\n
 <li><p>&lt;key> 发送的key值</p></li>
 <li><p>&lt;flags> 在数据被存储时，设置的flags信息</p></li>
 <li><p>&lt;bytes> 存储的数据长度，不包括分隔符 <code>\r\n</code></p></li>
-<li><p>[<cas unique\>] 唯一标识的64位整数，在Command <code>cas</code> 中被使用</p></li>
-<li><p><data block\> 数据块</p></li>
+<li><p>[&lt;cas unique>] 唯一标识的64位整数，在Command <code>cas</code> 中被使用</p></li>
+<li><p>&lt;data block> 数据块</p></li>
 </ul>
 
 
