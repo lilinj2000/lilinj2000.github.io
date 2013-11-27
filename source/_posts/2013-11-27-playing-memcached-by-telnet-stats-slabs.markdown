@@ -4,7 +4,7 @@ title: "玩转Memcached by telnet之Stats Slabs"
 date: 2013-11-27 22:28
 comments: true
 categories: Memcached介绍
-tags: Memcached slab
+tags: Memcached Slab
 keywords: memcached slab
 published: true
 ---
