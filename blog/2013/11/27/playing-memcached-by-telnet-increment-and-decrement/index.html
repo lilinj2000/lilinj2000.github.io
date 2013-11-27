@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>玩转memcached by telnet之Increment and Decrement Command - 李林江的技术博客</title>
+  <title>玩转Memcached by telnet之Increment and Decrement Command - 李林江的技术博客</title>
   <meta name="author" content="李林江">
 
   
@@ -68,7 +68,7 @@
   
   <header>
     
-      <h1 class="entry-title">玩转memcached by telnet之Increment and Decrement Command</h1>
+      <h1 class="entry-title">玩转Memcached by telnet之Increment and Decrement Command</h1>
     
     
       <p class="meta">
@@ -151,6 +151,11 @@ get key1
 VALUE key1 0 1
 0
 END
+add key2 0 0 2
+ab
+STORED
+incr key2 2
+CLIENT_ERROR cannot increment or decrement non-numeric value
 </code></pre>
 
 <p><a href="https://github.com/lilinj2000/memcached/blob/master/doc/protocol.txt">更详细信息请参考这里</a></p>
@@ -200,7 +205,7 @@ END
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/11/27/playing-memcached-by-telnet-deletion-and-touch/" title="Previous Post: 玩转memcached by telnet之Deletion and Touch Command">&laquo; 玩转memcached by telnet之Deletion and Touch Command</a>
+        <a class="basic-alignment left" href="/blog/2013/11/27/playing-memcached-by-telnet-deletion-and-touch/" title="Previous Post: 玩转Memcached by telnet之Deletion and Touch Command">&laquo; 玩转Memcached by telnet之Deletion and Touch Command</a>
       
       
     </p>
@@ -222,19 +227,19 @@ END
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/11/27/playing-memcached-by-telnet-increment-and-decrement/">玩转memcached by telnet之Increment and Decrement Command</a>
+        <a href="/blog/2013/11/27/playing-memcached-by-telnet-increment-and-decrement/">玩转Memcached by telnet之Increment and Decrement Command</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/11/27/playing-memcached-by-telnet-deletion-and-touch/">玩转memcached by telnet之Deletion and Touch Command</a>
+        <a href="/blog/2013/11/27/playing-memcached-by-telnet-deletion-and-touch/">玩转Memcached by telnet之Deletion and Touch Command</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/11/26/playing-memcached-by-telnet-retrieval-command/">玩转memcached by telnet之Retrieval Command</a>
+        <a href="/blog/2013/11/26/playing-memcached-by-telnet-retrieval-command/">玩转Memcached by telnet之Retrieval Command</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/11/26/playing-memcached-by-telnet-storage-command/">玩转memcached by telnet之Storage Command</a>
+        <a href="/blog/2013/11/26/playing-memcached-by-telnet-storage-command/">玩转Memcached by telnet之Storage Command</a>
       </li>
     
       <li class="post">
