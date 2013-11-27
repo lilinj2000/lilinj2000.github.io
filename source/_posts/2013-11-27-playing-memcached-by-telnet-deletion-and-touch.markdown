@@ -11,7 +11,7 @@ published: true
 
 ## Deletion
 
-显示的删除数据项从memcached.
+从memcached中删除数据项.
 
 格式：
 
@@ -40,7 +40,7 @@ published: true
 
 ## Touch
 
-更新已经存在的数据项的过期时间\(expiration time\)
+更新已经存在数据项的过期时间\(expiration time\)
 
 格式：
 
@@ -99,3 +99,6 @@ published: true
 - "TOUCHED\r\n" 更新成功
 
 - "NOT_FOUND\r\n" 唯一标识符key没有找到
+
+
+[更详细信息请参考这里](https://github.com/lilinj2000/memcached/blob/master/doc/protocol.txt)
