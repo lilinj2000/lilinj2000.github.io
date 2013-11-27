@@ -9,7 +9,7 @@
   <meta name="author" content="李林江">
 
   
-  <meta name="description" content="Deletion 显示的删除数据项从memcached. 格式： delete &lt;key&gt; [noreply]\r\n &lt;key> 被删除的数据项的唯一标识符
+  <meta name="description" content="Deletion 从memcached中删除数据项. 格式： delete &lt;key&gt; [noreply]\r\n &lt;key> 被删除的数据项的唯一标识符
 [noreply] 可选项，指示server不需要返回 返回信息： &ldquo;DELETED\r\n&rdquo; &hellip;">
   <meta name="keywords" content="memcached">
 
@@ -94,7 +94,7 @@
 
 <div class="entry-content"><h2>Deletion</h2>
 
-<p>显示的删除数据项从memcached.</p>
+<p>从memcached中删除数据项.</p>
 
 <p>格式：</p>
 
@@ -130,7 +130,7 @@ NOT_FOUND
 
 <h2>Touch</h2>
 
-<p>更新已经存在的数据项的过期时间(expiration time)</p>
+<p>更新已经存在数据项的过期时间(expiration time)</p>
 
 <p>格式：</p>
 
@@ -196,6 +196,8 @@ NOT_FOUND
 <li><p>&ldquo;NOT_FOUND\r\n&rdquo; 唯一标识符key没有找到</p></li>
 </ul>
 
+
+<p><a href="https://github.com/lilinj2000/memcached/blob/master/doc/protocol.txt">更详细信息请参考这里</a></p>
 </div>
 
 
