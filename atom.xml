@@ -4,7 +4,7 @@
   <title><![CDATA[李林江的技术博客]]></title>
   <link href="http://lilinj2000.github.io/atom.xml" rel="self"/>
   <link href="http://lilinj2000.github.io/"/>
-  <updated>2013-11-26T16:49:08+08:00</updated>
+  <updated>2013-11-27T13:13:33+08:00</updated>
   <id>http://lilinj2000.github.io/</id>
   <author>
     <name><![CDATA[李林江]]></name>
@@ -14,13 +14,125 @@
 
   
   <entry>
-    <title type="html"><![CDATA[玩转memcached by telnet之获取Command]]></title>
+    <title type="html"><![CDATA[玩转memcached by telnet之Deletion and Touch Command]]></title>
+    <link href="http://lilinj2000.github.io/blog/2013/11/27/playing-memcached-by-telnet-deletion-and-touch/"/>
+    <updated>2013-11-27T10:52:00+08:00</updated>
+    <id>http://lilinj2000.github.io/blog/2013/11/27/playing-memcached-by-telnet-deletion-and-touch</id>
+    <content type="html"><![CDATA[<h2>Deletion</h2>
+
+<p>显示的删除数据项从memcached.</p>
+
+<p>格式：</p>
+
+<pre><code>delete &lt;key&gt; [noreply]\r\n
+</code></pre>
+
+<ul>
+<li><p>&lt;key> 被删除的数据项的唯一标识符</p></li>
+<li><p>[noreply] 可选项，指示server不需要返回</p></li>
+</ul>
+
+
+<p>返回信息：</p>
+
+<ul>
+<li><p>&ldquo;DELETED\r\n&rdquo; 删除成功</p></li>
+<li><p>&ldquo;NOT_FOUND\r\n&rdquo; 唯一标识符key没有找到</p></li>
+</ul>
+
+
+<!-- more -->
+
+
+<pre><code>get key2
+VALUE key2 0 3
+abc
+END
+delete key2
+DELETED
+delete key1
+NOT_FOUND
+</code></pre>
+
+<h2>Touch</h2>
+
+<p>更新已经存在的数据项的过期时间(expiration time)</p>
+
+<p>格式：</p>
+
+<pre><code>touch &lt;key&gt; &lt;exptime&gt; [noreply]\r\n
+</code></pre>
+
+<ul>
+<li><p>&lt;key> 被更新数据项的唯一标识符</p></li>
+<li><p>&lt;exptime> 设置的过期时间</p>
+
+<ul>
+<li><p>数据项已经过期了， 不能被设置过期时间</p>
+
+<pre><code>  add key1 0 5 2
+  ab
+  STORED
+
+  #after 5 seconds, the key1 is deleted by system
+  get key1
+  END
+  touch key1 10
+  NOT_FOUND
+</code></pre></li>
+<li><p>数据项未过期，但是已经过了一段时间，新的过期时间，是从当前时间开始计算，或者是一个新的绝对时间。</p>
+
+<pre><code>  &gt; cat touch_test.sh
+  #! /usr/bin/sh
+  {
+  echo "add key1 0 30 2"
+  sleep 1
+  echo "ab"
+  sleep 20
+  echo "touch key1 60"
+  sleep 40
+  echo "get key1"
+  sleep 20
+  echo "get key1"
+  } | telnet localhost 11211
+
+  &gt; ./touch_test.sh
+  Trying 127.0.0.1...
+  Connected to localhost.
+  Escape character is '^]'.
+  STORED          #add key1 successful
+  TOUCHED         #after 20s, the touch key1 is successful
+  VALUE key1 0 2  #after 40s again, the key1 is fetched.
+  ab
+  END             
+  END             #after 20s again, the key1 is deleted
+  Connection closed by foreign host.
+</code></pre></li>
+<li><p>此过期时间与storage commands(set, add, replace, append, prepend, cas)选项中的过期时间，是同一个意思。</p></li>
+</ul>
+</li>
+<li><p>[noreply] 可选项，指示server不需要返回</p></li>
+</ul>
+
+
+<p>返回信息：</p>
+
+<ul>
+<li><p>&ldquo;TOUCHED\r\n&rdquo; 更新成功</p></li>
+<li><p>&ldquo;NOT_FOUND\r\n&rdquo; 唯一标识符key没有找到</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[玩转memcached by telnet之Retrieval Command]]></title>
     <link href="http://lilinj2000.github.io/blog/2013/11/26/playing-memcached-by-telnet-retrieval-command/"/>
     <updated>2013-11-26T16:06:00+08:00</updated>
     <id>http://lilinj2000.github.io/blog/2013/11/26/playing-memcached-by-telnet-retrieval-command</id>
-    <content type="html"><![CDATA[<h2>获取Command &ndash; Retrieval commands</h2>
+    <content type="html"><![CDATA[<h2>Retrieval commands</h2>
 
-<h3>Command格式：</h3>
+<h3>格式：</h3>
 
 <pre><code>get &lt;key&gt;*\r\n
 gets &lt;key&gt;*\r\n
@@ -36,7 +148,7 @@ gets &lt;key&gt;*\r\n
 <!-- more -->
 
 
-<h3>返回信息：</h3>
+<p>返回信息：</p>
 
 <pre><code>VALUE &lt;key&gt; &lt;flags&gt; &lt;bytes&gt; [&lt;cas unique&gt;]\r\n
 &lt;data block&gt;\r\n
@@ -106,7 +218,7 @@ END
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[玩转memcached by telnet之存储Command]]></title>
+    <title type="html"><![CDATA[玩转memcached by telnet之Storage Command]]></title>
     <link href="http://lilinj2000.github.io/blog/2013/11/26/playing-memcached-by-telnet-storage-command/"/>
     <updated>2013-11-26T14:14:00+08:00</updated>
     <id>http://lilinj2000.github.io/blog/2013/11/26/playing-memcached-by-telnet-storage-command</id>
@@ -135,9 +247,9 @@ END
 <!-- more -->
 
 
-<h2>存储Command &ndash; Storage commands</h2>
+<h2>Storage commands</h2>
 
-<h3>Command格式：</h3>
+<h3>格式：</h3>
 
 <pre><code>&lt;command name&gt; &lt;key&gt; &lt;flags&gt; &lt;exptime&gt; &lt;bytes&gt; [noreply]\r\n  
 &lt;data block&gt;\r\n
@@ -157,7 +269,7 @@ END
 </ul>
 
 
-<h3>返回信息描述：</h3>
+<p>返回信息描述：</p>
 
 <ul>
 <li><p>&ldquo;STORED\r\n&rdquo; 存储数据成功.</p></li>

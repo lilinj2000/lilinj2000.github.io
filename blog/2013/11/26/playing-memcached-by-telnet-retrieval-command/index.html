@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>玩转memcached by telnet之获取Command - 李林江的技术博客</title>
+  <title>玩转memcached by telnet之Retrieval Command - 李林江的技术博客</title>
   <meta name="author" content="李林江">
 
   
-  <meta name="description" content="获取Command &ndash; Retrieval commands Command格式： get &lt;key&gt;*\r\n
-gets &lt;key&gt;*\r\n &lt;key>* 一个或者多个key，由空白符分隔。 在零个或者多个key/value被返回后， &hellip;">
+  <meta name="description" content="Retrieval commands 格式： get &lt;key&gt;*\r\n
+gets &lt;key&gt;*\r\n &lt;key>* 一个或者多个key，由空白符分隔。 在零个或者多个key/value被返回后，server端会返回字符串&#8221;END\r\n&#8221; &hellip;">
   <meta name="keywords" content="memcached">
 
   <!-- http://t.co/dKP3o1e -->
@@ -69,7 +69,7 @@ gets &lt;key&gt;*\r\n &lt;key>* 一个或者多个key，由空白符分隔。 �
   
   <header>
     
-      <h1 class="entry-title">玩转memcached by telnet之获取Command</h1>
+      <h1 class="entry-title">玩转memcached by telnet之Retrieval Command</h1>
     
     
       <p class="meta">
@@ -92,9 +92,9 @@ gets &lt;key&gt;*\r\n &lt;key>* 一个或者多个key，由空白符分隔。 �
   </header>
 
 
-<div class="entry-content"><h2>获取Command &ndash; Retrieval commands</h2>
+<div class="entry-content"><h2>Retrieval commands</h2>
 
-<h3>Command格式：</h3>
+<h3>格式：</h3>
 
 <pre><code>get &lt;key&gt;*\r\n
 gets &lt;key&gt;*\r\n
@@ -110,7 +110,7 @@ gets &lt;key&gt;*\r\n
 <!-- more -->
 
 
-<h3>返回信息：</h3>
+<p>返回信息：</p>
 
 <pre><code>VALUE &lt;key&gt; &lt;flags&gt; &lt;bytes&gt; [&lt;cas unique&gt;]\r\n
 &lt;data block&gt;\r\n
@@ -203,7 +203,7 @@ END
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/memcached/'>Memcached</a>
+    <a class='category' href='/blog/categories/memcachedjie-shao/'>Memcached介绍</a>
   
 </span>
 
@@ -222,8 +222,10 @@ END
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/11/26/playing-memcached-by-telnet-storage-command/" title="Previous Post: 玩转memcached by telnet之存储Command">&laquo; 玩转memcached by telnet之存储Command</a>
+        <a class="basic-alignment left" href="/blog/2013/11/26/playing-memcached-by-telnet-storage-command/" title="Previous Post: 玩转memcached by telnet之Storage Command">&laquo; 玩转memcached by telnet之Storage Command</a>
       
+      
+        <a class="basic-alignment right" href="/blog/2013/11/27/playing-memcached-by-telnet-deletion-and-touch/" title="Next Post: 玩转memcached by telnet之Deletion and Touch Command">玩转memcached by telnet之Deletion and Touch Command &raquo;</a>
       
     </p>
   </footer>
@@ -244,11 +246,15 @@ END
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/11/26/playing-memcached-by-telnet-retrieval-command/">玩转memcached by telnet之获取Command</a>
+        <a href="/blog/2013/11/27/playing-memcached-by-telnet-deletion-and-touch/">玩转memcached by telnet之Deletion and Touch Command</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/11/26/playing-memcached-by-telnet-storage-command/">玩转memcached by telnet之存储Command</a>
+        <a href="/blog/2013/11/26/playing-memcached-by-telnet-retrieval-command/">玩转memcached by telnet之Retrieval Command</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/26/playing-memcached-by-telnet-storage-command/">玩转memcached by telnet之Storage Command</a>
       </li>
     
       <li class="post">
@@ -257,10 +263,6 @@ END
     
       <li class="post">
         <a href="/blog/2013/11/24/warmup-memcached/">初识 Memcached</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/11/22/markdown-inroduction-summarize/">Markdown 小结</a>
       </li>
     
   </ul>
@@ -277,7 +279,7 @@ END
   <h1>Categories</h1> 
   <ul id="categories"> 
     <li class='category'><a href='/blog/categories/markdownjie-shao/'>Markdown介绍 (11)</a></li>
-<li class='category'><a href='/blog/categories/memcached/'>Memcached (3)</a></li>
+<li class='category'><a href='/blog/categories/memcachedjie-shao/'>Memcached介绍 (4)</a></li>
  
   </ul> 
 </section>
