@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "玩转memcached by telnet之Deletion and Touch Command"
+title: "玩转Memcached by telnet之Deletion and Touch Command"
 date: 2013-11-27 10:52
 comments: true
 categories: Memcached介绍
@@ -48,7 +48,7 @@ published: true
 
 - <key\> 被更新数据项的唯一标识符
 
-- <exptime\> 设置的过期时间
+- <exptime\> 过期时间
     
     + 数据项已经过期了， 不能被设置过期时间
         

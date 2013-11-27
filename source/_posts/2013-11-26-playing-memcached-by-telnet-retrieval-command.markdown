@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "玩转memcached by telnet之Retrieval Command"
+title: "玩转Memcached by telnet之Retrieval Command"
 date: 2013-11-26 16:06
 comments: true
 categories: Memcached介绍
@@ -41,10 +41,28 @@ published: true
 
 - 数据从来没有被存储
 
+        get key3
+        END
+
 - 数据被存储，但是获取时已经过期
  
+        add key1 0 5 2
+        ab
+        STORED
+        #after 5 seconds, the data is expiration
+        get key1
+        END
+
 - 数据被存储，数据已经显示被删除了
  
+        add key1 0 0 2
+        ab
+        STORED
+        delete key1
+        DELETED
+        get key1
+        END
+
 - 数据被存储，由于内存原因，基于LRU算法，数据已经被系统删除
 
 ### Command get

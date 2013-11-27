@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "玩转memcached by telnet之Storage Command"
+title: "玩转Memcached by telnet之Storage Command"
 date: 2013-11-26 14:14
 comments: true
 categories: Memcached介绍

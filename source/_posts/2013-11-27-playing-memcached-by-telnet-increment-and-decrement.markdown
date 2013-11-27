@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "玩转memcached by telnet之Increment and Decrement Command"
+title: "玩转Memcached by telnet之Increment and Decrement Command"
 date: 2013-11-27 13:21
 comments: true
 categories: Memcached介绍
@@ -64,5 +64,11 @@ published: true
     VALUE key1 0 1
     0
     END
+    add key2 0 0 2
+    ab
+    STORED
+    incr key2 2
+    CLIENT_ERROR cannot increment or decrement non-numeric value
+
 
 [更详细信息请参考这里](https://github.com/lilinj2000/memcached/blob/master/doc/protocol.txt)
