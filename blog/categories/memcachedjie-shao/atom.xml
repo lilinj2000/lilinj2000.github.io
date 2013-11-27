@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Memcached介绍 | 李林江的技术博客]]></title>
   <link href="http://lilinj2000.github.io/blog/categories/memcachedjie-shao/atom.xml" rel="self"/>
   <link href="http://lilinj2000.github.io/"/>
-  <updated>2013-11-27T13:13:33+08:00</updated>
+  <updated>2013-11-27T13:18:00+08:00</updated>
   <id>http://lilinj2000.github.io/</id>
   <author>
     <name><![CDATA[李林江]]></name>
@@ -20,7 +20,7 @@
     <id>http://lilinj2000.github.io/blog/2013/11/27/playing-memcached-by-telnet-deletion-and-touch</id>
     <content type="html"><![CDATA[<h2>Deletion</h2>
 
-<p>显示的删除数据项从memcached.</p>
+<p>从memcached中删除数据项.</p>
 
 <p>格式：</p>
 
@@ -56,7 +56,7 @@ NOT_FOUND
 
 <h2>Touch</h2>
 
-<p>更新已经存在的数据项的过期时间(expiration time)</p>
+<p>更新已经存在数据项的过期时间(expiration time)</p>
 
 <p>格式：</p>
 
@@ -122,6 +122,8 @@ NOT_FOUND
 <li><p>&ldquo;NOT_FOUND\r\n&rdquo; 唯一标识符key没有找到</p></li>
 </ul>
 
+
+<p><a href="https://github.com/lilinj2000/memcached/blob/master/doc/protocol.txt">更详细信息请参考这里</a></p>
 ]]></content>
   </entry>
   
