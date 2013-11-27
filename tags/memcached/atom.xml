@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Memcached | 李林江的技术博客]]></title>
   <link href="http://lilinj2000.github.io/tags/memcached/atom.xml" rel="self"/>
   <link href="http://lilinj2000.github.io/"/>
-  <updated>2013-11-28T00:01:46+08:00</updated>
+  <updated>2013-11-28T00:04:56+08:00</updated>
   <id>http://lilinj2000.github.io/</id>
   <author>
     <name><![CDATA[李林江]]></name>
@@ -12,6 +12,161 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[玩转Memcached by telnet之Stats Slabs]]></title>
+    <link href="http://lilinj2000.github.io/blog/2013/11/27/playing-memcached-by-telnet-stats-slabs/"/>
+    <updated>2013-11-27T22:28:00+08:00</updated>
+    <id>http://lilinj2000.github.io/blog/2013/11/27/playing-memcached-by-telnet-stats-slabs</id>
+    <content type="html"><![CDATA[<h2>Slab statistics</h2>
+
+<p>格式：</p>
+
+<pre><code>stats slabs
+</code></pre>
+
+<p>返回信息：</p>
+
+<pre><code>STAT &lt;slabclass&gt;:&lt;stat&gt; &lt;value&gt;\r\n
+STAT &lt;stat&gt; &lt;value&gt;\r\n
+END\r\n
+</code></pre>
+
+<!-- more -->
+
+
+<p>具体各项解释：</p>
+
+<pre><code>chunk_size: 块大小
+chunks_per_page: 一页有多少块，默认一页是1M    
+total_pages: 一个slab class共有多少页  
+total_chunks: 一个slab class共有多少块                      
+get_hits: 获取命中次数在这个slab class上                 
+cmd_set: 设置次数在这个slab class上                     
+delete_hits: 删除命中次数在这个slab class 上   
+incr_hits: 增量修改次数在这个slab class 上             
+decr_hits: 减量修改次数在这个slab class上              
+cas_hits: cas修改成功次数在这个slab class上           
+cas_badval: cas修改失败次数在这个slab class上         
+touch_hits: touch修改成功次数在这个slab class上       
+used_chunks: 被使用了的块数                          
+free_chunks: 没有被使用的块数                        
+free_chunks_end: 其值总为0，一般来说是slab分配器的临时变量，
+                 当内存被分配以后，就移到了free_chunks，   
+                 所以，我们看到的都为0                    
+mem_requested: 请求存储在这个slab class中的实际字节数         
+active_slabs: 当前已经分配了slab class数                 
+total_malloced: 总共被使用了的内存字节数                  
+</code></pre>
+
+<p>浪费的空间计算为：</p>
+
+<pre><code>(total_chunks * chunk_size) - mem_requested
+</code></pre>
+
+<p>如果看到浪费的的很厉害，要考虑调整slab factor.</p>
+
+<h2>具体示例</h2>
+
+<p>最大内存是1m, 最小空间分配单元是32Bytes, 页大小是1k，默认fractor是1.25</p>
+
+<pre><code>&gt; ./memcached -vvv -I 1k -m 1m -n 32
+slab class   1: chunk size        80 perslab      12
+slab class   2: chunk size       104 perslab       9
+slab class   3: chunk size       136 perslab       7
+slab class   4: chunk size       176 perslab       5
+slab class   5: chunk size       224 perslab       4
+slab class   6: chunk size       280 perslab       3
+slab class   7: chunk size       352 perslab       2
+slab class   8: chunk size       440 perslab       2
+slab class   9: chunk size       552 perslab       1
+slab class  10: chunk size       696 perslab       1
+slab class  11: chunk size      1024 perslab       1
+</code></pre>
+
+<p>Memcached初始化了11个slab classes.</p>
+
+<p>增加一个字节数为2的key1：</p>
+
+<pre><code>add key1 0 0 2
+ab
+STORED
+</code></pre>
+
+<p>内存使用情况：</p>
+
+<pre><code>stats slabs
+STAT 1:chunk_size 80
+STAT 1:chunks_per_page 12
+STAT 1:total_pages 1
+STAT 1:total_chunks 12
+STAT 1:used_chunks 1
+STAT 1:free_chunks 11
+STAT 1:free_chunks_end 0
+STAT 1:mem_requested 71 #实际存储占用了71字节, 浪费了9个字节
+STAT 1:get_hits 0
+STAT 1:cmd_set 1
+STAT 1:delete_hits 0
+STAT 1:incr_hits 0
+STAT 1:decr_hits 0
+STAT 1:cas_hits 0
+STAT 1:cas_badval 0
+STAT 1:touch_hits 0
+STAT active_slabs 1
+STAT total_malloced 960 #总共分配了960字节为这个slab class
+END
+</code></pre>
+
+<p>增加一个字节数位15的key2：</p>
+
+<pre><code>add key2 0 0 15
+123456789012345
+STORED
+</code></pre>
+
+<p>内存使用情况：</p>
+
+<pre><code>stats slabs
+STAT 1:chunk_size 80
+STAT 1:chunks_per_page 12
+STAT 1:total_pages 1
+STAT 1:total_chunks 12
+STAT 1:used_chunks 1
+STAT 1:free_chunks 11
+STAT 1:free_chunks_end 0
+STAT 1:mem_requested 71
+STAT 1:get_hits 0
+STAT 1:cmd_set 1
+STAT 1:delete_hits 0
+STAT 1:incr_hits 0
+STAT 1:decr_hits 0
+STAT 1:cas_hits 0
+STAT 1:cas_badval 0
+STAT 1:touch_hits 0
+STAT 2:chunk_size 104
+STAT 2:chunks_per_page 9
+STAT 2:total_pages 1
+STAT 2:total_chunks 9
+STAT 2:used_chunks 1
+STAT 2:free_chunks 8
+STAT 2:free_chunks_end 0
+STAT 2:mem_requested 85 #实际存储时85字节，浪费了104 - 85 = 19 字节
+STAT 2:get_hits 0
+STAT 2:cmd_set 1
+STAT 2:delete_hits 0
+STAT 2:incr_hits 0
+STAT 2:decr_hits 0
+STAT 2:cas_hits 0
+STAT 2:cas_badval 0
+STAT 2:touch_hits 0
+STAT active_slabs 2 #当前共有2个slab class
+STAT total_malloced 1896 #当前已经分配内存1896字节
+END
+</code></pre>
+
+<p><a href="https://github.com/lilinj2000/memcached/blob/master/doc/protocol.txt">更详细信息请参考这里</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Memcached之内存存储方式介绍]]></title>
@@ -373,175 +528,6 @@ gets key1 key3
 VALUE key1 0 2 7
 ab
 END
-</code></pre>
-
-<p><a href="https://github.com/lilinj2000/memcached/blob/master/doc/protocol.txt">更详细信息请参考这里</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[玩转Memcached by telnet之Storage Command]]></title>
-    <link href="http://lilinj2000.github.io/blog/2013/11/26/playing-memcached-by-telnet-storage-command/"/>
-    <updated>2013-11-26T14:14:00+08:00</updated>
-    <id>http://lilinj2000.github.io/blog/2013/11/26/playing-memcached-by-telnet-storage-command</id>
-    <content type="html"><![CDATA[<h2>环境</h2>
-
-<ul>
-<li><p>memcahced 帮助信息</p>
-
-<pre><code>  &gt; memcahched -h
-  memcached 1.4.15_6_g87e2f36
-  -p &lt;num&gt;      TCP port number to listen on (default: 11211)
-  -U &lt;num&gt;      UDP port number to listen on (default: 11211, 0 is off)
-  ...
-</code></pre></li>
-<li><p>start memcached</p>
-
-<pre><code>  &gt; memcached 
-</code></pre></li>
-<li><p>telnet to memcached server by default port 11211</p>
-
-<pre><code>  &gt; telnet localhost 11211
-</code></pre></li>
-</ul>
-
-
-<!-- more -->
-
-
-<h2>Storage commands</h2>
-
-<h3>格式：</h3>
-
-<pre><code>&lt;command name&gt; &lt;key&gt; &lt;flags&gt; &lt;exptime&gt; &lt;bytes&gt; [noreply]\r\n  
-&lt;data block&gt;\r\n
-</code></pre>
-
-<ul>
-<li><p>&lt;key> memcached存储数据的唯一标识符。key是一个字符串，目前它的长度被限制在<strong>250</strong>个字符；key<strong>不能包括控制字符或者空白字符</strong>。</p></li>
-<li><p>&lt;flags> 一个16位的无符号整数（十进制格式），server只是存储它，当client获取数据时返回同样的值。client可以用这个字段作为特殊的标记使用。<br/>
-  在memcached版本1.2. 1或以后，这个字段是一个32位，但是最好你还是限制使用16位，为了兼容以前的版本。</p></li>
-<li><p>&lt;exptime> 数据过期时间。<br/>
-  值为0时，表示永远不过期，当然也可能会被删除，因为LRU算法。<br/>
-  非0时，表示一个有效的系统时间，或者是一个当前时间的offset，单位是秒；它确保client不能获取数据当达到这个过期时间（由server段的时间决定）时。</p></li>
-<li><p>&lt;bytes> 数据的字节数，不包括分隔符，<code>\r\n</code>，字节数也可以为0，表示空数据。</p></li>
-<li><p>[noreply] 可选项，指示server端可以不返回信息。<br/>
-  注意，当命令格式不对时，server不能可靠地解析此选项 <em>noreply</em> ，此时，server会返回错误给客户端，如果客户端没有处理错误信息，可能会有些问题。当用这个选项时，最好确保客户端永远只构造有效的命令请求。</p></li>
-<li><p><data block\> 一块任意8位组的数据，其长度应该是前面给到的 <code>&lt;byters&gt;</code>值。</p></li>
-</ul>
-
-
-<p>返回信息描述：</p>
-
-<ul>
-<li><p>&ldquo;STORED\r\n&rdquo; 存储数据成功.</p></li>
-<li><p>&ldquo;NOT_STORED\r\n&rdquo; 此数据没有被存储。</p></li>
-</ul>
-
-
-<h3>Command set</h3>
-
-<p>设置数据，如果key已经存在，就更新数据，如果key不存在，就增加数据。</p>
-
-<pre><code>set key1 0 0 2
-12
-STORED
-</code></pre>
-
-<h3>Command add</h3>
-
-<p>新增数据，如果key已经存在，会返回失败。</p>
-
-<pre><code>add key2 0 0 3
-abc
-STORED
-add key1 0 0 3
-abc
-NOT_STORED
-</code></pre>
-
-<h3>Command replace</h3>
-
-<p>更新数据，如果key不存在，则返回失败。</p>
-
-<pre><code>replace key1 0 0 2
-12
-STORED
-replace key3 0 0 2
-ab
-NOT_STORED
-</code></pre>
-
-<h3>Command append</h3>
-
-<p>在已经存在的数据后面追加数据，如果key不存在，则返回失败。</p>
-
-<pre><code>append key1 0 0 2
-ab
-STORED
-append key3 0 0 2
-ab
-NOT_STORED
-</code></pre>
-
-<h3>Command prepend</h3>
-
-<p>在已经存在的数据前面追加数据，如果key不存在，则返回失败。</p>
-
-<pre><code>prepend key1 0 0 2
-cd
-STORED
-prepend key3 0 0 3
-abc
-NOT_STORED
-</code></pre>
-
-<h3>Command cas</h3>
-
-<p>check and set, 只有此数据自上次获取以后没有被更新，才设置数据。</p>
-
-<p>格式：</p>
-
-<pre><code>cas &lt;key&gt; &lt;flags&gt; &lt;exptime&gt; &lt;bytes&gt; &lt;cas unique&gt; [noreply]\r\n
-&lt;data block&gt;\r\n
-</code></pre>
-
-<ul>
-<li><cas unique> 一个64位的唯一的已经存在的entry, 此值是通过<code>gets</code>命令获得的.</li>
-</ul>
-
-
-<p>返回信息：</p>
-
-<ul>
-<li><p>&ldquo;EXISTS\r\n&rdquo; 指示要存储的数据自从上次获取以来已经被修改了，命令存储失败。</p></li>
-<li><p>&ldquo;NOT_FOUND\r\n&rdquo; 指示试图存储的数据不存在，命令存储失败.</p></li>
-</ul>
-
-
-<p>示例：</p>
-
-<pre><code>gets key1
-VALUE key1 0 6 6 #最后一项是&lt;cas unique&gt;值
-cd12ab
-END
-
-cas key1 0 0 2 6
-ab
-STORED
-
-cas key1 0 0 2 6
-cd
-EXISTS
-
-gets key1
-VALUE key1 0 2 7 #&lt;cas unique&gt;值已经变成7
-ab
-END
-
-cas key3 0 0 2 8
-12
-NOT_FOUND
 </code></pre>
 
 <p><a href="https://github.com/lilinj2000/memcached/blob/master/doc/protocol.txt">更详细信息请参考这里</a></p>
