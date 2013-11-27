@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Markdown语法介绍 - 图片 - 李林江的技术博客</title>
+  <title>Memcached之内存存储方式介绍 - 李林江的技术博客</title>
   <meta name="author" content="李林江">
 
   
-  <meta name="description" content="图片 很明显地，要在纯文字应用中设计一个「自然」的语法来插入图片是有一定难度的。 Markdown 使用一种和链接很相似的语法来标记图片，同样也允许两种样式： 行内式和参考式。 行内式的图片语法看起来像是： ![Alt text](/path/to/img.jpg) ![Alt text](/ &hellip;">
-  
+  <meta name="description" content="Memcached中的内存管理 Memcached中保存的数据都存储在memcached内置的内存存储空间中。 数据仅存在于内存中，因此重启memcached、重启操作系统会导致全部数据消失。 内存容量达到指定值之后，会基于LRU(Least Recently Used)算法自动删除不使用的缓存， &hellip;">
+  <meta name="keywords" content="Memecached Slab">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-for-image">
+  <link rel="canonical" href="http://lilinj2000.github.io/blog/2013/11/27/memcached-for-memory-management">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="李林江的技术博客" type="application/atom+xml">
@@ -68,7 +68,7 @@
   
   <header>
     
-      <h1 class="entry-title">Markdown语法介绍 - 图片</h1>
+      <h1 class="entry-title">Memcached之内存存储方式介绍</h1>
     
     
       <p class="meta">
@@ -84,48 +84,68 @@
   
 
 
-<time datetime="2013-11-22T13:54:00+08:00" pubdate data-updated="true">Nov 22<span>nd</span>, 2013</time>
+<time datetime="2013-11-27T21:45:00+08:00" pubdate data-updated="true">Nov 27<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><h2>图片</h2>
+<div class="entry-content"><h2>Memcached中的内存管理</h2>
 
-<p>很明显地，要在纯文字应用中设计一个「自然」的语法来插入图片是有一定难度的。</p>
+<p>Memcached中保存的数据都存储在memcached内置的内存存储空间中。</p>
 
-<p>Markdown 使用一种和链接很相似的语法来标记图片，同样也允许两种样式： <strong>行内式和参考式</strong>。</p>
+<p>数据仅存在于内存中，因此重启memcached、重启操作系统会导致全部数据消失。</p>
 
-<p>行内式的图片语法看起来像是：</p>
-
-<pre><code>![Alt text](/path/to/img.jpg)
-
-![Alt text](/path/to/img.jpg "Optional title")
-</code></pre>
+<p>内存容量达到指定值之后，会基于LRU(Least Recently Used)算法自动删除不使用的缓存，当然这个可以通过配置项来禁止，默认是删除。</p>
 
 <!-- more -->
 
 
-<p>详细叙述如下：</p>
+<p>Memcached本身是为缓存而设计的服务器，并没有过多考虑数据的永久性问题。但是可以利用memcacheDB实现事务恢复、持久化和分布式复制等功能。</p>
 
-<p>一个惊叹号 !
-接着一个方括号，里面放上图片的替代文字
-接着一个普通括号，里面放上图片的网址，最后还可以用引号包住并加上 选择性的 &lsquo;title&rsquo; 文字。</p>
+<p>Memcached默认情况下采用了名为Slab Allocator的机制分配、管理内存。</p>
 
-<p>参考式的图片语法则长得像这样：</p>
+<h2>Slab分配器简介</h2>
 
-<pre><code>![Alt text][id]
-「id」是图片参考的名称，图片参考的定义方式则和连结参考一样：
+<p>slab是Linux操作系统的一种内存分配机制。</p>
 
-[id]: url/to/image  "Optional title attribute"
-</code></pre>
+<p>其主要是针对一些<strong>经常分配并释放的对象</strong>，如进程描述符等，这些对象的大小一般比较小，如果直接采用伙伴系统来进行分配和释放，不仅会造成大量的内碎片，而且处理速度也太慢。</p>
 
-<p>到目前为止， Markdown 还<em>没有办法指定图片的宽高，如果你需要的话，你可以使用普通的 <code>&lt;img&gt;</code> 标签</em>。</p>
+<p>slab分配器是基于<strong>对象进行管理</strong>的，相同类型的对象归为一类(如进程描述符就是一类)，每当要申请这样一个对象，slab分配器就从一个slab列表中分配一个这样大小的单元出去，而当要释放时，将其重新保存在该列表中，而不是直接返回给伙伴系统，从而避免内存碎片。</p>
 
-<p>参考:</p>
+<p>slab分配器并不丢弃已分配的对象，而是释放并把它们保存在内存中。当以后又要请求新的对象时，就可以从内存直接获取而不用重复初始化。</p>
 
-<p><a href="http://wowubuntu.com/markdown/">markdown语法说明（简体中文版）</a></p>
+<p>其基本原理是按照预先规定的大小，将分配的内存分割成特定长度的块（chunk），并把尺寸相同的块分成组（chunk的集合）如图。</p>
+
+<p><img src="/images/2013/11/slab_allocate_overview.png" alt="Slab Allocator 示例图" /></p>
+
+<p>分配给slab的所有内存空间叫做Page，在Memcached中，它默认是1MB。</p>
+
+<h2>在Memcached中，数据是如何被存入slab，并最终缓存到chunk</h2>
+
+<p>Memcached根据数据的大小，选择最适合数据大小的slab。</p>
+
+<p>Memcached中保存着slab内空闲chunk的列表，根据该列表选择chunk，然后将数据缓存于其中。</p>
+
+<p><img src="/images/2013/11/slab_allocate_select_method.png" alt="Slab Allocate 选择算法" /></p>
+
+<p>这种机制也给memcached带来了新的问题：由于分配的是特定长度的内存，因此无法有效利用分配的内存。例如，将100字节的数据缓存到128字节的chunk中，剩余的28字节就浪费了（如下图）。</p>
+
+<p><img src="/images/2013/11/slab_allocate_storage.png" alt="Slab Allocate 数据存储方式" /></p>
+
+<p>针对此问题还没有完美的解决方案，但是memcached文档中给出一种思路：
+如果预先知道存储的数据的公用大小，或者仅缓存大小相同的数据的情况下，只要使用适合数据大小的组的列表，就可以减少浪费。</p>
+
+<p>另外，也可以通过使用Growth Facor 进行调优，在某种程度上控制slab之间的差异。</p>
+
+<p>因此，在使用memcached前最好能够重新计算一下数据的预期平均长度，调整growth factor ，以获得最恰当的设置。</p>
+
+<p>参考：</p>
+
+<p><a href="http://blog.csdn.net/ldwtill/article/details/8167813">mecached 基础（一）&mdash;memcached介绍</a></p>
+
+<p><a href="http://baike.baidu.com/view/5870164.htm">百度百科 &ndash; slab</a></p>
 </div>
 
 
@@ -148,12 +168,12 @@
   
 
 
-<time datetime="2013-11-22T13:54:00+08:00" pubdate data-updated="true">Nov 22<span>nd</span>, 2013</time>
+<time datetime="2013-11-27T21:45:00+08:00" pubdate data-updated="true">Nov 27<span>th</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/markdownjie-shao/'>Markdown介绍</a>
+    <a class='category' href='/blog/categories/memcachedjie-shao/'>Memcached介绍</a>
   
 </span>
 
@@ -172,10 +192,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/11/22/markdown-inroduction-for-code-and-seprator/" title="Previous Post: Markdown语法介绍 - 代码区块和分隔线">&laquo; Markdown语法介绍 - 代码区块和分隔线</a>
+        <a class="basic-alignment left" href="/blog/2013/11/27/playing-memcached-by-telnet-increment-and-decrement/" title="Previous Post: 玩转Memcached by telnet之Increment and Decrement Command">&laquo; 玩转Memcached by telnet之Increment and Decrement Command</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/11/22/markdown-inroduction-for-autolink-and-others/" title="Next Post: Markdown语法介绍 - 自动链接和其他">Markdown语法介绍 - 自动链接和其他 &raquo;</a>
       
     </p>
   </footer>
@@ -253,8 +271,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-for-image/';
-        var disqus_url = 'http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-for-image/';
+        var disqus_identifier = 'http://lilinj2000.github.io/blog/2013/11/27/memcached-for-memory-management/';
+        var disqus_url = 'http://lilinj2000.github.io/blog/2013/11/27/memcached-for-memory-management/';
         var disqus_script = 'embed.js';
       
     (function () {
