@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>玩转memcached by telnet之Retrieval Command - 李林江的技术博客</title>
+  <title>玩转Memcached by telnet之Retrieval Command - 李林江的技术博客</title>
   <meta name="author" content="李林江">
 
   
@@ -69,7 +69,7 @@ gets &lt;key&gt;*\r\n &lt;key>* 一个或者多个key，由空白符分隔。 �
   
   <header>
     
-      <h1 class="entry-title">玩转memcached by telnet之Retrieval Command</h1>
+      <h1 class="entry-title">玩转Memcached by telnet之Retrieval Command</h1>
     
     
       <p class="meta">
@@ -128,9 +128,30 @@ gets &lt;key&gt;*\r\n
 <p>数据不能被获取的情况有：</p>
 
 <ul>
-<li><p>数据从来没有被存储</p></li>
-<li><p>数据被存储，但是获取时已经过期</p></li>
-<li><p>数据被存储，数据已经显示被删除了</p></li>
+<li><p>数据从来没有被存储</p>
+
+<pre><code>  get key3
+  END
+</code></pre></li>
+<li><p>数据被存储，但是获取时已经过期</p>
+
+<pre><code>  add key1 0 5 2
+  ab
+  STORED
+  #after 5 seconds, the data is expiration
+  get key1
+  END
+</code></pre></li>
+<li><p>数据被存储，数据已经显示被删除了</p>
+
+<pre><code>  add key1 0 0 2
+  ab
+  STORED
+  delete key1
+  DELETED
+  get key1
+  END
+</code></pre></li>
 <li><p>数据被存储，由于内存原因，基于LRU算法，数据已经被系统删除</p></li>
 </ul>
 
@@ -222,10 +243,10 @@ END
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/11/26/playing-memcached-by-telnet-storage-command/" title="Previous Post: 玩转memcached by telnet之Storage Command">&laquo; 玩转memcached by telnet之Storage Command</a>
+        <a class="basic-alignment left" href="/blog/2013/11/26/playing-memcached-by-telnet-storage-command/" title="Previous Post: 玩转Memcached by telnet之Storage Command">&laquo; 玩转Memcached by telnet之Storage Command</a>
       
       
-        <a class="basic-alignment right" href="/blog/2013/11/27/playing-memcached-by-telnet-deletion-and-touch/" title="Next Post: 玩转memcached by telnet之Deletion and Touch Command">玩转memcached by telnet之Deletion and Touch Command &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2013/11/27/playing-memcached-by-telnet-deletion-and-touch/" title="Next Post: 玩转Memcached by telnet之Deletion and Touch Command">玩转Memcached by telnet之Deletion and Touch Command &raquo;</a>
       
     </p>
   </footer>
@@ -246,19 +267,19 @@ END
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/11/27/playing-memcached-by-telnet-increment-and-decrement/">玩转memcached by telnet之Increment and Decrement Command</a>
+        <a href="/blog/2013/11/27/playing-memcached-by-telnet-increment-and-decrement/">玩转Memcached by telnet之Increment and Decrement Command</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/11/27/playing-memcached-by-telnet-deletion-and-touch/">玩转memcached by telnet之Deletion and Touch Command</a>
+        <a href="/blog/2013/11/27/playing-memcached-by-telnet-deletion-and-touch/">玩转Memcached by telnet之Deletion and Touch Command</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/11/26/playing-memcached-by-telnet-retrieval-command/">玩转memcached by telnet之Retrieval Command</a>
+        <a href="/blog/2013/11/26/playing-memcached-by-telnet-retrieval-command/">玩转Memcached by telnet之Retrieval Command</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/11/26/playing-memcached-by-telnet-storage-command/">玩转memcached by telnet之Storage Command</a>
+        <a href="/blog/2013/11/26/playing-memcached-by-telnet-storage-command/">玩转Memcached by telnet之Storage Command</a>
       </li>
     
       <li class="post">
