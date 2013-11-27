@@ -1,17 +1,17 @@
 ---
 layout: post
-title: "玩转memcached by telnet之获取Command"
+title: "玩转memcached by telnet之Retrieval Command"
 date: 2013-11-26 16:06
 comments: true
-categories: Memcached
+categories: Memcached介绍
 tags: Memcached
 keywords: memcached
 published: true
 ---
 
-## 获取Command - Retrieval commands
+## Retrieval commands
 
-### Command格式：
+### 格式：
 
     get <key>*\r\n
     gets <key>*\r\n
@@ -22,7 +22,7 @@ published: true
 
 <!-- more -->
 
-### 返回信息：
+返回信息：
 
     VALUE <key> <flags> <bytes> [<cas unique>]\r\n
     <data block>\r\n

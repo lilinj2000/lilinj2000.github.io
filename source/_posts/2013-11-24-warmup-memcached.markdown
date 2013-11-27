@@ -3,8 +3,9 @@ layout: post
 title: "初识 Memcached"
 date: 2013-11-24 16:13
 comments: true
-categories: Memcached
+categories: Memcached介绍
 tags: Memcached
+keywords: memcached
 published: true
 ---
 

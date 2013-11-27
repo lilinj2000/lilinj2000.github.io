@@ -124,6 +124,8 @@ task :new_post, :title, :title_alias do |t, args|
     post.puts "keywords: "
     post.puts "published: false"
     post.puts "---"
+    post.puts ""
+    post.puts "<!-- more -->"
   end
 end
 

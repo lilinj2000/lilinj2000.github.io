@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "玩转memcached by telnet之存储Command"
+title: "玩转memcached by telnet之Storage Command"
 date: 2013-11-26 14:14
 comments: true
-categories: Memcached
+categories: Memcached介绍
 tags: Memcached
 keywords: memcached
 published: true
@@ -29,9 +29,9 @@ published: true
 
 <!-- more -->
 
-## 存储Command - Storage commands
+## Storage commands
 
-### Command格式：
+### 格式：
 
     <command name> <key> <flags> <exptime> <bytes> [noreply]\r\n  
     <data block>\r\n
@@ -52,7 +52,7 @@ published: true
 
 - <data block\> 一块任意8位组的数据，其长度应该是前面给到的 `<byters>`值。
 
-### 返回信息描述：
+返回信息描述：
 
 - "STORED\r\n" 存储数据成功.
 
