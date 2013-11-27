@@ -6,7 +6,7 @@ comments: true
 categories: Memcached介绍
 tags: Memcached slab
 keywords: memcached slab
-published: false
+published: true
 ---
 
 ## Slab statistics
