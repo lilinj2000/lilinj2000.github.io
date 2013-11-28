@@ -4,7 +4,7 @@
   <title><![CDATA[李林江的技术博客]]></title>
   <link href="http://lilinj2000.github.io/atom.xml" rel="self"/>
   <link href="http://lilinj2000.github.io/"/>
-  <updated>2013-11-28T00:10:10+08:00</updated>
+  <updated>2013-11-28T15:10:55+08:00</updated>
   <id>http://lilinj2000.github.io/</id>
   <author>
     <name><![CDATA[李林江]]></name>
@@ -51,9 +51,7 @@ cas_badval: cas修改失败次数在这个slab class上
 touch_hits: touch修改成功次数在这个slab class上       
 used_chunks: 被使用了的块数                          
 free_chunks: 没有被使用的块数                        
-free_chunks_end: 其值总为0，一般来说是slab分配器的临时变量，
-                 当内存被分配以后，就移到了free_chunks，   
-                 所以，我们看到的都为0                    
+free_chunks_end: 除了本页以外的空闲chunk个数，当前只有一页，所以，看到的值位0                
 mem_requested: 请求存储在这个slab class中的实际字节数         
 active_slabs: 当前已经分配了slab class数                 
 total_malloced: 总共被使用了的内存字节数                  
