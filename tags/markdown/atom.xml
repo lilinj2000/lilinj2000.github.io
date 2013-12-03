@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Markdown | 李林江的技术博客]]></title>
   <link href="http://lilinj2000.github.io/tags/markdown/atom.xml" rel="self"/>
   <link href="http://lilinj2000.github.io/"/>
-  <updated>2013-12-02T17:46:22+08:00</updated>
+  <updated>2013-12-03T16:48:06+08:00</updated>
   <id>http://lilinj2000.github.io/</id>
   <author>
     <name><![CDATA[李林江]]></name>
@@ -18,8 +18,7 @@
     <link href="http://lilinj2000.github.io/blog/2013/11/26/introducing-markdown-editing-plugin-for-sublime-text2/"/>
     <updated>2013-11-26T10:50:00+08:00</updated>
     <id>http://lilinj2000.github.io/blog/2013/11/26/introducing-markdown-editing-plugin-for-sublime-text2</id>
-    <content type="html"><![CDATA[<h2>简介</h2>
-
+    <content type="html"><![CDATA[<h2 id="section">简介</h2>
 <p>MarkdownEditing是ttscoff编写的一个Sublime Text 2插件，用于在ST2中进行Markdown文件的编写。插件中添加一系列的快捷键和自动处理，方便大家在ST2中进行MD的编写。</p>
 
 <p><a href="http://brettterpstra.com/2012/05/17/markdown-editing-for-sublime-text-2-humble-beginnings/">Markdown Editing for Sublime Text 2: humble beginnings</a></p>
@@ -28,42 +27,76 @@
 
 <!-- more -->
 
+<h2 id="markdownediting">MarkdownEditing的功能</h2>
 
-<h2>MarkdownEditing的功能</h2>
-
-<h3>语法增强类</h3>
-
-<ul>
-<li><p>星号*、下划线_和反引号`自动配对</p></li>
-<li><p>如输入的自动配对符号中间内容为空时，删除第一个符号时将直接删除整对符号</p></li>
-<li><p>如输入自动配对符号后直接输入空格，则自动删除后面自动配对的符号</p></li>
-<li><p>波浪线 ~ 包围的内容将转换为HTML中的 标签</p></li>
-<li><p>当创建了列表后，回车将自动添加一个列表项。如列表项为空，再次回车将删除该列表项.</p></li>
-</ul>
-
-
-<h3>MarkdownEditing在Windows下面的快捷键</h3>
+<h3 id="section-1">语法增强类</h3>
 
 <ul>
-<li><p>Ctrl+Win+V <em>选中的内容</em>将自动转换为<strong>行内式超链接</strong>，链接到剪贴板中的内容</p></li>
-<li><p>Ctrl+Win+R <em>选中的内容将</em>自动转换为<strong>参考式超链接</strong>，链接到剪贴板中的内容</p></li>
-<li><p>Ctrl+Win+K 插入一个<strong>标准的行内式超链接</strong></p></li>
-<li><p>Shift+Win+K 插入一个<strong>标准的行内式图片</strong>（此快捷键可能与输入法有冲突）</p></li>
-<li><p>Ctrl+1 至 Ctrl+6 插入一级至六级标题</p></li>
-<li><p>Ctrl+I 选中的内容转换为<em>斜体</em></p></li>
-<li><p>Ctrl+B 选中的内容转换为<strong>粗体</strong></p></li>
-<li><p>Ctrl+Shift+6 自动插入一个脚注，并跳转到该脚注的定义中。</p></li>
-<li><p>Alt+Shift+F 查找没有定义的脚注并自动添加其定义链接</p></li>
-<li><p>Alt+Shift+G 查找没有定义的参考式超链接并自动添加其定义链接</p></li>
-<li><p>Ctrl+Alt+S 脚注排序</p></li>
-<li><p>Ctrl+Shift+. 缩进当前内容</p></li>
-<li><p>Ctrl+Shift+, 提前当前内容</p></li>
+  <li>
+    <p>星号*、下划线_和反引号`自动配对</p>
+  </li>
+  <li>
+    <p>如输入的自动配对符号中间内容为空时，删除第一个符号时将直接删除整对符号</p>
+  </li>
+  <li>
+    <p>如输入自动配对符号后直接输入空格，则自动删除后面自动配对的符号</p>
+  </li>
+  <li>
+    <p>波浪线 ~ 包围的内容将转换为HTML中的 标签</p>
+  </li>
+  <li>
+    <p>当创建了列表后，回车将自动添加一个列表项。如列表项为空，再次回车将删除该列表项.</p>
+  </li>
 </ul>
 
+<h3 id="markdowneditingwindows">MarkdownEditing在Windows下面的快捷键</h3>
+
+<ul>
+  <li>
+    <p>Ctrl+Win+V _选中的内容_将自动转换为<strong>行内式超链接</strong>，链接到剪贴板中的内容</p>
+  </li>
+  <li>
+    <p>Ctrl+Win+R _选中的内容将_自动转换为<strong>参考式超链接</strong>，链接到剪贴板中的内容</p>
+  </li>
+  <li>
+    <p>Ctrl+Win+K 插入一个<strong>标准的行内式超链接</strong></p>
+  </li>
+  <li>
+    <p>Shift+Win+K 插入一个<strong>标准的行内式图片</strong>（此快捷键可能与输入法有冲突）</p>
+  </li>
+  <li>
+    <p>Ctrl+1 至 Ctrl+6 插入一级至六级标题</p>
+  </li>
+  <li>
+    <p>Ctrl+I 选中的内容转换为_斜体_</p>
+  </li>
+  <li>
+    <p>Ctrl+B 选中的内容转换为<strong>粗体</strong></p>
+  </li>
+  <li>
+    <p>Ctrl+Shift+6 自动插入一个脚注，并跳转到该脚注的定义中。</p>
+  </li>
+  <li>
+    <p>Alt+Shift+F 查找没有定义的脚注并自动添加其定义链接</p>
+  </li>
+  <li>
+    <p>Alt+Shift+G 查找没有定义的参考式超链接并自动添加其定义链接</p>
+  </li>
+  <li>
+    <p>Ctrl+Alt+S 脚注排序</p>
+  </li>
+  <li>
+    <p>Ctrl+Shift+. 缩进当前内容</p>
+  </li>
+  <li>
+    <p>Ctrl+Shift+, 提前当前内容</p>
+  </li>
+</ul>
 
 <p>参考：</p>
 
 <p><a href="http://blog.edi-c.com/post/mod-mdediting-for-win">在Windows下面使用MarkdownEditing</a></p>
+
 ]]></content>
   </entry>
   
@@ -72,7 +105,7 @@
     <link href="http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-summarize/"/>
     <updated>2013-11-22T14:28:00+08:00</updated>
     <id>http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-summarize</id>
-    <content type="html"><![CDATA[<h2>背景</h2>
+    <content type="html"><![CDATA[<h2 id="section">背景</h2>
 
 <p>偶然发现 githup 上提供自己搭建博客的功能，同时又有 octopress 这么好的一个工具可以使用。</p>
 
@@ -84,12 +117,11 @@
 
 <p>octopress 默认是用 Markdown 语言来写的。</p>
 
-<p>所以，我的博客就从学习 Markdown &ndash; 这个轻量级标记语言来开始。</p>
+<p>所以，我的博客就从学习 Markdown - 这个轻量级标记语言来开始。</p>
 
 <!-- more -->
 
-
-<h2>Markdown 基本思想</h2>
+<h2 id="markdown-">Markdown 基本思想</h2>
 
 <p>Markdown 是一种轻量级的标记语言，同时其又是一个电子邮件风格的标记语言。</p>
 
@@ -101,75 +133,89 @@
 
 <p><em>简单，易学，易用，易理解，易读，同时也易维护</em>。</p>
 
-<h2>Markdown 语法小结</h2>
+<h2 id="markdown--1">Markdown 语法小结</h2>
 
 <ul>
-<li><p>区块元素</p>
-
-<ul>
-<li><p>标题</p>
-
-<blockquote><p>  类 Setext 形式是用底线的形式，利用 = （最高阶标题）和 &ndash;
-（第二阶标题）。</p>
-
-<p>  类 Atx 形式则是在行首插入 1 到 6 个 # ，对应到标题 1 到 6 阶。</p></blockquote></li>
-<li><p>列表</p>
-
-<blockquote><p>  无序列表： 用符号 *, +, -</p>
-
-<p>  有序列表： 数字 - 点起始。 <code>1. list1</code></p>
-
-<p>  嵌套列表，下一级列表由 4 个空格或者 1 个制表符缩进；
-对于嵌套代码区块需要8个空格或者2个制表符缩进。</p></blockquote></li>
-<li><p>段落和换行</p>
-
-<blockquote><p>  段落是一个或者多个连续的文本行组成，由一个或者一个以上的空行来分隔。</p>
-
-<p>  换行是插入两个或者两个以上的空格，再按回车。</p></blockquote></li>
-<li><p>区块引用： 由符号 > 作为引用标记。</p></li>
-<li><p>代码区块：由 4 个空格符或者 1 个制表符开始。</p></li>
-<li><p>分割线：由3个或者3个以上的符号 *， -， _ 单独组成的一行，形成分割线。</p></li>
-</ul>
-</li>
-<li><p>区块内元素</p>
-
-<ul>
-<li><p>代码：由 1 个或者多个 ` 反引号开始，和对应的 1
-    个或者多个反引号结束。</p></li>
-<li><p>强调：由两个 *，或者是两个 _ 包含的内容。 斜体则是由一个 *，
-或者是一个 _ 包含的内容。</p></li>
-<li><p>链接</p>
-
-<blockquote><p>  行内链接 &mdash;&ndash; <code>[github](http://github.com)</code></p>
-
-<p>  参考式链接：</p>
-
-<pre><code>  [github] [1]
-  [1]: http://github.com
-  or
-  [github] []
-  [github]: http://github.com  
-</code></pre>
-
-<p>  自动链接 &mdash;&ndash; <code>&lt;http://github.com&gt;</code> or <code>&lt;sb@github.com&gt;</code></p></blockquote></li>
-<li><p>图片：类似于链接，只是在 [] 前面多一个 !</p></li>
-<li><p>支持用 \ 转义的符号有：</p>
-
-<blockquote><pre><code>  \   反斜线
-  `   反引号
-  *   星号
-  _   底线
-  {}  花括号
-  []  方括号
-  ()  括弧
-  #   井字号
-  +   加号
-  -   减号
-  .   英文句点
-  !   惊叹号
-</code></pre></blockquote></li>
-</ul>
-</li>
+  <li>区块元素
+    <ul>
+      <li>
+        <p>标题
+&gt;   类 Setext 形式是用底线的形式，利用 = （最高阶标题）和 - 
+（第二阶标题）。
+&gt;
+&gt;   类 Atx 形式则是在行首插入 1 到 6 个 # ，对应到标题 1 到 6 阶。 </p>
+      </li>
+      <li>
+        <p>列表
+&gt;   无序列表： 用符号 *, +, -
+&gt;
+&gt;   有序列表： 数字 - 点起始。 <code>1. list1</code>
+&gt;
+&gt;   嵌套列表，下一级列表由 4 个空格或者 1 个制表符缩进；
+对于嵌套代码区块需要8个空格或者2个制表符缩进。</p>
+      </li>
+      <li>
+        <p>段落和换行
+&gt;   段落是一个或者多个连续的文本行组成，由一个或者一个以上的空行来分隔。
+&gt;
+&gt;   换行是插入两个或者两个以上的空格，再按回车。</p>
+      </li>
+      <li>
+        <p>区块引用： 由符号 &gt; 作为引用标记。</p>
+      </li>
+      <li>
+        <p>代码区块：由 4 个空格符或者 1 个制表符开始。</p>
+      </li>
+      <li>
+        <p>分割线：由3个或者3个以上的符号 *， -， _ 单独组成的一行，形成分割线。</p>
+      </li>
+    </ul>
+  </li>
+  <li>区块内元素
+    <ul>
+      <li>
+        <p>代码：由 1 个或者多个 ` 反引号开始，和对应的 1 
+    个或者多个反引号结束。</p>
+      </li>
+      <li>
+        <p>强调：由两个 *，或者是两个 _ 包含的内容。 斜体则是由一个 *，
+或者是一个 _ 包含的内容。</p>
+      </li>
+      <li>
+        <p>链接
+&gt;   行内链接 — <code>[github](http://github.com)</code><br />
+&gt;
+&gt;   参考式链接：
+&gt; <br />
+&gt;       [github] [1]
+&gt;       [1]: http://github.com
+&gt;       or
+&gt;       [github] []
+&gt;       [github]: http://github.com<br />
+&gt;
+&gt;   自动链接 — <code>&lt;http://github.com&gt;</code> or <code>&lt;sb@github.com&gt;</code></p>
+      </li>
+      <li>
+        <p>图片：类似于链接，只是在 [] 前面多一个 !</p>
+      </li>
+      <li>
+        <p>支持用 \ 转义的符号有：
+&gt;
+&gt;       \   反斜线
+&gt;       `   反引号
+&gt;       *   星号
+&gt;       _   底线
+&gt;       {}  花括号
+&gt;       []  方括号
+&gt;       ()  括弧
+&gt;       #   井字号
+&gt;       +   加号
+&gt;       -   减号
+&gt;       .   英文句点
+&gt;       !   惊叹号</p>
+      </li>
+    </ul>
+  </li>
 </ul>
 
 ]]></content>
@@ -180,7 +226,7 @@
     <link href="http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-for-code-and-em/"/>
     <updated>2013-11-22T13:55:00+08:00</updated>
     <id>http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-for-code-and-em</id>
-    <content type="html"><![CDATA[<h2>代码</h2>
+    <content type="html"><![CDATA[<h2 id="section">代码</h2>
 
 <p>如果要标记一小段行内代码，你可以用反引号把它包起来（`），例如：</p>
 
@@ -193,7 +239,6 @@
 </code></pre>
 
 <!-- more -->
-
 
 <p>如果要在代码区段内<strong>插入反引号</strong>，你可以<strong>用多个反引号来开启和结束代码区段</strong>：</p>
 
@@ -240,9 +285,9 @@ A backtick-delimited string in a code span: `` `foo` ``
 equivalent of &lt;code&gt;&amp;amp;mdash;&lt;/code&gt;.&lt;/p&gt;
 </code></pre>
 
-<h2>强调</h2>
+<h2 id="section-1">强调</h2>
 
-<p>Markdown 使用星号（*）和底线（_）作为标记强调字词的符号，被 * 或 _ 包围的字词会被转成用 <em> 标签包围，用两个 * 或 _ 包起来的话，则会被转成 <strong>，例如：</p>
+<p>Markdown 使用星号（*）和底线（_）作为标记强调字词的符号，被 * 或 _ 包围的字词会被转成用 <em> 标签包围，用两个 * 或 _ 包起来的话，则会被转成 <strong>，例如：</strong></em></p>
 
 <pre><code>*single asterisks*
 
@@ -278,7 +323,7 @@ __double underscores__
 <pre><code>\*this text is surrounded by literal asterisks\*
 </code></pre>
 
-<p>参考:</p>
+<p>参考: </p>
 
 <p><a href="http://wowubuntu.com/markdown/">markdown语法说明（简体中文版）</a></p>
 ]]></content>
@@ -289,7 +334,7 @@ __double underscores__
     <link href="http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-for-autolink-and-others/"/>
     <updated>2013-11-22T13:55:00+08:00</updated>
     <id>http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-for-autolink-and-others</id>
-    <content type="html"><![CDATA[<h2>自动链接</h2>
+    <content type="html"><![CDATA[<h2 id="section">自动链接</h2>
 
 <p>Markdown 支持以比较简短的自动链接形式来处理<strong>网址和电子邮件信箱</strong>，只要是用尖括号包起来， Markdown 就会自动把它转成链接。一般网址的链接文字就和链接地址一样，例如：</p>
 
@@ -302,7 +347,6 @@ __double underscores__
 </code></pre>
 
 <!-- more -->
-
 
 <p>邮址的自动链接也很类似，只是 Markdown 会先做一个编码转换的过程，把文字字符转成 16 进位码的 HTML 实体，这样的格式可以糊弄一些不好的邮址收集机器人，例如：</p>
 
@@ -321,7 +365,7 @@ __double underscores__
 
 <p>（这种作法虽然可以糊弄不少的机器人，但并不能全部挡下来，不过总比什么都不做好些。不管怎样，公开你的信箱终究会引来广告信件的。）</p>
 
-<h2>反斜杠</h2>
+<h2 id="section-1">反斜杠</h2>
 
 <p>Markdown 可以利用反斜杠来插入一些在语法中有其它意义的符号，例如：如果你想要用星号加在文字旁边的方式来做出强调效果（但不用 <code>&lt;em&gt;</code> 标签），你可以在星号的前面加上反斜杠：</p>
 
@@ -344,7 +388,7 @@ _   底线
 !   惊叹号
 </code></pre>
 
-<p>参考:</p>
+<p>参考: </p>
 
 <p><a href="http://wowubuntu.com/markdown/">markdown语法说明（简体中文版）</a></p>
 ]]></content>
@@ -355,7 +399,7 @@ _   底线
     <link href="http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-for-image/"/>
     <updated>2013-11-22T13:54:00+08:00</updated>
     <id>http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-for-image</id>
-    <content type="html"><![CDATA[<h2>图片</h2>
+    <content type="html"><![CDATA[<h2 id="section">图片</h2>
 
 <p>很明显地，要在纯文字应用中设计一个「自然」的语法来插入图片是有一定难度的。</p>
 
@@ -370,12 +414,11 @@ _   底线
 
 <!-- more -->
 
-
 <p>详细叙述如下：</p>
 
 <p>一个惊叹号 !
 接着一个方括号，里面放上图片的替代文字
-接着一个普通括号，里面放上图片的网址，最后还可以用引号包住并加上 选择性的 &lsquo;title&rsquo; 文字。</p>
+接着一个普通括号，里面放上图片的网址，最后还可以用引号包住并加上 选择性的 ‘title’ 文字。</p>
 
 <p>参考式的图片语法则长得像这样：</p>
 
@@ -387,7 +430,7 @@ _   底线
 
 <p>到目前为止， Markdown 还<em>没有办法指定图片的宽高，如果你需要的话，你可以使用普通的 <code>&lt;img&gt;</code> 标签</em>。</p>
 
-<p>参考:</p>
+<p>参考: </p>
 
 <p><a href="http://wowubuntu.com/markdown/">markdown语法说明（简体中文版）</a></p>
 ]]></content>

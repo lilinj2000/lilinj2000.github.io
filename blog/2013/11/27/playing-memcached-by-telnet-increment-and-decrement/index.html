@@ -9,7 +9,7 @@
   <meta name="author" content="李林江">
 
   
-  <meta name="description" content="Increment/Decrement 命令&#8221;incr&#8221; 和 &ldquo;decr&rdquo; 是用来增加或者减少相应的数据项， 数据项作为64位无符号的10进制数来对待。 如果当前此数据项，不是一个10进制的数据，则&#8221;incr&#8221;和&#8221; &hellip;">
+  <meta name="description" content="Increment/Decrement 命令”incr” 和 “decr” 是用来增加或者减少相应的数据项， 数据项作为64位无符号的10进制数来对待。 如果当前此数据项，不是一个10进制的数据，则”incr”和”decr”将返回错误。 当然，如果当前的数据项不存在，也将返回错误。 格式： &hellip;">
   <meta name="keywords" content="memcached">
 
   <!-- http://t.co/dKP3o1e -->
@@ -103,16 +103,15 @@
   </header>
 
 
-<div class="entry-content"><h2>Increment/Decrement</h2>
+<div class="entry-content"><h2 id="incrementdecrement">Increment/Decrement</h2>
 
-<p>命令&#8221;incr&#8221; 和 &ldquo;decr&rdquo; 是用来增加或者减少相应的数据项， 数据项作为64位无符号的10进制数来对待。</p>
+<p>命令”incr” 和 “decr” 是用来增加或者减少相应的数据项， 数据项作为64位无符号的10进制数来对待。</p>
 
-<p>如果当前此数据项，不是一个10进制的数据，则&#8221;incr&#8221;和&#8221;decr&#8221;将返回错误。</p>
+<p>如果当前此数据项，不是一个10进制的数据，则”incr”和”decr”将返回错误。</p>
 
 <p>当然，如果当前的数据项不存在，也将返回错误。</p>
 
 <!-- more -->
-
 
 <p>格式：</p>
 
@@ -124,23 +123,31 @@ decr &lt;key&gt; &lt;value&gt; [noreply]\r\n
 </code></pre>
 
 <ul>
-<li><p>&lt;key> 数据项的唯一标识符</p></li>
-<li><p>&lt;value> 增量或者减量的值，如在当前值上增加100，或者减少100</p></li>
-<li><p>[noreply] 可选项，指示server不需要返回</p></li>
+  <li>
+    <p>&lt;key&gt; 数据项的唯一标识符</p>
+  </li>
+  <li>
+    <p>&lt;value&gt; 增量或者减量的值，如在当前值上增加100，或者减少100</p>
+  </li>
+  <li>
+    <p>[noreply] 可选项，指示server不需要返回</p>
+  </li>
 </ul>
-
 
 <p>返回信息：</p>
 
 <ul>
-<li><p>&ldquo;NOT_FOUND\r\n&rdquo; 数据项没发现</p></li>
-<li><p>&ldquo;&lt;value>\r\n&rdquo;  更新成功后的新的值</p></li>
+  <li>
+    <p>“NOT_FOUND\r\n” 数据项没发现</p>
+  </li>
+  <li>
+    <p>“&lt;value&gt;\r\n”  更新成功后的新的值</p>
+  </li>
 </ul>
 
+<p>“decr” 减少到小于0时，新的值将被设为0</p>
 
-<p>&ldquo;decr&rdquo; 减少到小于0时，新的值将被设为0</p>
-
-<p>&ldquo;incr&rdquo; 增加到超过了64位无符号的最大值，将会溢出</p>
+<p>“incr” 增加到超过了64位无符号的最大值，将会溢出</p>
 
 <pre><code>add key1 0 0 2
 10

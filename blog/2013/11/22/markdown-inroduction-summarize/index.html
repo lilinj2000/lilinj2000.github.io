@@ -103,7 +103,7 @@
   </header>
 
 
-<div class="entry-content"><h2>背景</h2>
+<div class="entry-content"><h2 id="section">背景</h2>
 
 <p>偶然发现 githup 上提供自己搭建博客的功能，同时又有 octopress 这么好的一个工具可以使用。</p>
 
@@ -115,12 +115,11 @@
 
 <p>octopress 默认是用 Markdown 语言来写的。</p>
 
-<p>所以，我的博客就从学习 Markdown &ndash; 这个轻量级标记语言来开始。</p>
+<p>所以，我的博客就从学习 Markdown - 这个轻量级标记语言来开始。</p>
 
 <!-- more -->
 
-
-<h2>Markdown 基本思想</h2>
+<h2 id="markdown-">Markdown 基本思想</h2>
 
 <p>Markdown 是一种轻量级的标记语言，同时其又是一个电子邮件风格的标记语言。</p>
 
@@ -132,75 +131,89 @@
 
 <p><em>简单，易学，易用，易理解，易读，同时也易维护</em>。</p>
 
-<h2>Markdown 语法小结</h2>
+<h2 id="markdown--1">Markdown 语法小结</h2>
 
 <ul>
-<li><p>区块元素</p>
-
-<ul>
-<li><p>标题</p>
-
-<blockquote><p>  类 Setext 形式是用底线的形式，利用 = （最高阶标题）和 &ndash;
-（第二阶标题）。</p>
-
-<p>  类 Atx 形式则是在行首插入 1 到 6 个 # ，对应到标题 1 到 6 阶。</p></blockquote></li>
-<li><p>列表</p>
-
-<blockquote><p>  无序列表： 用符号 *, +, -</p>
-
-<p>  有序列表： 数字 - 点起始。 <code>1. list1</code></p>
-
-<p>  嵌套列表，下一级列表由 4 个空格或者 1 个制表符缩进；
-对于嵌套代码区块需要8个空格或者2个制表符缩进。</p></blockquote></li>
-<li><p>段落和换行</p>
-
-<blockquote><p>  段落是一个或者多个连续的文本行组成，由一个或者一个以上的空行来分隔。</p>
-
-<p>  换行是插入两个或者两个以上的空格，再按回车。</p></blockquote></li>
-<li><p>区块引用： 由符号 > 作为引用标记。</p></li>
-<li><p>代码区块：由 4 个空格符或者 1 个制表符开始。</p></li>
-<li><p>分割线：由3个或者3个以上的符号 *， -， _ 单独组成的一行，形成分割线。</p></li>
-</ul>
-</li>
-<li><p>区块内元素</p>
-
-<ul>
-<li><p>代码：由 1 个或者多个 ` 反引号开始，和对应的 1
-    个或者多个反引号结束。</p></li>
-<li><p>强调：由两个 *，或者是两个 _ 包含的内容。 斜体则是由一个 *，
-或者是一个 _ 包含的内容。</p></li>
-<li><p>链接</p>
-
-<blockquote><p>  行内链接 &mdash;&ndash; <code>[github](http://github.com)</code></p>
-
-<p>  参考式链接：</p>
-
-<pre><code>  [github] [1]
-  [1]: http://github.com
-  or
-  [github] []
-  [github]: http://github.com  
-</code></pre>
-
-<p>  自动链接 &mdash;&ndash; <code>&lt;http://github.com&gt;</code> or <code>&lt;sb@github.com&gt;</code></p></blockquote></li>
-<li><p>图片：类似于链接，只是在 [] 前面多一个 !</p></li>
-<li><p>支持用 \ 转义的符号有：</p>
-
-<blockquote><pre><code>  \   反斜线
-  `   反引号
-  *   星号
-  _   底线
-  {}  花括号
-  []  方括号
-  ()  括弧
-  #   井字号
-  +   加号
-  -   减号
-  .   英文句点
-  !   惊叹号
-</code></pre></blockquote></li>
-</ul>
-</li>
+  <li>区块元素
+    <ul>
+      <li>
+        <p>标题
+&gt;   类 Setext 形式是用底线的形式，利用 = （最高阶标题）和 - 
+（第二阶标题）。
+&gt;
+&gt;   类 Atx 形式则是在行首插入 1 到 6 个 # ，对应到标题 1 到 6 阶。 </p>
+      </li>
+      <li>
+        <p>列表
+&gt;   无序列表： 用符号 *, +, -
+&gt;
+&gt;   有序列表： 数字 - 点起始。 <code>1. list1</code>
+&gt;
+&gt;   嵌套列表，下一级列表由 4 个空格或者 1 个制表符缩进；
+对于嵌套代码区块需要8个空格或者2个制表符缩进。</p>
+      </li>
+      <li>
+        <p>段落和换行
+&gt;   段落是一个或者多个连续的文本行组成，由一个或者一个以上的空行来分隔。
+&gt;
+&gt;   换行是插入两个或者两个以上的空格，再按回车。</p>
+      </li>
+      <li>
+        <p>区块引用： 由符号 &gt; 作为引用标记。</p>
+      </li>
+      <li>
+        <p>代码区块：由 4 个空格符或者 1 个制表符开始。</p>
+      </li>
+      <li>
+        <p>分割线：由3个或者3个以上的符号 *， -， _ 单独组成的一行，形成分割线。</p>
+      </li>
+    </ul>
+  </li>
+  <li>区块内元素
+    <ul>
+      <li>
+        <p>代码：由 1 个或者多个 ` 反引号开始，和对应的 1 
+    个或者多个反引号结束。</p>
+      </li>
+      <li>
+        <p>强调：由两个 *，或者是两个 _ 包含的内容。 斜体则是由一个 *，
+或者是一个 _ 包含的内容。</p>
+      </li>
+      <li>
+        <p>链接
+&gt;   行内链接 — <code>[github](http://github.com)</code><br />
+&gt;
+&gt;   参考式链接：
+&gt; <br />
+&gt;       [github] [1]
+&gt;       [1]: http://github.com
+&gt;       or
+&gt;       [github] []
+&gt;       [github]: http://github.com<br />
+&gt;
+&gt;   自动链接 — <code>&lt;http://github.com&gt;</code> or <code>&lt;sb@github.com&gt;</code></p>
+      </li>
+      <li>
+        <p>图片：类似于链接，只是在 [] 前面多一个 !</p>
+      </li>
+      <li>
+        <p>支持用 \ 转义的符号有：
+&gt;
+&gt;       \   反斜线
+&gt;       `   反引号
+&gt;       *   星号
+&gt;       _   底线
+&gt;       {}  花括号
+&gt;       []  方括号
+&gt;       ()  括弧
+&gt;       #   井字号
+&gt;       +   加号
+&gt;       -   减号
+&gt;       .   英文句点
+&gt;       !   惊叹号</p>
+      </li>
+    </ul>
+  </li>
 </ul>
 
 </div>
