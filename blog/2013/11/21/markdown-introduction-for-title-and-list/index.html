@@ -115,8 +115,10 @@
 =============
 
 This is an H2
-------------- 任何数量的 = 和 - 都可以有效果。
+-------------
 </code></pre>
+
+<p>任何数量的 = 和 - 都可以有效果。</p>
 
 <p>类 Atx 形式则是在行首插入 1 到 6 个 # ，对应到标题 1 到 6 阶，例如：</p>
 
@@ -137,28 +139,42 @@ This is an H2
 
 <pre><code>*   Red
 *   Green
-*   Blue 等同于：
-
-+   Red
-+   Green
-+   Blue 也等同于：
-
--   Red
--   Green
--   Blue 有序列表则使用数字接着一个英文句点：
-
-1.  Bird
-2.  McHale
-3.  Parish 很重要的一点是，你在列表标记上使用的数字并不会影响输出的 HTML 结果。
+*   Blue
 </code></pre>
+
+<p>等同于：</p>
+
+<pre><code>+   Red
++   Green
++   Blue
+</code></pre>
+
+<p>也等同于：</p>
+
+<pre><code>-   Red
+-   Green
+-   Blue
+</code></pre>
+
+<p>有序列表则使用数字接着一个英文句点：</p>
+
+<pre><code>1.  Bird
+2.  McHale
+3.  Parish
+</code></pre>
+
+<p>很重要的一点是，你在列表标记上使用的数字并不会影响输出的 HTML 结果。</p>
 
 <p>如果你的列表标记写成：</p>
 
 <pre><code>1.  Bird
 1.  McHale
-1.  Parish 或甚至是：
+1.  Parish
+</code></pre>
 
-3. Bird
+<p>或甚至是：</p>
+
+<pre><code>3. Bird
 1. McHale
 8. Parish
 </code></pre>
