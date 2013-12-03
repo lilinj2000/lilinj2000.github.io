@@ -4,7 +4,7 @@
   <title><![CDATA[李林江的技术博客]]></title>
   <link href="http://lilinj2000.github.io/atom.xml" rel="self"/>
   <link href="http://lilinj2000.github.io/"/>
-  <updated>2013-12-02T17:46:22+08:00</updated>
+  <updated>2013-12-03T16:48:06+08:00</updated>
   <id>http://lilinj2000.github.io/</id>
   <author>
     <name><![CDATA[李林江]]></name>
@@ -18,7 +18,7 @@
     <link href="http://lilinj2000.github.io/blog/2013/11/27/playing-memcached-by-telnet-stats-slabs/"/>
     <updated>2013-11-27T22:28:00+08:00</updated>
     <id>http://lilinj2000.github.io/blog/2013/11/27/playing-memcached-by-telnet-stats-slabs</id>
-    <content type="html"><![CDATA[<h2>Slab statistics</h2>
+    <content type="html"><![CDATA[<h2 id="slab-statistics">Slab statistics</h2>
 
 <p>格式：</p>
 
@@ -33,7 +33,6 @@ END\r\n
 </code></pre>
 
 <!-- more -->
-
 
 <p>具体各项解释：</p>
 
@@ -64,7 +63,7 @@ total_malloced: 总共被使用了的内存字节数
 
 <p>如果看到浪费的的很厉害，要考虑调整slab factor.</p>
 
-<h2>具体示例</h2>
+<h2 id="section">具体示例</h2>
 
 <p>最大内存是1m, 最小空间分配单元是32Bytes, 页大小是1k，默认fractor是1.25</p>
 
@@ -171,7 +170,7 @@ END
     <link href="http://lilinj2000.github.io/blog/2013/11/27/memcached-for-memory-management/"/>
     <updated>2013-11-27T21:45:00+08:00</updated>
     <id>http://lilinj2000.github.io/blog/2013/11/27/memcached-for-memory-management</id>
-    <content type="html"><![CDATA[<h2>Memcached中的内存管理</h2>
+    <content type="html"><![CDATA[<h2 id="memcached">Memcached中的内存管理</h2>
 
 <p>Memcached中保存的数据都存储在memcached内置的内存存储空间中。</p>
 
@@ -181,12 +180,11 @@ END
 
 <!-- more -->
 
-
 <p>Memcached本身是为缓存而设计的服务器，并没有过多考虑数据的永久性问题。但是可以利用memcacheDB实现事务恢复、持久化和分布式复制等功能。</p>
 
 <p>Memcached默认情况下采用了名为Slab Allocator的机制分配、管理内存。</p>
 
-<h2>Slab分配器简介</h2>
+<h2 id="slab">Slab分配器简介</h2>
 
 <p>slab是Linux操作系统的一种内存分配机制。</p>
 
@@ -202,7 +200,7 @@ END
 
 <p>分配给slab的所有内存空间叫做Page，在Memcached中，它默认是1MB。</p>
 
-<h2>在Memcached中，数据是如何被存入slab，并最终缓存到chunk</h2>
+<h2 id="memcachedslabchunk">在Memcached中，数据是如何被存入slab，并最终缓存到chunk</h2>
 
 <p>Memcached根据数据的大小，选择最适合数据大小的slab。</p>
 
@@ -223,9 +221,9 @@ END
 
 <p>参考：</p>
 
-<p><a href="http://blog.csdn.net/ldwtill/article/details/8167813">mecached 基础（一）&mdash;memcached介绍</a></p>
+<p><a href="http://blog.csdn.net/ldwtill/article/details/8167813">mecached 基础（一）–memcached介绍</a></p>
 
-<p><a href="http://baike.baidu.com/view/5870164.htm">百度百科 &ndash; slab</a></p>
+<p><a href="http://baike.baidu.com/view/5870164.htm">百度百科 - slab</a></p>
 ]]></content>
   </entry>
   
@@ -234,16 +232,15 @@ END
     <link href="http://lilinj2000.github.io/blog/2013/11/27/playing-memcached-by-telnet-increment-and-decrement/"/>
     <updated>2013-11-27T13:21:00+08:00</updated>
     <id>http://lilinj2000.github.io/blog/2013/11/27/playing-memcached-by-telnet-increment-and-decrement</id>
-    <content type="html"><![CDATA[<h2>Increment/Decrement</h2>
+    <content type="html"><![CDATA[<h2 id="incrementdecrement">Increment/Decrement</h2>
 
-<p>命令&#8221;incr&#8221; 和 &ldquo;decr&rdquo; 是用来增加或者减少相应的数据项， 数据项作为64位无符号的10进制数来对待。</p>
+<p>命令”incr” 和 “decr” 是用来增加或者减少相应的数据项， 数据项作为64位无符号的10进制数来对待。</p>
 
-<p>如果当前此数据项，不是一个10进制的数据，则&#8221;incr&#8221;和&#8221;decr&#8221;将返回错误。</p>
+<p>如果当前此数据项，不是一个10进制的数据，则”incr”和”decr”将返回错误。</p>
 
 <p>当然，如果当前的数据项不存在，也将返回错误。</p>
 
 <!-- more -->
-
 
 <p>格式：</p>
 
@@ -255,23 +252,31 @@ decr &lt;key&gt; &lt;value&gt; [noreply]\r\n
 </code></pre>
 
 <ul>
-<li><p>&lt;key> 数据项的唯一标识符</p></li>
-<li><p>&lt;value> 增量或者减量的值，如在当前值上增加100，或者减少100</p></li>
-<li><p>[noreply] 可选项，指示server不需要返回</p></li>
+  <li>
+    <p>&lt;key&gt; 数据项的唯一标识符</p>
+  </li>
+  <li>
+    <p>&lt;value&gt; 增量或者减量的值，如在当前值上增加100，或者减少100</p>
+  </li>
+  <li>
+    <p>[noreply] 可选项，指示server不需要返回</p>
+  </li>
 </ul>
-
 
 <p>返回信息：</p>
 
 <ul>
-<li><p>&ldquo;NOT_FOUND\r\n&rdquo; 数据项没发现</p></li>
-<li><p>&ldquo;&lt;value>\r\n&rdquo;  更新成功后的新的值</p></li>
+  <li>
+    <p>“NOT_FOUND\r\n” 数据项没发现</p>
+  </li>
+  <li>
+    <p>“&lt;value&gt;\r\n”  更新成功后的新的值</p>
+  </li>
 </ul>
 
+<p>“decr” 减少到小于0时，新的值将被设为0</p>
 
-<p>&ldquo;decr&rdquo; 减少到小于0时，新的值将被设为0</p>
-
-<p>&ldquo;incr&rdquo; 增加到超过了64位无符号的最大值，将会溢出</p>
+<p>“incr” 增加到超过了64位无符号的最大值，将会溢出</p>
 
 <pre><code>add key1 0 0 2
 10
@@ -310,7 +315,7 @@ CLIENT_ERROR cannot increment or decrement non-numeric value
     <link href="http://lilinj2000.github.io/blog/2013/11/27/playing-memcached-by-telnet-deletion-and-touch/"/>
     <updated>2013-11-27T10:52:00+08:00</updated>
     <id>http://lilinj2000.github.io/blog/2013/11/27/playing-memcached-by-telnet-deletion-and-touch</id>
-    <content type="html"><![CDATA[<h2>Deletion</h2>
+    <content type="html"><![CDATA[<h2 id="deletion">Deletion</h2>
 
 <p>从memcached中删除数据项.</p>
 
@@ -320,21 +325,26 @@ CLIENT_ERROR cannot increment or decrement non-numeric value
 </code></pre>
 
 <ul>
-<li><p>&lt;key> 被删除的数据项的唯一标识符</p></li>
-<li><p>[noreply] 可选项，指示server不需要返回</p></li>
+  <li>
+    <p>&lt;key&gt; 被删除的数据项的唯一标识符</p>
+  </li>
+  <li>
+    <p>[noreply] 可选项，指示server不需要返回</p>
+  </li>
 </ul>
-
 
 <p>返回信息：</p>
 
 <ul>
-<li><p>&ldquo;DELETED\r\n&rdquo; 删除成功</p></li>
-<li><p>&ldquo;NOT_FOUND\r\n&rdquo; 唯一标识符key没有找到</p></li>
+  <li>
+    <p>“DELETED\r\n” 删除成功</p>
+  </li>
+  <li>
+    <p>“NOT_FOUND\r\n” 唯一标识符key没有找到</p>
+  </li>
 </ul>
 
-
 <!-- more -->
-
 
 <pre><code>get key2
 VALUE key2 0 3
@@ -346,7 +356,7 @@ delete key1
 NOT_FOUND
 </code></pre>
 
-<h2>Touch</h2>
+<h2 id="touch">Touch</h2>
 
 <p>更新已经存在数据项的过期时间(expiration time)</p>
 
@@ -356,25 +366,31 @@ NOT_FOUND
 </code></pre>
 
 <ul>
-<li><p>&lt;key> 被更新数据项的唯一标识符</p></li>
-<li><p>&lt;exptime> 过期时间</p>
+  <li>
+    <p>&lt;key&gt; 被更新数据项的唯一标识符</p>
+  </li>
+  <li>
+    <p>&lt;exptime&gt; 过期时间</p>
 
-<ul>
-<li><p>数据项已经过期了， 不能被设置过期时间</p>
+    <ul>
+      <li>
+        <p>数据项已经过期了， 不能被设置过期时间</p>
 
-<pre><code>  add key1 0 5 2
+        <pre><code>  add key1 0 5 2
   ab
   STORED
-
+        
   #after 5 seconds, the key1 is deleted by system
   get key1
   END
   touch key1 10
   NOT_FOUND
-</code></pre></li>
-<li><p>数据项未过期，但是已经过了一段时间，新的过期时间，是从当前时间开始计算，或者是一个新的绝对时间。</p>
+</code></pre>
+      </li>
+      <li>
+        <p>数据项未过期，但是已经过了一段时间，新的过期时间，是从当前时间开始计算，或者是一个新的绝对时间。</p>
 
-<pre><code>  &gt; cat touch_test.sh
+        <pre><code>  &gt; cat touch_test.sh
   #! /usr/bin/sh
   {
   echo "add key1 0 30 2"
@@ -387,7 +403,7 @@ NOT_FOUND
   sleep 20
   echo "get key1"
   } | telnet localhost 11211
-
+        
   &gt; ./touch_test.sh
   Trying 127.0.0.1...
   Connected to localhost.
@@ -399,21 +415,28 @@ NOT_FOUND
   END             
   END             #after 20s again, the key1 is deleted
   Connection closed by foreign host.
-</code></pre></li>
-<li><p>此过期时间与storage commands(set, add, replace, append, prepend, cas)选项中的过期时间，是同一个意思。</p></li>
+</code></pre>
+      </li>
+      <li>
+        <p>此过期时间与storage commands(set, add, replace, append, prepend, cas)选项中的过期时间，是同一个意思。</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>[noreply] 可选项，指示server不需要返回</p>
+  </li>
 </ul>
-</li>
-<li><p>[noreply] 可选项，指示server不需要返回</p></li>
-</ul>
-
 
 <p>返回信息：</p>
 
 <ul>
-<li><p>&ldquo;TOUCHED\r\n&rdquo; 更新成功</p></li>
-<li><p>&ldquo;NOT_FOUND\r\n&rdquo; 唯一标识符key没有找到</p></li>
+  <li>
+    <p>“TOUCHED\r\n” 更新成功</p>
+  </li>
+  <li>
+    <p>“NOT_FOUND\r\n” 唯一标识符key没有找到</p>
+  </li>
 </ul>
-
 
 <p><a href="https://github.com/lilinj2000/memcached/blob/master/doc/protocol.txt">更详细信息请参考这里</a></p>
 ]]></content>
@@ -424,23 +447,21 @@ NOT_FOUND
     <link href="http://lilinj2000.github.io/blog/2013/11/26/playing-memcached-by-telnet-retrieval-command/"/>
     <updated>2013-11-26T16:06:00+08:00</updated>
     <id>http://lilinj2000.github.io/blog/2013/11/26/playing-memcached-by-telnet-retrieval-command</id>
-    <content type="html"><![CDATA[<h2>Retrieval commands</h2>
+    <content type="html"><![CDATA[<h2 id="retrieval-commands">Retrieval commands</h2>
 
-<h3>格式：</h3>
+<h3 id="section">格式：</h3>
 
 <pre><code>get &lt;key&gt;*\r\n
 gets &lt;key&gt;*\r\n
 </code></pre>
 
 <ul>
-<li>&lt;key>* 一个或者多个key，由空白符分隔。</li>
+  <li>&lt;key&gt;* 一个或者多个key，由空白符分隔。</li>
 </ul>
 
-
-<p>在零个或者多个key/value被返回后，server端会返回字符串&#8221;END\r\n&#8221;指示返回结束。</p>
+<p>在零个或者多个key/value被返回后，server端会返回字符串”END\r\n”指示返回结束。</p>
 
 <!-- more -->
-
 
 <p>返回信息：</p>
 
@@ -449,46 +470,62 @@ gets &lt;key&gt;*\r\n
 </code></pre>
 
 <ul>
-<li><p>&lt;key> 发送的key值</p></li>
-<li><p>&lt;flags> 在数据被存储时，设置的flags信息</p></li>
-<li><p>&lt;bytes> 存储的数据长度，不包括分隔符 <code>\r\n</code></p></li>
-<li><p>[&lt;cas unique>] 唯一标识的64位整数，在Command <code>cas</code> 中被使用</p></li>
-<li><p>&lt;data block> 数据块</p></li>
+  <li>
+    <p>&lt;key&gt; 发送的key值</p>
+  </li>
+  <li>
+    <p>&lt;flags&gt; 在数据被存储时，设置的flags信息</p>
+  </li>
+  <li>
+    <p>&lt;bytes&gt; 存储的数据长度，不包括分隔符 <code>\r\n</code></p>
+  </li>
+  <li>
+    <p>[&lt;cas unique&gt;] 唯一标识的64位整数，在Command <code>cas</code> 中被使用</p>
+  </li>
+  <li>
+    <p>&lt;data block&gt; 数据块</p>
+  </li>
 </ul>
-
 
 <p>数据不能被获取的情况有：</p>
 
 <ul>
-<li><p>数据从来没有被存储</p>
+  <li>
+    <p>数据从来没有被存储</p>
 
-<pre><code>  get key3
+    <pre><code>  get key3
   END
-</code></pre></li>
-<li><p>数据被存储，但是获取时已经过期</p>
+</code></pre>
+  </li>
+  <li>
+    <p>数据被存储，但是获取时已经过期</p>
 
-<pre><code>  add key1 0 5 2
+    <pre><code>  add key1 0 5 2
   ab
   STORED
   #after 5 seconds, the data is expiration
   get key1
   END
-</code></pre></li>
-<li><p>数据被存储，数据已经显示被删除了</p>
+</code></pre>
+  </li>
+  <li>
+    <p>数据被存储，数据已经显示被删除了</p>
 
-<pre><code>  add key1 0 0 2
+    <pre><code>  add key1 0 0 2
   ab
   STORED
   delete key1
   DELETED
   get key1
   END
-</code></pre></li>
-<li><p>数据被存储，由于内存原因，基于LRU算法，数据已经被系统删除</p></li>
+</code></pre>
+  </li>
+  <li>
+    <p>数据被存储，由于内存原因，基于LRU算法，数据已经被系统删除</p>
+  </li>
 </ul>
 
-
-<h3>Command get</h3>
+<h3 id="command-get">Command get</h3>
 
 <p>获取一个或者多个key的值，<strong>不返回</strong><code>&lt;cas unique&gt;</code></p>
 
@@ -508,7 +545,7 @@ ab
 END
 </code></pre>
 
-<h3>Command gets</h3>
+<h3 id="command-gets">Command gets</h3>
 
 <p>获取一个或者多个key的值，<strong>返回</strong><code>&lt;cas unique&gt;</code></p>
 
@@ -537,62 +574,80 @@ END
     <link href="http://lilinj2000.github.io/blog/2013/11/26/playing-memcached-by-telnet-storage-command/"/>
     <updated>2013-11-26T14:14:00+08:00</updated>
     <id>http://lilinj2000.github.io/blog/2013/11/26/playing-memcached-by-telnet-storage-command</id>
-    <content type="html"><![CDATA[<h2>环境</h2>
+    <content type="html"><![CDATA[<h2 id="section">环境</h2>
 
 <ul>
-<li><p>memcahced 帮助信息</p>
+  <li>
+    <p>memcahced 帮助信息</p>
 
-<pre><code>  &gt; memcahched -h
+    <pre><code>  &gt; memcahched -h
   memcached 1.4.15_6_g87e2f36
   -p &lt;num&gt;      TCP port number to listen on (default: 11211)
   -U &lt;num&gt;      UDP port number to listen on (default: 11211, 0 is off)
   ...
-</code></pre></li>
-<li><p>start memcached</p>
+</code></pre>
+  </li>
+  <li>
+    <p>start memcached</p>
 
-<pre><code>  &gt; memcached 
-</code></pre></li>
-<li><p>telnet to memcached server by default port 11211</p>
+    <pre><code>  &gt; memcached 
+</code></pre>
+  </li>
+  <li>
+    <p>telnet to memcached server by default port 11211</p>
 
-<pre><code>  &gt; telnet localhost 11211
-</code></pre></li>
+    <pre><code>  &gt; telnet localhost 11211
+</code></pre>
+  </li>
 </ul>
-
 
 <!-- more -->
 
+<h2 id="storage-commands">Storage commands</h2>
 
-<h2>Storage commands</h2>
-
-<h3>格式：</h3>
+<h3 id="section-1">格式：</h3>
 
 <pre><code>&lt;command name&gt; &lt;key&gt; &lt;flags&gt; &lt;exptime&gt; &lt;bytes&gt; [noreply]\r\n  
 &lt;data block&gt;\r\n
 </code></pre>
 
 <ul>
-<li><p>&lt;key> memcached存储数据的唯一标识符。key是一个字符串，目前它的长度被限制在<strong>250</strong>个字符；key<strong>不能包括控制字符或者空白字符</strong>。</p></li>
-<li><p>&lt;flags> 一个16位的无符号整数（十进制格式），server只是存储它，当client获取数据时返回同样的值。client可以用这个字段作为特殊的标记使用。<br/>
-  在memcached版本1.2. 1或以后，这个字段是一个32位，但是最好你还是限制使用16位，为了兼容以前的版本。</p></li>
-<li><p>&lt;exptime> 数据过期时间。<br/>
-  值为0时，表示永远不过期，当然也可能会被删除，因为LRU算法。<br/>
-  非0时，表示一个有效的系统时间，或者是一个当前时间的offset，单位是秒；它确保client不能获取数据当达到这个过期时间（由server段的时间决定）时。</p></li>
-<li><p>&lt;bytes> 数据的字节数，不包括分隔符，<code>\r\n</code>，字节数也可以为0，表示空数据。</p></li>
-<li><p>[noreply] 可选项，指示server端可以不返回信息。<br/>
-  注意，当命令格式不对时，server不能可靠地解析此选项 <em>noreply</em> ，此时，server会返回错误给客户端，如果客户端没有处理错误信息，可能会有些问题。当用这个选项时，最好确保客户端永远只构造有效的命令请求。</p></li>
-<li><p><data block\> 一块任意8位组的数据，其长度应该是前面给到的 <code>&lt;byters&gt;</code>值。</p></li>
+  <li>
+    <p>&lt;key&gt; memcached存储数据的唯一标识符。key是一个字符串，目前它的长度被限制在<strong>250</strong>个字符；key<strong>不能包括控制字符或者空白字符</strong>。</p>
+  </li>
+  <li>
+    <p>&lt;flags&gt; 一个16位的无符号整数（十进制格式），server只是存储它，当client获取数据时返回同样的值。client可以用这个字段作为特殊的标记使用。<br />
+  在memcached版本1.2. 1或以后，这个字段是一个32位，但是最好你还是限制使用16位，为了兼容以前的版本。</p>
+  </li>
+  <li>
+    <p>&lt;exptime&gt; 数据过期时间。<br />
+  值为0时，表示永远不过期，当然也可能会被删除，因为LRU算法。<br />
+  非0时，表示一个有效的系统时间，或者是一个当前时间的offset，单位是秒；它确保client不能获取数据当达到这个过期时间（由server段的时间决定）时。</p>
+  </li>
+  <li>
+    <p>&lt;bytes&gt; 数据的字节数，不包括分隔符，<code>\r\n</code>，字节数也可以为0，表示空数据。</p>
+  </li>
+  <li>
+    <p>[noreply] 可选项，指示server端可以不返回信息。<br />
+  注意，当命令格式不对时，server不能可靠地解析此选项 <em>noreply</em> ，此时，server会返回错误给客户端，如果客户端没有处理错误信息，可能会有些问题。当用这个选项时，最好确保客户端永远只构造有效的命令请求。</p>
+  </li>
+  <li>
+    <p>&lt;data block&gt; 一块任意8位组的数据，其长度应该是前面给到的 <code>&lt;byters&gt;</code>值。</p>
+  </li>
 </ul>
-
 
 <p>返回信息描述：</p>
 
 <ul>
-<li><p>&ldquo;STORED\r\n&rdquo; 存储数据成功.</p></li>
-<li><p>&ldquo;NOT_STORED\r\n&rdquo; 此数据没有被存储。</p></li>
+  <li>
+    <p>“STORED\r\n” 存储数据成功.</p>
+  </li>
+  <li>
+    <p>“NOT_STORED\r\n” 此数据没有被存储。</p>
+  </li>
 </ul>
 
-
-<h3>Command set</h3>
+<h3 id="command-set">Command set</h3>
 
 <p>设置数据，如果key已经存在，就更新数据，如果key不存在，就增加数据。</p>
 
@@ -601,7 +656,7 @@ END
 STORED
 </code></pre>
 
-<h3>Command add</h3>
+<h3 id="command-add">Command add</h3>
 
 <p>新增数据，如果key已经存在，会返回失败。</p>
 
@@ -613,7 +668,7 @@ abc
 NOT_STORED
 </code></pre>
 
-<h3>Command replace</h3>
+<h3 id="command-replace">Command replace</h3>
 
 <p>更新数据，如果key不存在，则返回失败。</p>
 
@@ -625,7 +680,7 @@ ab
 NOT_STORED
 </code></pre>
 
-<h3>Command append</h3>
+<h3 id="command-append">Command append</h3>
 
 <p>在已经存在的数据后面追加数据，如果key不存在，则返回失败。</p>
 
@@ -637,7 +692,7 @@ ab
 NOT_STORED
 </code></pre>
 
-<h3>Command prepend</h3>
+<h3 id="command-prepend">Command prepend</h3>
 
 <p>在已经存在的数据前面追加数据，如果key不存在，则返回失败。</p>
 
@@ -649,7 +704,7 @@ abc
 NOT_STORED
 </code></pre>
 
-<h3>Command cas</h3>
+<h3 id="command-cas">Command cas</h3>
 
 <p>check and set, 只有此数据自上次获取以后没有被更新，才设置数据。</p>
 
@@ -660,17 +715,22 @@ NOT_STORED
 </code></pre>
 
 <ul>
-<li><cas unique> 一个64位的唯一的已经存在的entry, 此值是通过<code>gets</code>命令获得的.</li>
+  <li>
+    <cas unique=""> 一个64位的唯一的已经存在的entry, 此值是通过`gets`命令获得的.
+
+</cas>
+  </li>
 </ul>
-
-
 <p>返回信息：</p>
 
 <ul>
-<li><p>&ldquo;EXISTS\r\n&rdquo; 指示要存储的数据自从上次获取以来已经被修改了，命令存储失败。</p></li>
-<li><p>&ldquo;NOT_FOUND\r\n&rdquo; 指示试图存储的数据不存在，命令存储失败.</p></li>
+  <li>
+    <p>“EXISTS\r\n” 指示要存储的数据自从上次获取以来已经被修改了，命令存储失败。</p>
+  </li>
+  <li>
+    <p>“NOT_FOUND\r\n” 指示试图存储的数据不存在，命令存储失败.</p>
+  </li>
 </ul>
-
 
 <p>示例：</p>
 
@@ -706,8 +766,7 @@ NOT_FOUND
     <link href="http://lilinj2000.github.io/blog/2013/11/26/introducing-markdown-editing-plugin-for-sublime-text2/"/>
     <updated>2013-11-26T10:50:00+08:00</updated>
     <id>http://lilinj2000.github.io/blog/2013/11/26/introducing-markdown-editing-plugin-for-sublime-text2</id>
-    <content type="html"><![CDATA[<h2>简介</h2>
-
+    <content type="html"><![CDATA[<h2 id="section">简介</h2>
 <p>MarkdownEditing是ttscoff编写的一个Sublime Text 2插件，用于在ST2中进行Markdown文件的编写。插件中添加一系列的快捷键和自动处理，方便大家在ST2中进行MD的编写。</p>
 
 <p><a href="http://brettterpstra.com/2012/05/17/markdown-editing-for-sublime-text-2-humble-beginnings/">Markdown Editing for Sublime Text 2: humble beginnings</a></p>
@@ -716,42 +775,76 @@ NOT_FOUND
 
 <!-- more -->
 
+<h2 id="markdownediting">MarkdownEditing的功能</h2>
 
-<h2>MarkdownEditing的功能</h2>
-
-<h3>语法增强类</h3>
-
-<ul>
-<li><p>星号*、下划线_和反引号`自动配对</p></li>
-<li><p>如输入的自动配对符号中间内容为空时，删除第一个符号时将直接删除整对符号</p></li>
-<li><p>如输入自动配对符号后直接输入空格，则自动删除后面自动配对的符号</p></li>
-<li><p>波浪线 ~ 包围的内容将转换为HTML中的 标签</p></li>
-<li><p>当创建了列表后，回车将自动添加一个列表项。如列表项为空，再次回车将删除该列表项.</p></li>
-</ul>
-
-
-<h3>MarkdownEditing在Windows下面的快捷键</h3>
+<h3 id="section-1">语法增强类</h3>
 
 <ul>
-<li><p>Ctrl+Win+V <em>选中的内容</em>将自动转换为<strong>行内式超链接</strong>，链接到剪贴板中的内容</p></li>
-<li><p>Ctrl+Win+R <em>选中的内容将</em>自动转换为<strong>参考式超链接</strong>，链接到剪贴板中的内容</p></li>
-<li><p>Ctrl+Win+K 插入一个<strong>标准的行内式超链接</strong></p></li>
-<li><p>Shift+Win+K 插入一个<strong>标准的行内式图片</strong>（此快捷键可能与输入法有冲突）</p></li>
-<li><p>Ctrl+1 至 Ctrl+6 插入一级至六级标题</p></li>
-<li><p>Ctrl+I 选中的内容转换为<em>斜体</em></p></li>
-<li><p>Ctrl+B 选中的内容转换为<strong>粗体</strong></p></li>
-<li><p>Ctrl+Shift+6 自动插入一个脚注，并跳转到该脚注的定义中。</p></li>
-<li><p>Alt+Shift+F 查找没有定义的脚注并自动添加其定义链接</p></li>
-<li><p>Alt+Shift+G 查找没有定义的参考式超链接并自动添加其定义链接</p></li>
-<li><p>Ctrl+Alt+S 脚注排序</p></li>
-<li><p>Ctrl+Shift+. 缩进当前内容</p></li>
-<li><p>Ctrl+Shift+, 提前当前内容</p></li>
+  <li>
+    <p>星号*、下划线_和反引号`自动配对</p>
+  </li>
+  <li>
+    <p>如输入的自动配对符号中间内容为空时，删除第一个符号时将直接删除整对符号</p>
+  </li>
+  <li>
+    <p>如输入自动配对符号后直接输入空格，则自动删除后面自动配对的符号</p>
+  </li>
+  <li>
+    <p>波浪线 ~ 包围的内容将转换为HTML中的 标签</p>
+  </li>
+  <li>
+    <p>当创建了列表后，回车将自动添加一个列表项。如列表项为空，再次回车将删除该列表项.</p>
+  </li>
 </ul>
 
+<h3 id="markdowneditingwindows">MarkdownEditing在Windows下面的快捷键</h3>
+
+<ul>
+  <li>
+    <p>Ctrl+Win+V _选中的内容_将自动转换为<strong>行内式超链接</strong>，链接到剪贴板中的内容</p>
+  </li>
+  <li>
+    <p>Ctrl+Win+R _选中的内容将_自动转换为<strong>参考式超链接</strong>，链接到剪贴板中的内容</p>
+  </li>
+  <li>
+    <p>Ctrl+Win+K 插入一个<strong>标准的行内式超链接</strong></p>
+  </li>
+  <li>
+    <p>Shift+Win+K 插入一个<strong>标准的行内式图片</strong>（此快捷键可能与输入法有冲突）</p>
+  </li>
+  <li>
+    <p>Ctrl+1 至 Ctrl+6 插入一级至六级标题</p>
+  </li>
+  <li>
+    <p>Ctrl+I 选中的内容转换为_斜体_</p>
+  </li>
+  <li>
+    <p>Ctrl+B 选中的内容转换为<strong>粗体</strong></p>
+  </li>
+  <li>
+    <p>Ctrl+Shift+6 自动插入一个脚注，并跳转到该脚注的定义中。</p>
+  </li>
+  <li>
+    <p>Alt+Shift+F 查找没有定义的脚注并自动添加其定义链接</p>
+  </li>
+  <li>
+    <p>Alt+Shift+G 查找没有定义的参考式超链接并自动添加其定义链接</p>
+  </li>
+  <li>
+    <p>Ctrl+Alt+S 脚注排序</p>
+  </li>
+  <li>
+    <p>Ctrl+Shift+. 缩进当前内容</p>
+  </li>
+  <li>
+    <p>Ctrl+Shift+, 提前当前内容</p>
+  </li>
+</ul>
 
 <p>参考：</p>
 
 <p><a href="http://blog.edi-c.com/post/mod-mdediting-for-win">在Windows下面使用MarkdownEditing</a></p>
+
 ]]></content>
   </entry>
   
@@ -760,24 +853,30 @@ NOT_FOUND
     <link href="http://lilinj2000.github.io/blog/2013/11/24/warmup-memcached/"/>
     <updated>2013-11-24T16:13:00+08:00</updated>
     <id>http://lilinj2000.github.io/blog/2013/11/24/warmup-memcached</id>
-    <content type="html"><![CDATA[<h2>什么是 Memcached？</h2>
+    <content type="html"><![CDATA[<h2 id="memcached">什么是 Memcached？</h2>
+<blockquote>
+  <p>Free &amp; open source, high-performance, distributed memory object caching system, generic in nature, but intended for use in speeding up dynamic web applications by alleviating database load.</p>
+</blockquote>
 
-<blockquote><p>Free &amp; open source, high-performance, distributed memory object caching system, generic in nature, but intended for use in speeding up dynamic web applications by alleviating database load.</p>
+<blockquote>
+  <p>Memcached is an in-memory key-value store for small chunks of arbitrary data (strings, objects) from results of database calls, API calls, or page rendering.</p>
+</blockquote>
 
-<p>Memcached is an in-memory key-value store for small chunks of arbitrary data (strings, objects) from results of database calls, API calls, or page rendering.</p>
+<blockquote>
+  <p>Memcached is simple yet powerful. Its simple design promotes quick deployment, ease of development, and solves many problems facing large data caches. Its API is available for most popular languages.</p>
+</blockquote>
 
-<p>Memcached is simple yet powerful. Its simple design promotes quick deployment, ease of development, and solves many problems facing large data caches. Its API is available for most popular languages.</p>
+<blockquote>
+  <p>At heart it is a simple Key/Value store.</p>
+</blockquote>
 
-<p>At heart it is a simple Key/Value store.</p></blockquote>
-
-<p>Memcached是一个<strong>免费，开源，高性能，分布式</strong>的内存对象cache系统。</p>
+<p>Memcached是一个<strong>免费，开源，高性能，分布式</strong>的内存对象cache系统。  </p>
 
 <p>Memcached是一个<strong>简单，强大</strong>的key/value存储。</p>
 
 <!-- more -->
 
-
-<h2>Memcached的历史</h2>
+<h2 id="memcached-1">Memcached的历史</h2>
 
 <p>official web site: <a href="http://www.memcached.org/">http://www.memcached.org/</a></p>
 
@@ -785,7 +884,7 @@ NOT_FOUND
 
 <p>Memcached 是由 Brad Fitzpatrick 于2003年5月，为他的网站 LiveJournal 第一次开发的，后来由 Anatoly Vorobey 用 C 语言从写。</p>
 
-<h2>Memcached 适合什么场合</h2>
+<h2 id="memcached-">Memcached 适合什么场合</h2>
 
 <p><img src="http://lilinj2000.github.io/images/2013/11/memcached_general_use_case.png" alt="memcached general use case" /></p>
 
@@ -799,17 +898,18 @@ NOT_FOUND
 
 <p>Memcached 最大的优点是<strong>可以分布式的部署</strong>，这对于大规模应用来说也是必不可少的要求。</p>
 
-<h2>Memcached 的主要用户有</h2>
+<h2 id="memcached--1">Memcached 的主要用户有</h2>
 
 <p><img src="http://lilinj2000.github.io/images/2013/11/memcached_typical_users.png" alt="memcached typical users" /></p>
 
 <p>参考：</p>
 
-<p><a href="http://haoshenqi.blogchina.com/1538799.html">Memcached&mdash;&mdash;-memcached实现内存缓存</a></p>
+<p><a href="http://haoshenqi.blogchina.com/1538799.html">Memcached—–memcached实现内存缓存</a></p>
 
-<p><a href="http://blog.csdn.net/ldwtill/article/details/8167813">mecached 基础（一）&mdash;memcached介绍</a></p>
+<p><a href="http://blog.csdn.net/ldwtill/article/details/8167813">mecached 基础（一）–memcached介绍</a></p>
 
 <p><a href="http://wenku.baidu.com/link?url=TuT7znQSC6wyQ-sVmuq7iWGXYSm9h7cOJ_XXqV9L164GhqC83Vf60OH1Bf_mwmekeuZrE0cP2sgnWXrJjc3kmz4OmlEQWHtnfZJaXtRH8LK">Memcached浅析</a></p>
+
 ]]></content>
   </entry>
   
@@ -818,7 +918,7 @@ NOT_FOUND
     <link href="http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-summarize/"/>
     <updated>2013-11-22T14:28:00+08:00</updated>
     <id>http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-summarize</id>
-    <content type="html"><![CDATA[<h2>背景</h2>
+    <content type="html"><![CDATA[<h2 id="section">背景</h2>
 
 <p>偶然发现 githup 上提供自己搭建博客的功能，同时又有 octopress 这么好的一个工具可以使用。</p>
 
@@ -830,12 +930,11 @@ NOT_FOUND
 
 <p>octopress 默认是用 Markdown 语言来写的。</p>
 
-<p>所以，我的博客就从学习 Markdown &ndash; 这个轻量级标记语言来开始。</p>
+<p>所以，我的博客就从学习 Markdown - 这个轻量级标记语言来开始。</p>
 
 <!-- more -->
 
-
-<h2>Markdown 基本思想</h2>
+<h2 id="markdown-">Markdown 基本思想</h2>
 
 <p>Markdown 是一种轻量级的标记语言，同时其又是一个电子邮件风格的标记语言。</p>
 
@@ -847,75 +946,89 @@ NOT_FOUND
 
 <p><em>简单，易学，易用，易理解，易读，同时也易维护</em>。</p>
 
-<h2>Markdown 语法小结</h2>
+<h2 id="markdown--1">Markdown 语法小结</h2>
 
 <ul>
-<li><p>区块元素</p>
-
-<ul>
-<li><p>标题</p>
-
-<blockquote><p>  类 Setext 形式是用底线的形式，利用 = （最高阶标题）和 &ndash;
-（第二阶标题）。</p>
-
-<p>  类 Atx 形式则是在行首插入 1 到 6 个 # ，对应到标题 1 到 6 阶。</p></blockquote></li>
-<li><p>列表</p>
-
-<blockquote><p>  无序列表： 用符号 *, +, -</p>
-
-<p>  有序列表： 数字 - 点起始。 <code>1. list1</code></p>
-
-<p>  嵌套列表，下一级列表由 4 个空格或者 1 个制表符缩进；
-对于嵌套代码区块需要8个空格或者2个制表符缩进。</p></blockquote></li>
-<li><p>段落和换行</p>
-
-<blockquote><p>  段落是一个或者多个连续的文本行组成，由一个或者一个以上的空行来分隔。</p>
-
-<p>  换行是插入两个或者两个以上的空格，再按回车。</p></blockquote></li>
-<li><p>区块引用： 由符号 > 作为引用标记。</p></li>
-<li><p>代码区块：由 4 个空格符或者 1 个制表符开始。</p></li>
-<li><p>分割线：由3个或者3个以上的符号 *， -， _ 单独组成的一行，形成分割线。</p></li>
-</ul>
-</li>
-<li><p>区块内元素</p>
-
-<ul>
-<li><p>代码：由 1 个或者多个 ` 反引号开始，和对应的 1
-    个或者多个反引号结束。</p></li>
-<li><p>强调：由两个 *，或者是两个 _ 包含的内容。 斜体则是由一个 *，
-或者是一个 _ 包含的内容。</p></li>
-<li><p>链接</p>
-
-<blockquote><p>  行内链接 &mdash;&ndash; <code>[github](http://github.com)</code></p>
-
-<p>  参考式链接：</p>
-
-<pre><code>  [github] [1]
-  [1]: http://github.com
-  or
-  [github] []
-  [github]: http://github.com  
-</code></pre>
-
-<p>  自动链接 &mdash;&ndash; <code>&lt;http://github.com&gt;</code> or <code>&lt;sb@github.com&gt;</code></p></blockquote></li>
-<li><p>图片：类似于链接，只是在 [] 前面多一个 !</p></li>
-<li><p>支持用 \ 转义的符号有：</p>
-
-<blockquote><pre><code>  \   反斜线
-  `   反引号
-  *   星号
-  _   底线
-  {}  花括号
-  []  方括号
-  ()  括弧
-  #   井字号
-  +   加号
-  -   减号
-  .   英文句点
-  !   惊叹号
-</code></pre></blockquote></li>
-</ul>
-</li>
+  <li>区块元素
+    <ul>
+      <li>
+        <p>标题
+&gt;   类 Setext 形式是用底线的形式，利用 = （最高阶标题）和 - 
+（第二阶标题）。
+&gt;
+&gt;   类 Atx 形式则是在行首插入 1 到 6 个 # ，对应到标题 1 到 6 阶。 </p>
+      </li>
+      <li>
+        <p>列表
+&gt;   无序列表： 用符号 *, +, -
+&gt;
+&gt;   有序列表： 数字 - 点起始。 <code>1. list1</code>
+&gt;
+&gt;   嵌套列表，下一级列表由 4 个空格或者 1 个制表符缩进；
+对于嵌套代码区块需要8个空格或者2个制表符缩进。</p>
+      </li>
+      <li>
+        <p>段落和换行
+&gt;   段落是一个或者多个连续的文本行组成，由一个或者一个以上的空行来分隔。
+&gt;
+&gt;   换行是插入两个或者两个以上的空格，再按回车。</p>
+      </li>
+      <li>
+        <p>区块引用： 由符号 &gt; 作为引用标记。</p>
+      </li>
+      <li>
+        <p>代码区块：由 4 个空格符或者 1 个制表符开始。</p>
+      </li>
+      <li>
+        <p>分割线：由3个或者3个以上的符号 *， -， _ 单独组成的一行，形成分割线。</p>
+      </li>
+    </ul>
+  </li>
+  <li>区块内元素
+    <ul>
+      <li>
+        <p>代码：由 1 个或者多个 ` 反引号开始，和对应的 1 
+    个或者多个反引号结束。</p>
+      </li>
+      <li>
+        <p>强调：由两个 *，或者是两个 _ 包含的内容。 斜体则是由一个 *，
+或者是一个 _ 包含的内容。</p>
+      </li>
+      <li>
+        <p>链接
+&gt;   行内链接 — <code>[github](http://github.com)</code><br />
+&gt;
+&gt;   参考式链接：
+&gt; <br />
+&gt;       [github] [1]
+&gt;       [1]: http://github.com
+&gt;       or
+&gt;       [github] []
+&gt;       [github]: http://github.com<br />
+&gt;
+&gt;   自动链接 — <code>&lt;http://github.com&gt;</code> or <code>&lt;sb@github.com&gt;</code></p>
+      </li>
+      <li>
+        <p>图片：类似于链接，只是在 [] 前面多一个 !</p>
+      </li>
+      <li>
+        <p>支持用 \ 转义的符号有：
+&gt;
+&gt;       \   反斜线
+&gt;       `   反引号
+&gt;       *   星号
+&gt;       _   底线
+&gt;       {}  花括号
+&gt;       []  方括号
+&gt;       ()  括弧
+&gt;       #   井字号
+&gt;       +   加号
+&gt;       -   减号
+&gt;       .   英文句点
+&gt;       !   惊叹号</p>
+      </li>
+    </ul>
+  </li>
 </ul>
 
 ]]></content>
@@ -926,7 +1039,7 @@ NOT_FOUND
     <link href="http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-for-code-and-em/"/>
     <updated>2013-11-22T13:55:00+08:00</updated>
     <id>http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-for-code-and-em</id>
-    <content type="html"><![CDATA[<h2>代码</h2>
+    <content type="html"><![CDATA[<h2 id="section">代码</h2>
 
 <p>如果要标记一小段行内代码，你可以用反引号把它包起来（`），例如：</p>
 
@@ -939,7 +1052,6 @@ NOT_FOUND
 </code></pre>
 
 <!-- more -->
-
 
 <p>如果要在代码区段内<strong>插入反引号</strong>，你可以<strong>用多个反引号来开启和结束代码区段</strong>：</p>
 
@@ -986,9 +1098,9 @@ A backtick-delimited string in a code span: `` `foo` ``
 equivalent of &lt;code&gt;&amp;amp;mdash;&lt;/code&gt;.&lt;/p&gt;
 </code></pre>
 
-<h2>强调</h2>
+<h2 id="section-1">强调</h2>
 
-<p>Markdown 使用星号（*）和底线（_）作为标记强调字词的符号，被 * 或 _ 包围的字词会被转成用 <em> 标签包围，用两个 * 或 _ 包起来的话，则会被转成 <strong>，例如：</p>
+<p>Markdown 使用星号（*）和底线（_）作为标记强调字词的符号，被 * 或 _ 包围的字词会被转成用 <em> 标签包围，用两个 * 或 _ 包起来的话，则会被转成 <strong>，例如：</strong></em></p>
 
 <pre><code>*single asterisks*
 
@@ -1024,7 +1136,7 @@ __double underscores__
 <pre><code>\*this text is surrounded by literal asterisks\*
 </code></pre>
 
-<p>参考:</p>
+<p>参考: </p>
 
 <p><a href="http://wowubuntu.com/markdown/">markdown语法说明（简体中文版）</a></p>
 ]]></content>
@@ -1035,7 +1147,7 @@ __double underscores__
     <link href="http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-for-autolink-and-others/"/>
     <updated>2013-11-22T13:55:00+08:00</updated>
     <id>http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-for-autolink-and-others</id>
-    <content type="html"><![CDATA[<h2>自动链接</h2>
+    <content type="html"><![CDATA[<h2 id="section">自动链接</h2>
 
 <p>Markdown 支持以比较简短的自动链接形式来处理<strong>网址和电子邮件信箱</strong>，只要是用尖括号包起来， Markdown 就会自动把它转成链接。一般网址的链接文字就和链接地址一样，例如：</p>
 
@@ -1048,7 +1160,6 @@ __double underscores__
 </code></pre>
 
 <!-- more -->
-
 
 <p>邮址的自动链接也很类似，只是 Markdown 会先做一个编码转换的过程，把文字字符转成 16 进位码的 HTML 实体，这样的格式可以糊弄一些不好的邮址收集机器人，例如：</p>
 
@@ -1067,7 +1178,7 @@ __double underscores__
 
 <p>（这种作法虽然可以糊弄不少的机器人，但并不能全部挡下来，不过总比什么都不做好些。不管怎样，公开你的信箱终究会引来广告信件的。）</p>
 
-<h2>反斜杠</h2>
+<h2 id="section-1">反斜杠</h2>
 
 <p>Markdown 可以利用反斜杠来插入一些在语法中有其它意义的符号，例如：如果你想要用星号加在文字旁边的方式来做出强调效果（但不用 <code>&lt;em&gt;</code> 标签），你可以在星号的前面加上反斜杠：</p>
 
@@ -1090,7 +1201,7 @@ _   底线
 !   惊叹号
 </code></pre>
 
-<p>参考:</p>
+<p>参考: </p>
 
 <p><a href="http://wowubuntu.com/markdown/">markdown语法说明（简体中文版）</a></p>
 ]]></content>
@@ -1101,7 +1212,7 @@ _   底线
     <link href="http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-for-image/"/>
     <updated>2013-11-22T13:54:00+08:00</updated>
     <id>http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-for-image</id>
-    <content type="html"><![CDATA[<h2>图片</h2>
+    <content type="html"><![CDATA[<h2 id="section">图片</h2>
 
 <p>很明显地，要在纯文字应用中设计一个「自然」的语法来插入图片是有一定难度的。</p>
 
@@ -1116,12 +1227,11 @@ _   底线
 
 <!-- more -->
 
-
 <p>详细叙述如下：</p>
 
 <p>一个惊叹号 !
 接着一个方括号，里面放上图片的替代文字
-接着一个普通括号，里面放上图片的网址，最后还可以用引号包住并加上 选择性的 &lsquo;title&rsquo; 文字。</p>
+接着一个普通括号，里面放上图片的网址，最后还可以用引号包住并加上 选择性的 ‘title’ 文字。</p>
 
 <p>参考式的图片语法则长得像这样：</p>
 
@@ -1133,7 +1243,7 @@ _   底线
 
 <p>到目前为止， Markdown 还<em>没有办法指定图片的宽高，如果你需要的话，你可以使用普通的 <code>&lt;img&gt;</code> 标签</em>。</p>
 
-<p>参考:</p>
+<p>参考: </p>
 
 <p><a href="http://wowubuntu.com/markdown/">markdown语法说明（简体中文版）</a></p>
 ]]></content>
@@ -1144,12 +1254,11 @@ _   底线
     <link href="http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-for-code-and-seprator/"/>
     <updated>2013-11-22T13:54:00+08:00</updated>
     <id>http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-for-code-and-seprator</id>
-    <content type="html"><![CDATA[<h2>代码区块</h2>
+    <content type="html"><![CDATA[<h2 id="section">代码区块</h2>
 
 <p>和程序相关的写作或是标签语言原始码通常会有已经排版好的代码区块，通常这些区块我们并不希望它以一般段落文件的方式去排版，而是照原来的样子显示，Markdown 会用 <code>&lt;pre&gt;</code> 和 <code>&lt;code&gt;</code> 标签来把代码区块包起来。</p>
 
 <!-- more -->
-
 
 <p>要在 Markdown 中建立代码区块很简单，只要<strong>简单地缩进 4 个空格或是 1 个制表符</strong>就可以，例如，下面的输入：</p>
 
@@ -1187,7 +1296,7 @@ end tell
 
 <p>一个代码区块会一直持续到没有缩进的那一行（或是文件结尾）。</p>
 
-<p>在代码区块里面， <em>&amp; 、 &lt; 和 > 会自动转成 HTML 实体</em>，这样的方式让你非常容易使用 Markdown 插入范例用的 HTML 原始码，只需要复制贴上，再加上缩进就可以了，剩下的 Markdown 都会帮你处理，例如：</p>
+<p>在代码区块里面， <em>&amp; 、 &lt; 和 &gt; 会自动转成 HTML 实体</em>，这样的方式让你非常容易使用 Markdown 插入范例用的 HTML 原始码，只需要复制贴上，再加上缩进就可以了，剩下的 Markdown 都会帮你处理，例如：</p>
 
 <pre><code>&lt;div class="footer"&gt;
     &amp;copy; 2004 Foo Corporation
@@ -1204,7 +1313,7 @@ end tell
 
 <p>代码区块中，一般的 Markdown 语法不会被转换，像是星号便只是星号，这表示你可以很容易地以 Markdown 语法撰写 Markdown 语法相关的文件。</p>
 
-<h2>分隔线</h2>
+<h2 id="section-1">分隔线</h2>
 
 <p>你可以在<strong>一行中用三个以上的星号、减号、底线</strong>来建立一个分隔线，<em>行内不能有其他东西</em>。你<em>也可以在星号或是减号中间插入空格</em>。下面每种写法都可以建立分隔线：</p>
 
@@ -1221,9 +1330,10 @@ end tell
 
 <hr />
 
-<p>参考:</p>
+<p>参考: </p>
 
 <p><a href="http://wowubuntu.com/markdown/">markdown语法说明（简体中文版）</a></p>
+
 ]]></content>
   </entry>
   
@@ -1232,7 +1342,7 @@ end tell
     <link href="http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-for-section-and-newline/"/>
     <updated>2013-11-22T13:52:00+08:00</updated>
     <id>http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-for-section-and-newline</id>
-    <content type="html"><![CDATA[<h2>段落和换行</h2>
+    <content type="html"><![CDATA[<h2 id="section">段落和换行</h2>
 
 <p>一个 Markdown 段落是由一个或多个连续的文本行组成，它的前后要有<strong>一个或一个以上的空行</strong>（空行的定义是显示上看起来像是空的，便会被视为空行。比方说，若某一行只包含空格和制表符，则该行也会被视为空行）。<em>普通段落不该用空格或制表符来缩进</em>。</p>
 
@@ -1240,12 +1350,11 @@ end tell
 
 <!-- more -->
 
-
 <p>如果你确实想要依赖 Markdown 来插入 <code>&lt;br /&gt;</code> 标签的话，在插入处先按入<strong>两个以上的空格然后回车</strong>。</p>
 
 <p>的确，需要多费点事（多加空格）来产生 <code>&lt;br /&gt;</code> ，但是简单地「每个换行都转换为 <code>&lt;br /&gt;</code>」的方法在 Markdown 中并不适合， Markdown 中 email 式的 区块引用 和多段落的 列表 在使用换行来排版的时候，不但更好用，还更方便阅读。</p>
 
-<p>参考:</p>
+<p>参考: </p>
 
 <p><a href="http://wowubuntu.com/markdown/">markdown语法说明（简体中文版）</a></p>
 ]]></content>
@@ -1256,55 +1365,65 @@ end tell
     <link href="http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-for-quote/"/>
     <updated>2013-11-22T13:52:00+08:00</updated>
     <id>http://lilinj2000.github.io/blog/2013/11/22/markdown-inroduction-for-quote</id>
-    <content type="html"><![CDATA[<h2>区块引用 Blockquotes</h2>
+    <content type="html"><![CDATA[<h2 id="blockquotes">区块引用 Blockquotes</h2>
 
-<p>Markdown 标记区块引用是使用类似 email 中用 > 的引用方式。如果你还熟悉在 email 信件中的引言部分，你就知道怎么在 Markdown 文件中建立一个区块引用，那会看起来像是你自己先断好行，然后在每行的最前面加上 > ：</p>
+<p>Markdown 标记区块引用是使用类似 email 中用 &gt; 的引用方式。如果你还熟悉在 email 信件中的引言部分，你就知道怎么在 Markdown 文件中建立一个区块引用，那会看起来像是你自己先断好行，然后在每行的最前面加上 &gt; ：</p>
 
-<blockquote><p>This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+<blockquote>
+  <p>This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
 consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
 Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.</p>
 
-<p>Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
-id sem consectetuer libero luctus adipiscing.</p></blockquote>
+  <p>Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+id sem consectetuer libero luctus adipiscing.</p>
+</blockquote>
 
 <!-- more -->
 
+<p>Markdown 也允许你偷懒只在整个段落的第一行最前面加上 &gt; ：</p>
 
-<p>Markdown 也允许你偷懒只在整个段落的第一行最前面加上 > ：</p>
-
-<blockquote><p>This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+<blockquote>
+  <p>This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
 consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
 Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.</p>
+</blockquote>
 
-<p>Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
-id sem consectetuer libero luctus adipiscing.</p></blockquote>
+<blockquote>
+  <p>Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+id sem consectetuer libero luctus adipiscing.</p>
+</blockquote>
 
-<p>区块引用可以嵌套（例如：引用内的引用），只要根据层次加上不同数量的 > ：</p>
+<p>区块引用可以嵌套（例如：引用内的引用），只要根据层次加上不同数量的 &gt; ：</p>
 
-<blockquote><p>This is the first level of quoting.</p>
+<blockquote>
+  <p>This is the first level of quoting.</p>
 
-<blockquote><p>This is nested blockquote.</p></blockquote>
+  <blockquote>
+    <p>This is nested blockquote.</p>
+  </blockquote>
 
-<p>Back to the first level.</p></blockquote>
+  <p>Back to the first level.</p>
+</blockquote>
 
 <p>引用的区块内也可以使用其他的 Markdown 语法，包括标题、列表、代码区块等：</p>
 
-<blockquote><h2>这是一个标题。</h2>
+<blockquote>
+  <h2 id="section">这是一个标题。</h2>
 
-<ol>
-<li> 这是第一行列表项。</li>
-<li> 这是第二行列表项。</li>
-</ol>
+  <ol>
+    <li>这是第一行列表项。</li>
+    <li>这是第二行列表项。</li>
+  </ol>
 
+  <p>给出一些例子代码：</p>
 
-<p>给出一些例子代码：</p>
-
-<pre><code>return shell_exec("echo $input | $markdown_script");
-</code></pre></blockquote>
+  <pre><code>return shell_exec("echo $input | $markdown_script");
+</code></pre>
+</blockquote>
 
 <p>任何像样的文本编辑器都能轻松地建立 email 型的引用。例如在 BBEdit 中，你可以选取文字后然后从选单中选择增加引用阶层。</p>
 
-<p>参考:</p>
+<p>参考: </p>
 
 <p><a href="http://wowubuntu.com/markdown/">markdown语法说明（简体中文版）</a></p>
 ]]></content>
@@ -1315,7 +1434,7 @@ id sem consectetuer libero luctus adipiscing.</p></blockquote>
     <link href="http://lilinj2000.github.io/blog/2013/11/21/markdown-introduction-for-link/"/>
     <updated>2013-11-21T22:53:00+08:00</updated>
     <id>http://lilinj2000.github.io/blog/2013/11/21/markdown-introduction-for-link</id>
-    <content type="html"><![CDATA[<h2>链接</h2>
+    <content type="html"><![CDATA[<h2 id="section">链接</h2>
 
 <p>Markdown 支持两种形式的链接语法： 行内式和参考式两种形式。</p>
 
@@ -1335,7 +1454,6 @@ id sem consectetuer libero luctus adipiscing.</p></blockquote>
 
 <!-- more -->
 
-
 <p>参考式的链接是在链接文字的括号后面再接上另一个方括号，而在第二个方括号里面要填入用以辨识链接的标记：</p>
 
 <pre><code>This is [an example][id] reference-style link.
@@ -1353,10 +1471,10 @@ id sem consectetuer libero luctus adipiscing.</p></blockquote>
 
 <p>链接内容定义的形式为：</p>
 
-<p>方括号（前面可以选择性地加上至多三个空格来缩进），里面输入链接文字<br/>
-接着一个冒号<br/>
-接着一个以上的空格或制表符<br/>
-接着链接的网址<br/>
+<p>方括号（前面可以选择性地加上至多三个空格来缩进），里面输入链接文字<br />
+接着一个冒号<br />
+接着一个以上的空格或制表符<br />
+接着链接的网址<br />
 选择性地接着 title 内容，可以用单引号、双引号或是括弧包着</p>
 
 <p>下面这三种链接的定义都是相同：</p>
@@ -1387,7 +1505,7 @@ id sem consectetuer libero luctus adipiscing.</p></blockquote>
 [link text][A]
 </code></pre>
 
-<p>隐式链接标记功能让你可以省略指定链接标记，这种情形下，链接标记会视为等同于链接文字，要用隐式链接标记只要在链接文字后面加上一个空的方括号，如果你要让 &ldquo;Google&rdquo; 链接到 google.com，你可以简化成：</p>
+<p>隐式链接标记功能让你可以省略指定链接标记，这种情形下，链接标记会视为等同于链接文字，要用隐式链接标记只要在链接文字后面加上一个空的方括号，如果你要让 “Google” 链接到 google.com，你可以简化成：</p>
 
 <pre><code>[Google][]
 </code></pre>
@@ -1440,9 +1558,10 @@ than from [Yahoo](http://search.yahoo.com/ "Yahoo Search") or
 
 <p>使用 Markdown 的参考式链接，可以让文件更像是浏览器最后产生的结果，让你可以把一些标记相关的元数据移到段落文字之外，你就可以增加链接而不让文章的阅读感觉被打断。</p>
 
-<p>参考:</p>
+<p>参考: </p>
 
 <p><a href="http://wowubuntu.com/markdown/">markdown语法说明（简体中文版）</a></p>
+
 ]]></content>
   </entry>
   
@@ -1451,20 +1570,18 @@ than from [Yahoo](http://search.yahoo.com/ "Yahoo Search") or
     <link href="http://lilinj2000.github.io/blog/2013/11/21/markdown-introduction-for-title-and-list/"/>
     <updated>2013-11-21T22:30:00+08:00</updated>
     <id>http://lilinj2000.github.io/blog/2013/11/21/markdown-introduction-for-title-and-list</id>
-    <content type="html"><![CDATA[<h2>标题</h2>
+    <content type="html"><![CDATA[<h2 id="section">标题</h2>
 
 <p>Markdown 支持两种标题的语法，类 Setext 和类 atx 形式。</p>
 
-<p>类 Setext 形式是用底线的形式，利用 = （最高阶标题）和 &ndash; （第二阶标题），例如：</p>
+<p>类 Setext 形式是用底线的形式，利用 = （最高阶标题）和 - （第二阶标题），例如：</p>
 
 <pre><code>This is an H1
 =============
 
 This is an H2
--------------
+------------- 任何数量的 = 和 - 都可以有效果。
 </code></pre>
-
-<p>任何数量的 = 和 &ndash; 都可以有效果。</p>
 
 <p>类 Atx 形式则是在行首插入 1 到 6 个 # ，对应到标题 1 到 6 阶，例如：</p>
 
@@ -1477,8 +1594,7 @@ This is an H2
 
 <!-- more -->
 
-
-<h2>列表</h2>
+<h2 id="section-1">列表</h2>
 
 <p>Markdown 支持有序列表和无序列表。</p>
 
@@ -1486,42 +1602,28 @@ This is an H2
 
 <pre><code>*   Red
 *   Green
-*   Blue
-</code></pre>
+*   Blue 等同于：
 
-<p>等同于：</p>
-
-<pre><code>+   Red
++   Red
 +   Green
-+   Blue
-</code></pre>
++   Blue 也等同于：
 
-<p>也等同于：</p>
-
-<pre><code>-   Red
+-   Red
 -   Green
--   Blue
-</code></pre>
+-   Blue 有序列表则使用数字接着一个英文句点：
 
-<p>有序列表则使用数字接着一个英文句点：</p>
-
-<pre><code>1.  Bird
+1.  Bird
 2.  McHale
-3.  Parish
+3.  Parish 很重要的一点是，你在列表标记上使用的数字并不会影响输出的 HTML 结果。
 </code></pre>
-
-<p>很重要的一点是，你在列表标记上使用的数字并不会影响输出的 HTML 结果。</p>
 
 <p>如果你的列表标记写成：</p>
 
 <pre><code>1.  Bird
 1.  McHale
-1.  Parish
-</code></pre>
+1.  Parish 或甚至是：
 
-<p>或甚至是：</p>
-
-<pre><code>3. Bird
+3. Bird
 1. McHale
 8. Parish
 </code></pre>
@@ -1552,7 +1654,7 @@ This is an H2
 2.  Suspendisse id sem consectetuer libero luctus adipiscing.
 </code></pre>
 
-<p>如果要在列表项目内放进引用，那 > 就需要缩进：</p>
+<p>如果要在列表项目内放进引用，那 &gt; 就需要缩进：</p>
 
 <pre><code>*   A list item with a blockquote:
 
@@ -1584,7 +1686,7 @@ This is an H2
         *   list3
 </code></pre>
 
-<p>参考:</p>
+<p>参考: </p>
 
 <p><a href="http://wowubuntu.com/markdown/">markdown语法说明（简体中文版）</a></p>
 ]]></content>
@@ -1595,14 +1697,13 @@ This is an H2
     <link href="http://lilinj2000.github.io/blog/2013/11/21/markdown-basic-knowledge/"/>
     <updated>2013-11-21T22:15:00+08:00</updated>
     <id>http://lilinj2000.github.io/blog/2013/11/21/markdown-basic-knowledge</id>
-    <content type="html"><![CDATA[<h2>简介</h2>
+    <content type="html"><![CDATA[<h2 id="section">简介</h2>
 
 <p>Markdown是一种轻量级标记语言，创始人为约翰·格鲁伯（John Gruber）和亚伦·斯沃茨（Aaron Swartz）。它允许人们“使用易读易写的纯文本格式编写文档，然后转换成有效的XHTML(或者HTML)文档”。</p>
 
-<p>Markdown同时还是一个由Gruber编写的Perl脚本：Markdown.pl。它把用markdown语法编写的内容转换成有效的、结构良好的XHTML或HTML内容，并将左尖括号(&lsquo;&lt;&rsquo;)和&amp;号替换成它们各自的字符实体引用。它可以用作单独的脚本，Blosxom和Movable Type的插件又或者BBEdit的文本过滤器.</p>
+<p>Markdown同时还是一个由Gruber编写的Perl脚本：Markdown.pl。它把用markdown语法编写的内容转换成有效的、结构良好的XHTML或HTML内容，并将左尖括号(‘&lt;’)和&amp;号替换成它们各自的字符实体引用。它可以用作单独的脚本，Blosxom和Movable Type的插件又或者BBEdit的文本过滤器.</p>
 
 <!-- more -->
-
 
 <p>Markdown也已经被其他人用Perl和别的编程语言重新实现，其中一个Perl模块放在了CPAN(Text::Markdown)上。它基于一个BSD风格的许可证分发并可以作为几个内容管理系统的插件。</p>
 
@@ -1611,14 +1712,13 @@ This is an H2
 <p>Markdown的优点有：</p>
 
 <ul>
-<li>纯文本，所以兼容性极强，可以用所有文本编辑器打开。</li>
-<li>让你专注于文字而不是排版。</li>
-<li>格式转换方便，Markdown 的文本你可以轻松转换为 html、电子书等。</li>
-<li>Markdown 的标记语法有极好的可读性。</li>
+  <li>纯文本，所以兼容性极强，可以用所有文本编辑器打开。</li>
+  <li>让你专注于文字而不是排版。</li>
+  <li>格式转换方便，Markdown 的文本你可以轻松转换为 html、电子书等。</li>
+  <li>Markdown 的标记语法有极好的可读性。 </li>
 </ul>
 
-
-<h2>兼容 HTML</h2>
+<h2 id="html">兼容 HTML</h2>
 
 <p>Markdown 语法的目标是：<strong>成为一种适用于网络的书写语言</strong>。</p>
 
@@ -1649,13 +1749,14 @@ This is an H2
 
 <p>和处在 HTML 区块标签间不同，<strong>Markdown 语法在 HTML 区段标签间是有效的</strong>。</p>
 
-<p>参考:</p>
+<p>参考: </p>
 
 <p><a href="http://wowubuntu.com/markdown/">markdown语法说明（简体中文版）</a></p>
 
 <p><a href="http://jianshu.io/p/q81RER">献给写作者的 Markdown 新手指南</a></p>
 
 <p><a href="http://zh.wikipedia.org/wiki/Markdown">markdown-维基百科</a></p>
+
 ]]></content>
   </entry>
   

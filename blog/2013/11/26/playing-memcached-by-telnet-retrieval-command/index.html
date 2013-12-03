@@ -10,7 +10,7 @@
 
   
   <meta name="description" content="Retrieval commands 格式： get &lt;key&gt;*\r\n
-gets &lt;key&gt;*\r\n &lt;key>* 一个或者多个key，由空白符分隔。 在零个或者多个key/value被返回后，server端会返回字符串&#8221;END\r\n&#8221; &hellip;">
+gets &lt;key&gt;*\r\n &lt;key&gt;* 一个或者多个key，由空白符分隔。 在零个或者多个key/value被返回后，server端会返回字符串”END\r\n”指示返回结束。 &hellip;">
   <meta name="keywords" content="memcached">
 
   <!-- http://t.co/dKP3o1e -->
@@ -104,23 +104,21 @@ gets &lt;key&gt;*\r\n &lt;key>* 一个或者多个key，由空白符分隔。 �
   </header>
 
 
-<div class="entry-content"><h2>Retrieval commands</h2>
+<div class="entry-content"><h2 id="retrieval-commands">Retrieval commands</h2>
 
-<h3>格式：</h3>
+<h3 id="section">格式：</h3>
 
 <pre><code>get &lt;key&gt;*\r\n
 gets &lt;key&gt;*\r\n
 </code></pre>
 
 <ul>
-<li>&lt;key>* 一个或者多个key，由空白符分隔。</li>
+  <li>&lt;key&gt;* 一个或者多个key，由空白符分隔。</li>
 </ul>
 
-
-<p>在零个或者多个key/value被返回后，server端会返回字符串&#8221;END\r\n&#8221;指示返回结束。</p>
+<p>在零个或者多个key/value被返回后，server端会返回字符串”END\r\n”指示返回结束。</p>
 
 <!-- more -->
-
 
 <p>返回信息：</p>
 
@@ -129,46 +127,62 @@ gets &lt;key&gt;*\r\n
 </code></pre>
 
 <ul>
-<li><p>&lt;key> 发送的key值</p></li>
-<li><p>&lt;flags> 在数据被存储时，设置的flags信息</p></li>
-<li><p>&lt;bytes> 存储的数据长度，不包括分隔符 <code>\r\n</code></p></li>
-<li><p>[&lt;cas unique>] 唯一标识的64位整数，在Command <code>cas</code> 中被使用</p></li>
-<li><p>&lt;data block> 数据块</p></li>
+  <li>
+    <p>&lt;key&gt; 发送的key值</p>
+  </li>
+  <li>
+    <p>&lt;flags&gt; 在数据被存储时，设置的flags信息</p>
+  </li>
+  <li>
+    <p>&lt;bytes&gt; 存储的数据长度，不包括分隔符 <code>\r\n</code></p>
+  </li>
+  <li>
+    <p>[&lt;cas unique&gt;] 唯一标识的64位整数，在Command <code>cas</code> 中被使用</p>
+  </li>
+  <li>
+    <p>&lt;data block&gt; 数据块</p>
+  </li>
 </ul>
-
 
 <p>数据不能被获取的情况有：</p>
 
 <ul>
-<li><p>数据从来没有被存储</p>
+  <li>
+    <p>数据从来没有被存储</p>
 
-<pre><code>  get key3
+    <pre><code>  get key3
   END
-</code></pre></li>
-<li><p>数据被存储，但是获取时已经过期</p>
+</code></pre>
+  </li>
+  <li>
+    <p>数据被存储，但是获取时已经过期</p>
 
-<pre><code>  add key1 0 5 2
+    <pre><code>  add key1 0 5 2
   ab
   STORED
   #after 5 seconds, the data is expiration
   get key1
   END
-</code></pre></li>
-<li><p>数据被存储，数据已经显示被删除了</p>
+</code></pre>
+  </li>
+  <li>
+    <p>数据被存储，数据已经显示被删除了</p>
 
-<pre><code>  add key1 0 0 2
+    <pre><code>  add key1 0 0 2
   ab
   STORED
   delete key1
   DELETED
   get key1
   END
-</code></pre></li>
-<li><p>数据被存储，由于内存原因，基于LRU算法，数据已经被系统删除</p></li>
+</code></pre>
+  </li>
+  <li>
+    <p>数据被存储，由于内存原因，基于LRU算法，数据已经被系统删除</p>
+  </li>
 </ul>
 
-
-<h3>Command get</h3>
+<h3 id="command-get">Command get</h3>
 
 <p>获取一个或者多个key的值，<strong>不返回</strong><code>&lt;cas unique&gt;</code></p>
 
@@ -188,7 +202,7 @@ ab
 END
 </code></pre>
 
-<h3>Command gets</h3>
+<h3 id="command-gets">Command gets</h3>
 
 <p>获取一个或者多个key的值，<strong>返回</strong><code>&lt;cas unique&gt;</code></p>
 

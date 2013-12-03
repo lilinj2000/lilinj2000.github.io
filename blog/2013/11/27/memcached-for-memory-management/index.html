@@ -103,7 +103,7 @@
   </header>
 
 
-<div class="entry-content"><h2>Memcached中的内存管理</h2>
+<div class="entry-content"><h2 id="memcached">Memcached中的内存管理</h2>
 
 <p>Memcached中保存的数据都存储在memcached内置的内存存储空间中。</p>
 
@@ -113,12 +113,11 @@
 
 <!-- more -->
 
-
 <p>Memcached本身是为缓存而设计的服务器，并没有过多考虑数据的永久性问题。但是可以利用memcacheDB实现事务恢复、持久化和分布式复制等功能。</p>
 
 <p>Memcached默认情况下采用了名为Slab Allocator的机制分配、管理内存。</p>
 
-<h2>Slab分配器简介</h2>
+<h2 id="slab">Slab分配器简介</h2>
 
 <p>slab是Linux操作系统的一种内存分配机制。</p>
 
@@ -134,7 +133,7 @@
 
 <p>分配给slab的所有内存空间叫做Page，在Memcached中，它默认是1MB。</p>
 
-<h2>在Memcached中，数据是如何被存入slab，并最终缓存到chunk</h2>
+<h2 id="memcachedslabchunk">在Memcached中，数据是如何被存入slab，并最终缓存到chunk</h2>
 
 <p>Memcached根据数据的大小，选择最适合数据大小的slab。</p>
 
@@ -155,9 +154,9 @@
 
 <p>参考：</p>
 
-<p><a href="http://blog.csdn.net/ldwtill/article/details/8167813">mecached 基础（一）&mdash;memcached介绍</a></p>
+<p><a href="http://blog.csdn.net/ldwtill/article/details/8167813">mecached 基础（一）–memcached介绍</a></p>
 
-<p><a href="http://baike.baidu.com/view/5870164.htm">百度百科 &ndash; slab</a></p>
+<p><a href="http://baike.baidu.com/view/5870164.htm">百度百科 - slab</a></p>
 </div>
 
 

@@ -106,7 +106,7 @@
   </header>
 
 
-  <div class="entry-content"><h2>Slab statistics</h2>
+  <div class="entry-content"><h2 id="slab-statistics">Slab statistics</h2>
 
 <p>格式：</p>
 
@@ -159,7 +159,7 @@ END\r\n
   </header>
 
 
-  <div class="entry-content"><h2>Memcached中的内存管理</h2>
+  <div class="entry-content"><h2 id="memcached">Memcached中的内存管理</h2>
 
 <p>Memcached中保存的数据都存储在memcached内置的内存存储空间中。</p>
 
@@ -206,11 +206,11 @@ END\r\n
   </header>
 
 
-  <div class="entry-content"><h2>Increment/Decrement</h2>
+  <div class="entry-content"><h2 id="incrementdecrement">Increment/Decrement</h2>
 
-<p>命令&#8221;incr&#8221; 和 &ldquo;decr&rdquo; 是用来增加或者减少相应的数据项， 数据项作为64位无符号的10进制数来对待。</p>
+<p>命令”incr” 和 “decr” 是用来增加或者减少相应的数据项， 数据项作为64位无符号的10进制数来对待。</p>
 
-<p>如果当前此数据项，不是一个10进制的数据，则&#8221;incr&#8221;和&#8221;decr&#8221;将返回错误。</p>
+<p>如果当前此数据项，不是一个10进制的数据，则”incr”和”decr”将返回错误。</p>
 
 <p>当然，如果当前的数据项不存在，也将返回错误。</p>
 
@@ -253,7 +253,7 @@ END\r\n
   </header>
 
 
-  <div class="entry-content"><h2>Deletion</h2>
+  <div class="entry-content"><h2 id="deletion">Deletion</h2>
 
 <p>从memcached中删除数据项.</p>
 
@@ -263,18 +263,24 @@ END\r\n
 </code></pre>
 
 <ul>
-<li><p>&lt;key> 被删除的数据项的唯一标识符</p></li>
-<li><p>[noreply] 可选项，指示server不需要返回</p></li>
+  <li>
+    <p>&lt;key&gt; 被删除的数据项的唯一标识符</p>
+  </li>
+  <li>
+    <p>[noreply] 可选项，指示server不需要返回</p>
+  </li>
 </ul>
-
 
 <p>返回信息：</p>
 
 <ul>
-<li><p>&ldquo;DELETED\r\n&rdquo; 删除成功</p></li>
-<li><p>&ldquo;NOT_FOUND\r\n&rdquo; 唯一标识符key没有找到</p></li>
+  <li>
+    <p>“DELETED\r\n” 删除成功</p>
+  </li>
+  <li>
+    <p>“NOT_FOUND\r\n” 唯一标识符key没有找到</p>
+  </li>
 </ul>
-
 
 </div>
   
@@ -315,20 +321,19 @@ END\r\n
   </header>
 
 
-  <div class="entry-content"><h2>Retrieval commands</h2>
+  <div class="entry-content"><h2 id="retrieval-commands">Retrieval commands</h2>
 
-<h3>格式：</h3>
+<h3 id="section">格式：</h3>
 
 <pre><code>get &lt;key&gt;*\r\n
 gets &lt;key&gt;*\r\n
 </code></pre>
 
 <ul>
-<li>&lt;key>* 一个或者多个key，由空白符分隔。</li>
+  <li>&lt;key&gt;* 一个或者多个key，由空白符分隔。</li>
 </ul>
 
-
-<p>在零个或者多个key/value被返回后，server端会返回字符串&#8221;END\r\n&#8221;指示返回结束。</p>
+<p>在零个或者多个key/value被返回后，server端会返回字符串”END\r\n”指示返回结束。</p>
 
 </div>
   
@@ -369,27 +374,32 @@ gets &lt;key&gt;*\r\n
   </header>
 
 
-  <div class="entry-content"><h2>环境</h2>
+  <div class="entry-content"><h2 id="section">环境</h2>
 
 <ul>
-<li><p>memcahced 帮助信息</p>
+  <li>
+    <p>memcahced 帮助信息</p>
 
-<pre><code>  &gt; memcahched -h
+    <pre><code>  &gt; memcahched -h
   memcached 1.4.15_6_g87e2f36
   -p &lt;num&gt;      TCP port number to listen on (default: 11211)
   -U &lt;num&gt;      UDP port number to listen on (default: 11211, 0 is off)
   ...
-</code></pre></li>
-<li><p>start memcached</p>
+</code></pre>
+  </li>
+  <li>
+    <p>start memcached</p>
 
-<pre><code>  &gt; memcached 
-</code></pre></li>
-<li><p>telnet to memcached server by default port 11211</p>
+    <pre><code>  &gt; memcached 
+</code></pre>
+  </li>
+  <li>
+    <p>telnet to memcached server by default port 11211</p>
 
-<pre><code>  &gt; telnet localhost 11211
-</code></pre></li>
+    <pre><code>  &gt; telnet localhost 11211
+</code></pre>
+  </li>
 </ul>
-
 
 </div>
   
@@ -430,8 +440,7 @@ gets &lt;key&gt;*\r\n
   </header>
 
 
-  <div class="entry-content"><h2>简介</h2>
-
+  <div class="entry-content"><h2 id="section">简介</h2>
 <p>MarkdownEditing是ttscoff编写的一个Sublime Text 2插件，用于在ST2中进行Markdown文件的编写。插件中添加一系列的快捷键和自动处理，方便大家在ST2中进行MD的编写。</p>
 
 <p><a href="http://brettterpstra.com/2012/05/17/markdown-editing-for-sublime-text-2-humble-beginnings/">Markdown Editing for Sublime Text 2: humble beginnings</a></p>
@@ -477,17 +486,24 @@ gets &lt;key&gt;*\r\n
   </header>
 
 
-  <div class="entry-content"><h2>什么是 Memcached？</h2>
+  <div class="entry-content"><h2 id="memcached">什么是 Memcached？</h2>
+<blockquote>
+  <p>Free &amp; open source, high-performance, distributed memory object caching system, generic in nature, but intended for use in speeding up dynamic web applications by alleviating database load.</p>
+</blockquote>
 
-<blockquote><p>Free &amp; open source, high-performance, distributed memory object caching system, generic in nature, but intended for use in speeding up dynamic web applications by alleviating database load.</p>
+<blockquote>
+  <p>Memcached is an in-memory key-value store for small chunks of arbitrary data (strings, objects) from results of database calls, API calls, or page rendering.</p>
+</blockquote>
 
-<p>Memcached is an in-memory key-value store for small chunks of arbitrary data (strings, objects) from results of database calls, API calls, or page rendering.</p>
+<blockquote>
+  <p>Memcached is simple yet powerful. Its simple design promotes quick deployment, ease of development, and solves many problems facing large data caches. Its API is available for most popular languages.</p>
+</blockquote>
 
-<p>Memcached is simple yet powerful. Its simple design promotes quick deployment, ease of development, and solves many problems facing large data caches. Its API is available for most popular languages.</p>
+<blockquote>
+  <p>At heart it is a simple Key/Value store.</p>
+</blockquote>
 
-<p>At heart it is a simple Key/Value store.</p></blockquote>
-
-<p>Memcached是一个<strong>免费，开源，高性能，分布式</strong>的内存对象cache系统。</p>
+<p>Memcached是一个<strong>免费，开源，高性能，分布式</strong>的内存对象cache系统。  </p>
 
 <p>Memcached是一个<strong>简单，强大</strong>的key/value存储。</p>
 
@@ -530,7 +546,7 @@ gets &lt;key&gt;*\r\n
   </header>
 
 
-  <div class="entry-content"><h2>背景</h2>
+  <div class="entry-content"><h2 id="section">背景</h2>
 
 <p>偶然发现 githup 上提供自己搭建博客的功能，同时又有 octopress 这么好的一个工具可以使用。</p>
 
@@ -542,7 +558,7 @@ gets &lt;key&gt;*\r\n
 
 <p>octopress 默认是用 Markdown 语言来写的。</p>
 
-<p>所以，我的博客就从学习 Markdown &ndash; 这个轻量级标记语言来开始。</p>
+<p>所以，我的博客就从学习 Markdown - 这个轻量级标记语言来开始。</p>
 
 </div>
   
@@ -583,7 +599,7 @@ gets &lt;key&gt;*\r\n
   </header>
 
 
-  <div class="entry-content"><h2>代码</h2>
+  <div class="entry-content"><h2 id="section">代码</h2>
 
 <p>如果要标记一小段行内代码，你可以用反引号把它包起来（`），例如：</p>
 

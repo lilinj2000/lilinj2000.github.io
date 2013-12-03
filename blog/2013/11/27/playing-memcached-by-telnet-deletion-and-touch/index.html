@@ -9,8 +9,7 @@
   <meta name="author" content="李林江">
 
   
-  <meta name="description" content="Deletion 从memcached中删除数据项. 格式： delete &lt;key&gt; [noreply]\r\n &lt;key> 被删除的数据项的唯一标识符
-[noreply] 可选项，指示server不需要返回 返回信息： &ldquo;DELETED\r\n&rdquo; &hellip;">
+  <meta name="description" content="Deletion 从memcached中删除数据项. 格式： delete &lt;key&gt; [noreply]\r\n &lt;key&gt; 被删除的数据项的唯一标识符 [noreply] 可选项，指示server不需要返回 返回信息： “DELETED\r\n” 删除成功 “ &hellip;">
   <meta name="keywords" content="memcached">
 
   <!-- http://t.co/dKP3o1e -->
@@ -104,7 +103,7 @@
   </header>
 
 
-<div class="entry-content"><h2>Deletion</h2>
+<div class="entry-content"><h2 id="deletion">Deletion</h2>
 
 <p>从memcached中删除数据项.</p>
 
@@ -114,21 +113,26 @@
 </code></pre>
 
 <ul>
-<li><p>&lt;key> 被删除的数据项的唯一标识符</p></li>
-<li><p>[noreply] 可选项，指示server不需要返回</p></li>
+  <li>
+    <p>&lt;key&gt; 被删除的数据项的唯一标识符</p>
+  </li>
+  <li>
+    <p>[noreply] 可选项，指示server不需要返回</p>
+  </li>
 </ul>
-
 
 <p>返回信息：</p>
 
 <ul>
-<li><p>&ldquo;DELETED\r\n&rdquo; 删除成功</p></li>
-<li><p>&ldquo;NOT_FOUND\r\n&rdquo; 唯一标识符key没有找到</p></li>
+  <li>
+    <p>“DELETED\r\n” 删除成功</p>
+  </li>
+  <li>
+    <p>“NOT_FOUND\r\n” 唯一标识符key没有找到</p>
+  </li>
 </ul>
 
-
 <!-- more -->
-
 
 <pre><code>get key2
 VALUE key2 0 3
@@ -140,7 +144,7 @@ delete key1
 NOT_FOUND
 </code></pre>
 
-<h2>Touch</h2>
+<h2 id="touch">Touch</h2>
 
 <p>更新已经存在数据项的过期时间(expiration time)</p>
 
@@ -150,25 +154,31 @@ NOT_FOUND
 </code></pre>
 
 <ul>
-<li><p>&lt;key> 被更新数据项的唯一标识符</p></li>
-<li><p>&lt;exptime> 过期时间</p>
+  <li>
+    <p>&lt;key&gt; 被更新数据项的唯一标识符</p>
+  </li>
+  <li>
+    <p>&lt;exptime&gt; 过期时间</p>
 
-<ul>
-<li><p>数据项已经过期了， 不能被设置过期时间</p>
+    <ul>
+      <li>
+        <p>数据项已经过期了， 不能被设置过期时间</p>
 
-<pre><code>  add key1 0 5 2
+        <pre><code>  add key1 0 5 2
   ab
   STORED
-
+        
   #after 5 seconds, the key1 is deleted by system
   get key1
   END
   touch key1 10
   NOT_FOUND
-</code></pre></li>
-<li><p>数据项未过期，但是已经过了一段时间，新的过期时间，是从当前时间开始计算，或者是一个新的绝对时间。</p>
+</code></pre>
+      </li>
+      <li>
+        <p>数据项未过期，但是已经过了一段时间，新的过期时间，是从当前时间开始计算，或者是一个新的绝对时间。</p>
 
-<pre><code>  &gt; cat touch_test.sh
+        <pre><code>  &gt; cat touch_test.sh
   #! /usr/bin/sh
   {
   echo "add key1 0 30 2"
@@ -181,7 +191,7 @@ NOT_FOUND
   sleep 20
   echo "get key1"
   } | telnet localhost 11211
-
+        
   &gt; ./touch_test.sh
   Trying 127.0.0.1...
   Connected to localhost.
@@ -193,21 +203,28 @@ NOT_FOUND
   END             
   END             #after 20s again, the key1 is deleted
   Connection closed by foreign host.
-</code></pre></li>
-<li><p>此过期时间与storage commands(set, add, replace, append, prepend, cas)选项中的过期时间，是同一个意思。</p></li>
+</code></pre>
+      </li>
+      <li>
+        <p>此过期时间与storage commands(set, add, replace, append, prepend, cas)选项中的过期时间，是同一个意思。</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>[noreply] 可选项，指示server不需要返回</p>
+  </li>
 </ul>
-</li>
-<li><p>[noreply] 可选项，指示server不需要返回</p></li>
-</ul>
-
 
 <p>返回信息：</p>
 
 <ul>
-<li><p>&ldquo;TOUCHED\r\n&rdquo; 更新成功</p></li>
-<li><p>&ldquo;NOT_FOUND\r\n&rdquo; 唯一标识符key没有找到</p></li>
+  <li>
+    <p>“TOUCHED\r\n” 更新成功</p>
+  </li>
+  <li>
+    <p>“NOT_FOUND\r\n” 唯一标识符key没有找到</p>
+  </li>
 </ul>
-
 
 <p><a href="https://github.com/lilinj2000/memcached/blob/master/doc/protocol.txt">更详细信息请参考这里</a></p>
 </div>

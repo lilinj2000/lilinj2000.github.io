@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Memcached | 李林江的技术博客]]></title>
   <link href="http://lilinj2000.github.io/tags/memcached/atom.xml" rel="self"/>
   <link href="http://lilinj2000.github.io/"/>
-  <updated>2013-12-02T17:46:22+08:00</updated>
+  <updated>2013-12-03T16:48:06+08:00</updated>
   <id>http://lilinj2000.github.io/</id>
   <author>
     <name><![CDATA[李林江]]></name>
@@ -18,7 +18,7 @@
     <link href="http://lilinj2000.github.io/blog/2013/11/27/playing-memcached-by-telnet-stats-slabs/"/>
     <updated>2013-11-27T22:28:00+08:00</updated>
     <id>http://lilinj2000.github.io/blog/2013/11/27/playing-memcached-by-telnet-stats-slabs</id>
-    <content type="html"><![CDATA[<h2>Slab statistics</h2>
+    <content type="html"><![CDATA[<h2 id="slab-statistics">Slab statistics</h2>
 
 <p>格式：</p>
 
@@ -33,7 +33,6 @@ END\r\n
 </code></pre>
 
 <!-- more -->
-
 
 <p>具体各项解释：</p>
 
@@ -64,7 +63,7 @@ total_malloced: 总共被使用了的内存字节数
 
 <p>如果看到浪费的的很厉害，要考虑调整slab factor.</p>
 
-<h2>具体示例</h2>
+<h2 id="section">具体示例</h2>
 
 <p>最大内存是1m, 最小空间分配单元是32Bytes, 页大小是1k，默认fractor是1.25</p>
 
@@ -171,7 +170,7 @@ END
     <link href="http://lilinj2000.github.io/blog/2013/11/27/memcached-for-memory-management/"/>
     <updated>2013-11-27T21:45:00+08:00</updated>
     <id>http://lilinj2000.github.io/blog/2013/11/27/memcached-for-memory-management</id>
-    <content type="html"><![CDATA[<h2>Memcached中的内存管理</h2>
+    <content type="html"><![CDATA[<h2 id="memcached">Memcached中的内存管理</h2>
 
 <p>Memcached中保存的数据都存储在memcached内置的内存存储空间中。</p>
 
@@ -181,12 +180,11 @@ END
 
 <!-- more -->
 
-
 <p>Memcached本身是为缓存而设计的服务器，并没有过多考虑数据的永久性问题。但是可以利用memcacheDB实现事务恢复、持久化和分布式复制等功能。</p>
 
 <p>Memcached默认情况下采用了名为Slab Allocator的机制分配、管理内存。</p>
 
-<h2>Slab分配器简介</h2>
+<h2 id="slab">Slab分配器简介</h2>
 
 <p>slab是Linux操作系统的一种内存分配机制。</p>
 
@@ -202,7 +200,7 @@ END
 
 <p>分配给slab的所有内存空间叫做Page，在Memcached中，它默认是1MB。</p>
 
-<h2>在Memcached中，数据是如何被存入slab，并最终缓存到chunk</h2>
+<h2 id="memcachedslabchunk">在Memcached中，数据是如何被存入slab，并最终缓存到chunk</h2>
 
 <p>Memcached根据数据的大小，选择最适合数据大小的slab。</p>
 
@@ -223,9 +221,9 @@ END
 
 <p>参考：</p>
 
-<p><a href="http://blog.csdn.net/ldwtill/article/details/8167813">mecached 基础（一）&mdash;memcached介绍</a></p>
+<p><a href="http://blog.csdn.net/ldwtill/article/details/8167813">mecached 基础（一）–memcached介绍</a></p>
 
-<p><a href="http://baike.baidu.com/view/5870164.htm">百度百科 &ndash; slab</a></p>
+<p><a href="http://baike.baidu.com/view/5870164.htm">百度百科 - slab</a></p>
 ]]></content>
   </entry>
   
@@ -234,16 +232,15 @@ END
     <link href="http://lilinj2000.github.io/blog/2013/11/27/playing-memcached-by-telnet-increment-and-decrement/"/>
     <updated>2013-11-27T13:21:00+08:00</updated>
     <id>http://lilinj2000.github.io/blog/2013/11/27/playing-memcached-by-telnet-increment-and-decrement</id>
-    <content type="html"><![CDATA[<h2>Increment/Decrement</h2>
+    <content type="html"><![CDATA[<h2 id="incrementdecrement">Increment/Decrement</h2>
 
-<p>命令"incr" 和 &ldquo;decr&rdquo; 是用来增加或者减少相应的数据项， 数据项作为64位无符号的10进制数来对待。</p>
+<p>命令”incr” 和 “decr” 是用来增加或者减少相应的数据项， 数据项作为64位无符号的10进制数来对待。</p>
 
-<p>如果当前此数据项，不是一个10进制的数据，则"incr"和"decr"将返回错误。</p>
+<p>如果当前此数据项，不是一个10进制的数据，则”incr”和”decr”将返回错误。</p>
 
 <p>当然，如果当前的数据项不存在，也将返回错误。</p>
 
 <!-- more -->
-
 
 <p>格式：</p>
 
@@ -255,23 +252,31 @@ decr &lt;key&gt; &lt;value&gt; [noreply]\r\n
 </code></pre>
 
 <ul>
-<li><p>&lt;key> 数据项的唯一标识符</p></li>
-<li><p>&lt;value> 增量或者减量的值，如在当前值上增加100，或者减少100</p></li>
-<li><p>[noreply] 可选项，指示server不需要返回</p></li>
+  <li>
+    <p>&lt;key&gt; 数据项的唯一标识符</p>
+  </li>
+  <li>
+    <p>&lt;value&gt; 增量或者减量的值，如在当前值上增加100，或者减少100</p>
+  </li>
+  <li>
+    <p>[noreply] 可选项，指示server不需要返回</p>
+  </li>
 </ul>
-
 
 <p>返回信息：</p>
 
 <ul>
-<li><p>&ldquo;NOT_FOUND\r\n&rdquo; 数据项没发现</p></li>
-<li><p>&ldquo;&lt;value>\r\n&rdquo;  更新成功后的新的值</p></li>
+  <li>
+    <p>“NOT_FOUND\r\n” 数据项没发现</p>
+  </li>
+  <li>
+    <p>“&lt;value&gt;\r\n”  更新成功后的新的值</p>
+  </li>
 </ul>
 
+<p>“decr” 减少到小于0时，新的值将被设为0</p>
 
-<p>&ldquo;decr&rdquo; 减少到小于0时，新的值将被设为0</p>
-
-<p>&ldquo;incr&rdquo; 增加到超过了64位无符号的最大值，将会溢出</p>
+<p>“incr” 增加到超过了64位无符号的最大值，将会溢出</p>
 
 <pre><code>add key1 0 0 2
 10
@@ -310,7 +315,7 @@ CLIENT_ERROR cannot increment or decrement non-numeric value
     <link href="http://lilinj2000.github.io/blog/2013/11/27/playing-memcached-by-telnet-deletion-and-touch/"/>
     <updated>2013-11-27T10:52:00+08:00</updated>
     <id>http://lilinj2000.github.io/blog/2013/11/27/playing-memcached-by-telnet-deletion-and-touch</id>
-    <content type="html"><![CDATA[<h2>Deletion</h2>
+    <content type="html"><![CDATA[<h2 id="deletion">Deletion</h2>
 
 <p>从memcached中删除数据项.</p>
 
@@ -320,21 +325,26 @@ CLIENT_ERROR cannot increment or decrement non-numeric value
 </code></pre>
 
 <ul>
-<li><p>&lt;key> 被删除的数据项的唯一标识符</p></li>
-<li><p>[noreply] 可选项，指示server不需要返回</p></li>
+  <li>
+    <p>&lt;key&gt; 被删除的数据项的唯一标识符</p>
+  </li>
+  <li>
+    <p>[noreply] 可选项，指示server不需要返回</p>
+  </li>
 </ul>
-
 
 <p>返回信息：</p>
 
 <ul>
-<li><p>&ldquo;DELETED\r\n&rdquo; 删除成功</p></li>
-<li><p>&ldquo;NOT_FOUND\r\n&rdquo; 唯一标识符key没有找到</p></li>
+  <li>
+    <p>“DELETED\r\n” 删除成功</p>
+  </li>
+  <li>
+    <p>“NOT_FOUND\r\n” 唯一标识符key没有找到</p>
+  </li>
 </ul>
 
-
 <!-- more -->
-
 
 <pre><code>get key2
 VALUE key2 0 3
@@ -346,7 +356,7 @@ delete key1
 NOT_FOUND
 </code></pre>
 
-<h2>Touch</h2>
+<h2 id="touch">Touch</h2>
 
 <p>更新已经存在数据项的过期时间(expiration time)</p>
 
@@ -356,25 +366,31 @@ NOT_FOUND
 </code></pre>
 
 <ul>
-<li><p>&lt;key> 被更新数据项的唯一标识符</p></li>
-<li><p>&lt;exptime> 过期时间</p>
+  <li>
+    <p>&lt;key&gt; 被更新数据项的唯一标识符</p>
+  </li>
+  <li>
+    <p>&lt;exptime&gt; 过期时间</p>
 
-<ul>
-<li><p>数据项已经过期了， 不能被设置过期时间</p>
+    <ul>
+      <li>
+        <p>数据项已经过期了， 不能被设置过期时间</p>
 
-<pre><code>  add key1 0 5 2
+        <pre><code>  add key1 0 5 2
   ab
   STORED
-
+        
   #after 5 seconds, the key1 is deleted by system
   get key1
   END
   touch key1 10
   NOT_FOUND
-</code></pre></li>
-<li><p>数据项未过期，但是已经过了一段时间，新的过期时间，是从当前时间开始计算，或者是一个新的绝对时间。</p>
+</code></pre>
+      </li>
+      <li>
+        <p>数据项未过期，但是已经过了一段时间，新的过期时间，是从当前时间开始计算，或者是一个新的绝对时间。</p>
 
-<pre><code>  &gt; cat touch_test.sh
+        <pre><code>  &gt; cat touch_test.sh
   #! /usr/bin/sh
   {
   echo "add key1 0 30 2"
@@ -387,7 +403,7 @@ NOT_FOUND
   sleep 20
   echo "get key1"
   } | telnet localhost 11211
-
+        
   &gt; ./touch_test.sh
   Trying 127.0.0.1...
   Connected to localhost.
@@ -399,21 +415,28 @@ NOT_FOUND
   END             
   END             #after 20s again, the key1 is deleted
   Connection closed by foreign host.
-</code></pre></li>
-<li><p>此过期时间与storage commands(set, add, replace, append, prepend, cas)选项中的过期时间，是同一个意思。</p></li>
+</code></pre>
+      </li>
+      <li>
+        <p>此过期时间与storage commands(set, add, replace, append, prepend, cas)选项中的过期时间，是同一个意思。</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>[noreply] 可选项，指示server不需要返回</p>
+  </li>
 </ul>
-</li>
-<li><p>[noreply] 可选项，指示server不需要返回</p></li>
-</ul>
-
 
 <p>返回信息：</p>
 
 <ul>
-<li><p>&ldquo;TOUCHED\r\n&rdquo; 更新成功</p></li>
-<li><p>&ldquo;NOT_FOUND\r\n&rdquo; 唯一标识符key没有找到</p></li>
+  <li>
+    <p>“TOUCHED\r\n” 更新成功</p>
+  </li>
+  <li>
+    <p>“NOT_FOUND\r\n” 唯一标识符key没有找到</p>
+  </li>
 </ul>
-
 
 <p><a href="https://github.com/lilinj2000/memcached/blob/master/doc/protocol.txt">更详细信息请参考这里</a></p>
 ]]></content>
@@ -424,23 +447,21 @@ NOT_FOUND
     <link href="http://lilinj2000.github.io/blog/2013/11/26/playing-memcached-by-telnet-retrieval-command/"/>
     <updated>2013-11-26T16:06:00+08:00</updated>
     <id>http://lilinj2000.github.io/blog/2013/11/26/playing-memcached-by-telnet-retrieval-command</id>
-    <content type="html"><![CDATA[<h2>Retrieval commands</h2>
+    <content type="html"><![CDATA[<h2 id="retrieval-commands">Retrieval commands</h2>
 
-<h3>格式：</h3>
+<h3 id="section">格式：</h3>
 
 <pre><code>get &lt;key&gt;*\r\n
 gets &lt;key&gt;*\r\n
 </code></pre>
 
 <ul>
-<li>&lt;key>* 一个或者多个key，由空白符分隔。</li>
+  <li>&lt;key&gt;* 一个或者多个key，由空白符分隔。</li>
 </ul>
 
-
-<p>在零个或者多个key/value被返回后，server端会返回字符串"END\r\n"指示返回结束。</p>
+<p>在零个或者多个key/value被返回后，server端会返回字符串”END\r\n”指示返回结束。</p>
 
 <!-- more -->
-
 
 <p>返回信息：</p>
 
@@ -449,46 +470,62 @@ gets &lt;key&gt;*\r\n
 </code></pre>
 
 <ul>
-<li><p>&lt;key> 发送的key值</p></li>
-<li><p>&lt;flags> 在数据被存储时，设置的flags信息</p></li>
-<li><p>&lt;bytes> 存储的数据长度，不包括分隔符 <code>\r\n</code></p></li>
-<li><p>[&lt;cas unique>] 唯一标识的64位整数，在Command <code>cas</code> 中被使用</p></li>
-<li><p>&lt;data block> 数据块</p></li>
+  <li>
+    <p>&lt;key&gt; 发送的key值</p>
+  </li>
+  <li>
+    <p>&lt;flags&gt; 在数据被存储时，设置的flags信息</p>
+  </li>
+  <li>
+    <p>&lt;bytes&gt; 存储的数据长度，不包括分隔符 <code>\r\n</code></p>
+  </li>
+  <li>
+    <p>[&lt;cas unique&gt;] 唯一标识的64位整数，在Command <code>cas</code> 中被使用</p>
+  </li>
+  <li>
+    <p>&lt;data block&gt; 数据块</p>
+  </li>
 </ul>
-
 
 <p>数据不能被获取的情况有：</p>
 
 <ul>
-<li><p>数据从来没有被存储</p>
+  <li>
+    <p>数据从来没有被存储</p>
 
-<pre><code>  get key3
+    <pre><code>  get key3
   END
-</code></pre></li>
-<li><p>数据被存储，但是获取时已经过期</p>
+</code></pre>
+  </li>
+  <li>
+    <p>数据被存储，但是获取时已经过期</p>
 
-<pre><code>  add key1 0 5 2
+    <pre><code>  add key1 0 5 2
   ab
   STORED
   #after 5 seconds, the data is expiration
   get key1
   END
-</code></pre></li>
-<li><p>数据被存储，数据已经显示被删除了</p>
+</code></pre>
+  </li>
+  <li>
+    <p>数据被存储，数据已经显示被删除了</p>
 
-<pre><code>  add key1 0 0 2
+    <pre><code>  add key1 0 0 2
   ab
   STORED
   delete key1
   DELETED
   get key1
   END
-</code></pre></li>
-<li><p>数据被存储，由于内存原因，基于LRU算法，数据已经被系统删除</p></li>
+</code></pre>
+  </li>
+  <li>
+    <p>数据被存储，由于内存原因，基于LRU算法，数据已经被系统删除</p>
+  </li>
 </ul>
 
-
-<h3>Command get</h3>
+<h3 id="command-get">Command get</h3>
 
 <p>获取一个或者多个key的值，<strong>不返回</strong><code>&lt;cas unique&gt;</code></p>
 
@@ -508,7 +545,7 @@ ab
 END
 </code></pre>
 
-<h3>Command gets</h3>
+<h3 id="command-gets">Command gets</h3>
 
 <p>获取一个或者多个key的值，<strong>返回</strong><code>&lt;cas unique&gt;</code></p>
 
