@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Markdown介绍 | 李林江的技术博客]]></title>
   <link href="http://lilinj2000.github.io/blog/categories/markdownjie-shao/atom.xml" rel="self"/>
   <link href="http://lilinj2000.github.io/"/>
-  <updated>2013-12-03T16:48:06+08:00</updated>
+  <updated>2013-12-03T17:32:18+08:00</updated>
   <id>http://lilinj2000.github.io/</id>
   <author>
     <name><![CDATA[李林江]]></name>
@@ -139,26 +139,35 @@
   <li>区块元素
     <ul>
       <li>
-        <p>标题
-&gt;   类 Setext 形式是用底线的形式，利用 = （最高阶标题）和 - 
-（第二阶标题）。
-&gt;
-&gt;   类 Atx 形式则是在行首插入 1 到 6 个 # ，对应到标题 1 到 6 阶。 </p>
+        <p>标题</p>
+
+        <blockquote>
+          <p>类 Setext 形式是用底线的形式，利用 = （最高阶标题）和 - 
+    （第二阶标题）。</p>
+
+          <p>类 Atx 形式则是在行首插入 1 到 6 个 # ，对应到标题 1 到 6 阶。 </p>
+        </blockquote>
       </li>
       <li>
-        <p>列表
-&gt;   无序列表： 用符号 *, +, -
-&gt;
-&gt;   有序列表： 数字 - 点起始。 <code>1. list1</code>
-&gt;
-&gt;   嵌套列表，下一级列表由 4 个空格或者 1 个制表符缩进；
-对于嵌套代码区块需要8个空格或者2个制表符缩进。</p>
+        <p>列表</p>
+
+        <blockquote>
+          <p>无序列表： 用符号 *, +, -</p>
+
+          <p>有序列表： 数字 - 点起始。 <code>1. list1</code></p>
+
+          <p>嵌套列表，下一级列表由 4 个空格或者 1 个制表符缩进；
+    对于嵌套代码区块需要8个空格或者2个制表符缩进。</p>
+        </blockquote>
       </li>
       <li>
-        <p>段落和换行
-&gt;   段落是一个或者多个连续的文本行组成，由一个或者一个以上的空行来分隔。
-&gt;
-&gt;   换行是插入两个或者两个以上的空格，再按回车。</p>
+        <p>段落和换行</p>
+
+        <blockquote>
+          <p>段落是一个或者多个连续的文本行组成，由一个或者一个以上的空行来分隔。</p>
+
+          <p>换行是插入两个或者两个以上的空格，再按回车。</p>
+        </blockquote>
       </li>
       <li>
         <p>区块引用： 由符号 &gt; 作为引用标记。</p>
@@ -182,37 +191,45 @@
 或者是一个 _ 包含的内容。</p>
       </li>
       <li>
-        <p>链接
-&gt;   行内链接 — <code>[github](http://github.com)</code><br />
-&gt;
-&gt;   参考式链接：
-&gt; <br />
-&gt;       [github] [1]
-&gt;       [1]: http://github.com
-&gt;       or
-&gt;       [github] []
-&gt;       [github]: http://github.com<br />
-&gt;
-&gt;   自动链接 — <code>&lt;http://github.com&gt;</code> or <code>&lt;sb@github.com&gt;</code></p>
+        <p>链接</p>
+
+        <blockquote>
+          <p>行内链接 — <code>[github](http://github.com)</code>  </p>
+
+          <p>参考式链接：</p>
+
+          <pre><code>  [github] [1]
+  [1]: http://github.com
+  or
+  [github] []
+  [github]: http://github.com  
+</code></pre>
+
+          <p>自动链接 — <code>&lt;http://github.com&gt;</code> or <code>&lt;sb@github.com&gt;</code></p>
+        </blockquote>
       </li>
       <li>
         <p>图片：类似于链接，只是在 [] 前面多一个 !</p>
       </li>
       <li>
-        <p>支持用 \ 转义的符号有：
-&gt;
-&gt;       \   反斜线
-&gt;       `   反引号
-&gt;       *   星号
-&gt;       _   底线
-&gt;       {}  花括号
-&gt;       []  方括号
-&gt;       ()  括弧
-&gt;       #   井字号
-&gt;       +   加号
-&gt;       -   减号
-&gt;       .   英文句点
-&gt;       !   惊叹号</p>
+        <p>支持用 \ 转义的符号有：</p>
+
+        <blockquote>
+
+          <pre><code>  \   反斜线
+  `   反引号
+  *   星号
+  _   底线
+  {}  花括号
+  []  方括号
+  ()  括弧
+  #   井字号
+  +   加号
+  -   减号
+  .   英文句点
+  !   惊叹号
+</code></pre>
+        </blockquote>
       </li>
     </ul>
   </li>
