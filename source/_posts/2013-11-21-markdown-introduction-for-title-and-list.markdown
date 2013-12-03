@@ -19,6 +19,7 @@ Markdown 支持两种标题的语法，类 Setext 和类 atx 形式。
 
     This is an H2
     -------------
+
 任何数量的 = 和 - 都可以有效果。
 
 类 Atx 形式则是在行首插入 1 到 6 个 # ，对应到标题 1 到 6 阶，例如：
@@ -40,21 +41,25 @@ Markdown 支持有序列表和无序列表。
     *   Red
     *   Green
     *   Blue
+
 等同于：
 
     +   Red
     +   Green
     +   Blue
+
 也等同于：
 
     -   Red
     -   Green
     -   Blue
+
 有序列表则使用数字接着一个英文句点：
 
     1.  Bird
     2.  McHale
     3.  Parish
+
 很重要的一点是，你在列表标记上使用的数字并不会影响输出的 HTML 结果。
 
 如果你的列表标记写成：
@@ -62,6 +67,7 @@ Markdown 支持有序列表和无序列表。
     1.  Bird
     1.  McHale
     1.  Parish
+
 或甚至是：
 
     3. Bird
