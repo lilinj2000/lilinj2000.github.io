@@ -6,6 +6,20 @@ single: true
 <div>
 <article class="hentry" role="article">
   {% include article.html %}
+  
+  {% if site.related_posts.size > 1 %}
+  <section>
+    <div class="related-posts">
+      <h1>Related Posts</h1>
+      {% for post in site.related_posts limit:site.recent_posts %}
+        <article>
+          <h3 class="title"><a href="{{ root_url }}{{ post.url }}">{{post.title}}</a></h3>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+  
   <footer>
     <p class="meta">
       {% include post/author.html %}
@@ -26,18 +40,6 @@ single: true
   </footer>
 </article>
 
-{% if site.related_posts.size > 1 %}
-<article class="archives">
-  <div class="related-posts">
-    <h2>Related Posts</h2>
-    {% for post in site.related_posts limit:site.recent_posts %}
-      <article>
-        <h3 class="title"><a href="{{ root_url }}{{ post.url }}">{{post.title}}</a></h3>
-      </article>
-    {% endfor %}
-  </div>
-</article>
-{% endif %}
 
 {% if site.disqus_short_name and page.comments == true %}
   <section>
