@@ -114,7 +114,7 @@ disqus_asides_excerpt_length : 70
 # Google Analytics
 google_analytics_tracking_id: UA-46142120-1
 
-
-# Relate posts
-lsi: false
+# plantuml plugin
+plantuml_jar: _lib/plantuml.jar
+plantuml_background_color: "#f8f8f8"
 
