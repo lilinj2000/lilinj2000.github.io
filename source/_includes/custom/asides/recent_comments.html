@@ -2,8 +2,9 @@
   <h1>Recent Comments</h1>
   <div id="dsq-recentcomments" class="dsq-widget"><script type="text/javascript" src="http://disqus.com/forums/{{ site.disqus_short_name }}/recent_comments_widget.js?hide_avatars=site.disqus_asides_hide_avatars&num_items=site.disqus_asides_num_items&excerpt_length=site.disqus_asides_excerpt_length"></script></div>
 
+{% if site.duoshuo_comments %}
   <ul class="ds-recent-comments" data-num-items="{{ site.duoshuo_asides_num }}" data-show-avatars="{{ site.duoshuo_asides_avatars }}" data-show-time="{{ site.duoshuo_asides_time }}" data-show-title="{{ site.duoshuo_asides_title }}" data-show-admin="{{ site.duoshuo_asides_admin }}" data-excerpt-length="{{ site.duoshuo_asides_length }}"></ul>
-{% if index %}
+  
 <script type="text/javascript">
   var duoshuoQuery = {short_name:"{{ site.duoshuo_short_name }}"};
   (function() {

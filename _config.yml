@@ -103,7 +103,7 @@ duoshuo_asides_length: 140
 
 # Disqus Comments
 disqus_short_name: lilinj2000githubio
-disqus_show_comment_count: false
+disqus_show_comment_count: true
 
 # Disqus asides recent comments
 disqus_asides_hide_avatars : 0
