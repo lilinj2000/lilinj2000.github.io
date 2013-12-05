@@ -4,7 +4,12 @@ echo "add ..."
 git add .
 
 echo "commit ..."
-git commit -m "updated."
+if [ "x$1" != "x" ]
+then
+  git commit -m $1
+else
+  git commit -m "updated."
+fi
 
 echo "pull ..."
 git pull
