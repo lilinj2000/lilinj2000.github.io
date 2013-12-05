@@ -93,16 +93,23 @@ delicious_count: 3
 duoshuo_comments: false
 duoshuo_short_name: lilinj2000-github-io
 
+# duoshuo asides recent comments
+duoshuo_asides_num: 10      
+duoshuo_asides_avatars: 1   
+duoshuo_asides_time: 1      
+duoshuo_asides_title: 1    
+duoshuo_asides_admin: 1     
+duoshuo_asides_length: 140
+
 # Disqus Comments
 disqus_short_name: lilinj2000githubio
 disqus_show_comment_count: false
 
-#duoshuo_asides_num: 10      
-#duoshuo_asides_avatars: 0   
-#duoshuo_asides_time: 0      
-#duoshuo_asides_title: 0     
-#duoshuo_asides_admin: 0     
-#duoshuo_asides_length: 18
+# Disqus asides recent comments
+disqus_asides_hide_avatars : 0
+disqus_asides_num_items : 10
+disqus_asides_excerpt_length : 70
+
 
 # Google Analytics
 google_analytics_tracking_id: UA-46142120-1
