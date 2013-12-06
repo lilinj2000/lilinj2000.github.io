@@ -34,13 +34,15 @@ module Jekyll
 
       folder = "/images/plantuml/"
       folderpath = site.dest + folder
+
       if File.exist?(folderpath)
         puts "PlantUML image path already exist.\n"
       else
-        cmd = "mkdir -p " + folderpath
+        cmd = "mkdir " + folderpath
         puts "Create PlantUML image path:\n\t" + cmd
-        result, status = Open3.capture2e(cmd)
-        puts "  -->\t" + status.inspect() + "\t" + result
+        FileUtils.mkdir_p(folderpath)
+        #result, status = Open3.capture2e(cmd)
+        #puts "  -->\t" + status.inspect() + "\t" + result
       end
 
       filename = Digest::MD5.hexdigest(code) + ".png"

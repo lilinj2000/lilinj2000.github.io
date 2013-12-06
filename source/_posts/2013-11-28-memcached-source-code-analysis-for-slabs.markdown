@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Memcached源码分析之slabs"
-date: 2013-11-28 15:14
+title: "Memcached源码分析之slabs(初始化，分配，释放)"
+date: 2013-12-6 15:14
 comments: true
 categories: Memcached源码分析 Memcached介绍
 tags: Memcached
@@ -9,10 +9,12 @@ keywords: memcached slab
 published: false
 ---
 
-```c
+## slabclass之数据结构
+
+```
 typedef struct {
     unsigned int size;      // chunk大小
-    unsigned int perslab;   // 每个slab的chunk个数
+    unsigned int perslab;   // 每个slab的chunk个数，一个slab默认为1M
 
     void *slots;            // 空闲chunk列表
     unsigned int sl_curr;   // 当前空闲chunk个数
@@ -22,12 +24,12 @@ typedef struct {
     void **slab_list;       // slab列表数组
     unsigned int list_size; // slab列表数组长度
 
-    unsigned int killing;  /* index+1 of dying slab, or zero if none */
+    unsigned int killing;  /* index+1 of dying slab, or zero if none ??? */
     size_t requested;       // 当前使用的内存字节数
 } slabclass_t;
 ```
 
-```c
+```
 static slabclass_t slabclass[MAX_NUMBER_OF_SLAB_CLASSES]; //slabclass数组
 static size_t mem_limit = 0; //最大内存限制，如64m
 static size_t mem_malloced = 0; //以分配的内存大小
@@ -40,7 +42,7 @@ static size_t mem_avail = 0; //可用的内存大小
 
 ## API
 
-```c
+```
 /**
  * @desc
  *  初始化slabclass数组
