@@ -9,6 +9,7 @@
 # {% endplantuml %}
 #
 require 'open3'
+require 'fileutils'
 require './plugins/raw'
 
 module Jekyll

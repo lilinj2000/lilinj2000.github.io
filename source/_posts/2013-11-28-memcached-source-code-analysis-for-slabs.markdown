@@ -12,35 +12,35 @@ published: false
 ## slabclass之数据结构
 
 ```
+/* powers-of-N allocation structures */
+
 typedef struct {
-    unsigned int size;      // chunk大小
-    unsigned int perslab;   // 每个slab的chunk个数，一个slab默认为1M
+    unsigned int size;      /* sizes of items */
+    unsigned int perslab;   /* how many items per slab */
 
-    void *slots;            // 空闲chunk列表
-    unsigned int sl_curr;   // 当前空闲chunk个数
+    void *slots;           /* list of item ptrs */
+    unsigned int sl_curr;   /* total free items in list */
 
-    unsigned int slabs;     // 总共有多少个slab
+    unsigned int slabs;     /* how many slabs were allocated for this class */
 
-    void **slab_list;       // slab列表数组
-    unsigned int list_size; // slab列表数组长度
+    void **slab_list;       /* array of slab pointers */
+    unsigned int list_size; /* size of prev array */
 
-    unsigned int killing;  /* index+1 of dying slab, or zero if none ??? */
-    size_t requested;       // 当前使用的内存字节数
+    unsigned int killing;  /* index+1 of dying slab, or zero if none */
+    size_t requested; /* The number of requested bytes */
 } slabclass_t;
+
+static slabclass_t slabclass[MAX_NUMBER_OF_SLAB_CLASSES];
+static size_t mem_limit = 0;
+static size_t mem_malloced = 0;
+static int power_largest;
+
+static void *mem_base = NULL;
+static void *mem_current = NULL;
+static size_t mem_avail = 0;
 ```
 
-```
-static slabclass_t slabclass[MAX_NUMBER_OF_SLAB_CLASSES]; //slabclass数组
-static size_t mem_limit = 0; //最大内存限制，如64m
-static size_t mem_malloced = 0; //以分配的内存大小
-static int power_largest;  //slabclass数据最大小标
-
-static void *mem_base = NULL; //初始内存地址
-static void *mem_current = NULL; //当前内存指针
-static size_t mem_avail = 0; //可用的内存大小
-```
-
-## API
+## API & Interface
 
 ```
 /**
