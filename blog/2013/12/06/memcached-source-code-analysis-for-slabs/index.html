@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Markdown editing介绍 - sublime text 2插件 - 李林江的技术博客</title>
+  <title>Memcached源码分析之slabs(初始化，分配，释放) - 李林江的技术博客</title>
   <meta name="author" content="李林江">
 
   
-  <meta name="description" content="Markdown Editing介绍 - Sublime Text 2插件 Nov 26th, 2013 | <a href="#disqus_thread" data-disqus-identifier="http://lilinj2000.github.io">Comments 简介 &hellip;">
-  
+  <meta name="description" content="Memcached源码分析之slabs(初始化，分配，释放) Dec 6th, 2013 | <a href="#disqus_thread" data-disqus-identifier="http://lilinj2000.github.io">Comments slabclass之数据结构 &hellip;">
+  <meta name="keywords" content="memcached slab">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://lilinj2000.github.io/blog/2013/11/26/introducing-markdown-editing-plugin-for-sublime-text2">
+  <link rel="canonical" href="http://lilinj2000.github.io/blog/2013/12/06/memcached-source-code-analysis-for-slabs">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="李林江的技术博客" type="application/atom+xml">
@@ -80,7 +80,7 @@
   
   <header>
     
-      <h1 class="entry-title">Markdown Editing介绍 - Sublime Text 2插件</h1>
+      <h1 class="entry-title">Memcached源码分析之slabs(初始化，分配，释放)</h1>
     
     
       <p class="meta">
@@ -96,7 +96,7 @@
   
 
 
-<time datetime="2013-11-26T10:50:00+08:00" pubdate data-updated="true">Nov 26<span>th</span>, 2013</time>
+<time datetime="2013-12-06T15:14:00+08:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://lilinj2000.github.io">Comments</a>
@@ -108,84 +108,89 @@
   </header>
 
 
-<div class="entry-content"><h2 id="section">简介</h2>
-<p>MarkdownEditing是ttscoff编写的一个Sublime Text 2插件，用于在ST2中进行Markdown文件的编写。插件中添加一系列的快捷键和自动处理，方便大家在ST2中进行MD的编写。</p>
+<div class="entry-content"><h2 id="slabclass">slabclass之数据结构</h2>
 
-<p><a href="http://brettterpstra.com/2012/05/17/markdown-editing-for-sublime-text-2-humble-beginnings/">Markdown Editing for Sublime Text 2: humble beginnings</a></p>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">/* powers-of-N allocation structures */
+</span><span class="line">
+</span><span class="line">typedef struct {
+</span><span class="line">    unsigned int size;      /* sizes of items */
+</span><span class="line">    unsigned int perslab;   /* how many items per slab */
+</span><span class="line">
+</span><span class="line">    void *slots;           /* list of item ptrs */
+</span><span class="line">    unsigned int sl_curr;   /* total free items in list */
+</span><span class="line">
+</span><span class="line">    unsigned int slabs;     /* how many slabs were allocated for this class */
+</span><span class="line">
+</span><span class="line">    void **slab_list;       /* array of slab pointers */
+</span><span class="line">    unsigned int list_size; /* size of prev array */
+</span><span class="line">
+</span><span class="line">    unsigned int killing;  /* index+1 of dying slab, or zero if none */
+</span><span class="line">    size_t requested; /* The number of requested bytes */
+</span><span class="line">} slabclass_t;
+</span><span class="line">
+</span><span class="line">static slabclass_t slabclass[MAX_NUMBER_OF_SLAB_CLASSES];
+</span><span class="line">static size_t mem_limit = 0;
+</span><span class="line">static size_t mem_malloced = 0;
+</span><span class="line">static int power_largest;
+</span><span class="line">
+</span><span class="line">static void *mem_base = NULL;
+</span><span class="line">static void *mem_current = NULL;
+</span><span class="line">static size_t mem_avail = 0;</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>Source code: <a href="https://github.com/ttscoff/MarkdownEditing">https://github.com/ttscoff/MarkdownEditing</a></p>
+<h2 id="api--interface">API &amp; Interface</h2>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">/**
+</span><span class="line"> * @desc
+</span><span class="line"> *  初始化slabclass数组
+</span><span class="line"> * @limit: 内存最大值
+</span><span class="line"> * @factor: chunk大小增长率，默认是1.25
+</span><span class="line"> * @prealloc: 是否预分配
+</span><span class="line"> */
+</span><span class="line">void slabs_init(const size_t limit, const double factor, const bool prealloc);
+</span><span class="line">
+</span><span class="line">/**
+</span><span class="line"> *
+</span><span class="line">unsigned int slabs_clsid(const size_t size);</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <!-- more -->
-
-<h2 id="markdownediting">MarkdownEditing的功能</h2>
-
-<h3 id="section-1">语法增强类</h3>
-
-<ul>
-  <li>
-    <p>星号*、下划线_和反引号`自动配对</p>
-  </li>
-  <li>
-    <p>如输入的自动配对符号中间内容为空时，删除第一个符号时将直接删除整对符号</p>
-  </li>
-  <li>
-    <p>如输入自动配对符号后直接输入空格，则自动删除后面自动配对的符号</p>
-  </li>
-  <li>
-    <p>波浪线 ~ 包围的内容将转换为HTML中的 标签</p>
-  </li>
-  <li>
-    <p>当创建了列表后，回车将自动添加一个列表项。如列表项为空，再次回车将删除该列表项.</p>
-  </li>
-</ul>
-
-<h3 id="markdowneditingwindows">MarkdownEditing在Windows下面的快捷键</h3>
-
-<ul>
-  <li>
-    <p>Ctrl+Win+V _选中的内容_将自动转换为<strong>行内式超链接</strong>，链接到剪贴板中的内容</p>
-  </li>
-  <li>
-    <p>Ctrl+Win+R _选中的内容将_自动转换为<strong>参考式超链接</strong>，链接到剪贴板中的内容</p>
-  </li>
-  <li>
-    <p>Ctrl+Win+K 插入一个<strong>标准的行内式超链接</strong></p>
-  </li>
-  <li>
-    <p>Shift+Win+K 插入一个<strong>标准的行内式图片</strong>（此快捷键可能与输入法有冲突）</p>
-  </li>
-  <li>
-    <p>Ctrl+1 至 Ctrl+6 插入一级至六级标题</p>
-  </li>
-  <li>
-    <p>Ctrl+I 选中的内容转换为_斜体_</p>
-  </li>
-  <li>
-    <p>Ctrl+B 选中的内容转换为<strong>粗体</strong></p>
-  </li>
-  <li>
-    <p>Ctrl+Shift+6 自动插入一个脚注，并跳转到该脚注的定义中。</p>
-  </li>
-  <li>
-    <p>Alt+Shift+F 查找没有定义的脚注并自动添加其定义链接</p>
-  </li>
-  <li>
-    <p>Alt+Shift+G 查找没有定义的参考式超链接并自动添加其定义链接</p>
-  </li>
-  <li>
-    <p>Ctrl+Alt+S 脚注排序</p>
-  </li>
-  <li>
-    <p>Ctrl+Shift+. 缩进当前内容</p>
-  </li>
-  <li>
-    <p>Ctrl+Shift+, 提前当前内容</p>
-  </li>
-</ul>
-
-<p>参考：</p>
-
-<p><a href="http://blog.edi-c.com/post/mod-mdediting-for-win">在Windows下面使用MarkdownEditing</a></p>
 
 </div>
 
@@ -197,23 +202,23 @@
       <h2>Related Posts</h2>
       
         <article>
-          <h3 class="title"><a href="/blog/2013/11/22/markdown-inroduction-summarize/">Markdown 小结</a></h3>
+          <h3 class="title"><a href="/blog/2013/11/27/playing-memcached-by-telnet-stats-slabs/">玩转Memcached by telnet之Stats Slabs</a></h3>
         </article>
       
         <article>
-          <h3 class="title"><a href="/blog/2013/11/22/markdown-inroduction-for-code-and-em/">Markdown语法介绍 - 代码和强调</a></h3>
+          <h3 class="title"><a href="/blog/2013/11/27/memcached-for-memory-management/">Memcached之内存存储方式介绍</a></h3>
         </article>
       
         <article>
-          <h3 class="title"><a href="/blog/2013/11/22/markdown-inroduction-for-autolink-and-others/">Markdown语法介绍 - 自动链接和其他</a></h3>
+          <h3 class="title"><a href="/blog/2013/11/27/playing-memcached-by-telnet-increment-and-decrement/">玩转Memcached by telnet之Increment and Decrement Command</a></h3>
         </article>
       
         <article>
-          <h3 class="title"><a href="/blog/2013/11/22/markdown-inroduction-for-code-and-seprator/">Markdown语法介绍 - 代码区块和分隔线</a></h3>
+          <h3 class="title"><a href="/blog/2013/11/27/playing-memcached-by-telnet-deletion-and-touch/">玩转Memcached by telnet之Deletion and Touch Command</a></h3>
         </article>
       
         <article>
-          <h3 class="title"><a href="/blog/2013/11/22/markdown-inroduction-for-image/">Markdown语法介绍 - 图片</a></h3>
+          <h3 class="title"><a href="/blog/2013/11/26/playing-memcached-by-telnet-retrieval-command/">玩转Memcached by telnet之Retrieval Command</a></h3>
         </article>
       
     </div>
@@ -239,12 +244,12 @@
   
 
 
-<time datetime="2013-11-26T10:50:00+08:00" pubdate data-updated="true">Nov 26<span>th</span>, 2013</time>
+<time datetime="2013-12-06T15:14:00+08:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/markdownjie-shao/'>Markdown介绍</a>
+    <a class='category' href='/blog/categories/memcachedjie-shao/'>Memcached介绍</a>, <a class='category' href='/blog/categories/memcachedyuan-ma-fen-xi/'>Memcached源码分析</a>
   
 </span>
 
@@ -263,10 +268,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/11/24/warmup-memcached/" title="Previous Post: 初识 Memcached">&laquo; 初识 Memcached</a>
+        <a class="basic-alignment left" href="/blog/2013/11/27/playing-memcached-by-telnet-stats-slabs/" title="Previous Post: 玩转Memcached by telnet之Stats Slabs">&laquo; 玩转Memcached by telnet之Stats Slabs</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/11/26/playing-memcached-by-telnet-storage-command/" title="Next Post: 玩转Memcached by telnet之Storage Command">玩转Memcached by telnet之Storage Command &raquo;</a>
       
     </p>
   </footer>
@@ -355,8 +358,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://lilinj2000.github.io/blog/2013/11/26/introducing-markdown-editing-plugin-for-sublime-text2/';
-        var disqus_url = 'http://lilinj2000.github.io/blog/2013/11/26/introducing-markdown-editing-plugin-for-sublime-text2/';
+        var disqus_identifier = 'http://lilinj2000.github.io/blog/2013/12/06/memcached-source-code-analysis-for-slabs/';
+        var disqus_url = 'http://lilinj2000.github.io/blog/2013/12/06/memcached-source-code-analysis-for-slabs/';
         var disqus_script = 'embed.js';
       
     (function () {
