@@ -4,7 +4,7 @@
   <title><![CDATA[李林江的技术博客]]></title>
   <link href="http://lilinj2000.github.io/atom.xml" rel="self"/>
   <link href="http://lilinj2000.github.io/"/>
-  <updated>2013-12-06T15:17:52+08:00</updated>
+  <updated>2013-12-06T16:14:50+08:00</updated>
   <id>http://lilinj2000.github.io/</id>
   <author>
     <name><![CDATA[李林江]]></name>
@@ -12,6 +12,98 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Memcached源码分析之slabs(初始化，分配，释放)]]></title>
+    <link href="http://lilinj2000.github.io/blog/2013/12/06/memcached-source-code-analysis-for-slabs/"/>
+    <updated>2013-12-06T15:14:00+08:00</updated>
+    <id>http://lilinj2000.github.io/blog/2013/12/06/memcached-source-code-analysis-for-slabs</id>
+    <content type="html"><![CDATA[<h2 id="slabclass">slabclass之数据结构</h2>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">/* powers-of-N allocation structures */
+</span><span class="line">
+</span><span class="line">typedef struct {
+</span><span class="line">    unsigned int size;      /* sizes of items */
+</span><span class="line">    unsigned int perslab;   /* how many items per slab */
+</span><span class="line">
+</span><span class="line">    void *slots;           /* list of item ptrs */
+</span><span class="line">    unsigned int sl_curr;   /* total free items in list */
+</span><span class="line">
+</span><span class="line">    unsigned int slabs;     /* how many slabs were allocated for this class */
+</span><span class="line">
+</span><span class="line">    void **slab_list;       /* array of slab pointers */
+</span><span class="line">    unsigned int list_size; /* size of prev array */
+</span><span class="line">
+</span><span class="line">    unsigned int killing;  /* index+1 of dying slab, or zero if none */
+</span><span class="line">    size_t requested; /* The number of requested bytes */
+</span><span class="line">} slabclass_t;
+</span><span class="line">
+</span><span class="line">static slabclass_t slabclass[MAX_NUMBER_OF_SLAB_CLASSES];
+</span><span class="line">static size_t mem_limit = 0;
+</span><span class="line">static size_t mem_malloced = 0;
+</span><span class="line">static int power_largest;
+</span><span class="line">
+</span><span class="line">static void *mem_base = NULL;
+</span><span class="line">static void *mem_current = NULL;
+</span><span class="line">static size_t mem_avail = 0;</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="api--interface">API &amp; Interface</h2>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">/**
+</span><span class="line"> * @desc
+</span><span class="line"> *  初始化slabclass数组
+</span><span class="line"> * @limit: 内存最大值
+</span><span class="line"> * @factor: chunk大小增长率，默认是1.25
+</span><span class="line"> * @prealloc: 是否预分配
+</span><span class="line"> */
+</span><span class="line">void slabs_init(const size_t limit, const double factor, const bool prealloc);
+</span><span class="line">
+</span><span class="line">/**
+</span><span class="line"> *
+</span><span class="line">unsigned int slabs_clsid(const size_t size);</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<!-- more -->
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[玩转Memcached by telnet之Stats Slabs]]></title>
