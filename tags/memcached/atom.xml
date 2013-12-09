@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Memcached | 李林江的技术博客]]></title>
   <link href="http://lilinj2000.github.io/tags/memcached/atom.xml" rel="self"/>
   <link href="http://lilinj2000.github.io/"/>
-  <updated>2013-12-06T16:14:50+08:00</updated>
+  <updated>2013-12-09T11:39:53+08:00</updated>
   <id>http://lilinj2000.github.io/</id>
   <author>
     <name><![CDATA[李林江]]></name>
@@ -12,64 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Memcached源码分析之slabs(初始化，分配，释放)]]></title>
-    <link href="http://lilinj2000.github.io/blog/2013/12/06/memcached-source-code-analysis-for-slabs/"/>
-    <updated>2013-12-06T15:14:00+08:00</updated>
-    <id>http://lilinj2000.github.io/blog/2013/12/06/memcached-source-code-analysis-for-slabs</id>
-    <content type="html"><![CDATA[<h2 id="slabclass">slabclass之数据结构</h2>
-
-<p>```
-/* powers-of-N allocation structures */</p>
-
-<p>typedef struct {
-    unsigned int size;      /* sizes of items <em>/
-    unsigned int perslab;   /</em> how many items per slab */</p>
-
-<pre><code>void *slots;           /* list of item ptrs */
-unsigned int sl_curr;   /* total free items in list */
-
-unsigned int slabs;     /* how many slabs were allocated for this class */
-
-void **slab_list;       /* array of slab pointers */
-unsigned int list_size; /* size of prev array */
-
-unsigned int killing;  /* index+1 of dying slab, or zero if none */
-size_t requested; /* The number of requested bytes */ } slabclass_t;
-</code></pre>
-
-<p>static slabclass_t slabclass[MAX_NUMBER_OF_SLAB_CLASSES];
-static size_t mem_limit = 0;
-static size_t mem_malloced = 0;
-static int power_largest;</p>
-
-<p>static void *mem_base = NULL;
-static void *mem_current = NULL;
-static size_t mem_avail = 0;
-```</p>
-
-<h2 id="api--interface">API &amp; Interface</h2>
-
-<p>```
-/**
- * @desc
- *  初始化slabclass数组
- * @limit: 内存最大值
- * @factor: chunk大小增长率，默认是1.25
- * @prealloc: 是否预分配
- */
-void slabs_init(const size_t limit, const double factor, const bool prealloc);</p>
-
-<p>/**
- *
-unsigned int slabs_clsid(const size_t size);
-```</p>
-
-<!-- more -->
-
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[玩转Memcached by telnet之Stats Slabs]]></title>
@@ -495,6 +437,133 @@ NOT_FOUND
     <p>“NOT_FOUND\r\n” 唯一标识符key没有找到</p>
   </li>
 </ul>
+
+<p><a href="https://github.com/lilinj2000/memcached/blob/master/doc/protocol.txt">更详细信息请参考这里</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[玩转Memcached by telnet之Retrieval Command]]></title>
+    <link href="http://lilinj2000.github.io/blog/2013/11/26/playing-memcached-by-telnet-retrieval-command/"/>
+    <updated>2013-11-26T16:06:00+08:00</updated>
+    <id>http://lilinj2000.github.io/blog/2013/11/26/playing-memcached-by-telnet-retrieval-command</id>
+    <content type="html"><![CDATA[<h2 id="retrieval-commands">Retrieval commands</h2>
+
+<h3 id="section">格式：</h3>
+
+<pre><code>get &lt;key&gt;*\r\n
+gets &lt;key&gt;*\r\n
+</code></pre>
+
+<ul>
+  <li>&lt;key&gt;* 一个或者多个key，由空白符分隔。</li>
+</ul>
+
+<p>在零个或者多个key/value被返回后，server端会返回字符串”END\r\n”指示返回结束。</p>
+
+<!-- more -->
+
+<p>返回信息：</p>
+
+<pre><code>VALUE &lt;key&gt; &lt;flags&gt; &lt;bytes&gt; [&lt;cas unique&gt;]\r\n
+&lt;data block&gt;\r\n
+</code></pre>
+
+<ul>
+  <li>
+    <p>&lt;key&gt; 发送的key值</p>
+  </li>
+  <li>
+    <p>&lt;flags&gt; 在数据被存储时，设置的flags信息</p>
+  </li>
+  <li>
+    <p>&lt;bytes&gt; 存储的数据长度，不包括分隔符 <code>\r\n</code></p>
+  </li>
+  <li>
+    <p>[&lt;cas unique&gt;] 唯一标识的64位整数，在Command <code>cas</code> 中被使用</p>
+  </li>
+  <li>
+    <p>&lt;data block&gt; 数据块</p>
+  </li>
+</ul>
+
+<p>数据不能被获取的情况有：</p>
+
+<ul>
+  <li>
+    <p>数据从来没有被存储</p>
+
+    <pre><code>  get key3
+  END
+</code></pre>
+  </li>
+  <li>
+    <p>数据被存储，但是获取时已经过期</p>
+
+    <pre><code>  add key1 0 5 2
+  ab
+  STORED
+  #after 5 seconds, the data is expiration
+  get key1
+  END
+</code></pre>
+  </li>
+  <li>
+    <p>数据被存储，数据已经显示被删除了</p>
+
+    <pre><code>  add key1 0 0 2
+  ab
+  STORED
+  delete key1
+  DELETED
+  get key1
+  END
+</code></pre>
+  </li>
+  <li>
+    <p>数据被存储，由于内存原因，基于LRU算法，数据已经被系统删除</p>
+  </li>
+</ul>
+
+<h3 id="command-get">Command get</h3>
+
+<p>获取一个或者多个key的值，<strong>不返回</strong><code>&lt;cas unique&gt;</code></p>
+
+<pre><code>get key1
+VALUE key1 0 2
+ab
+END
+get key1 key2
+VALUE key1 0 2
+ab
+VALUE key2 0 3
+abc
+END
+get key1 key3  #without stored key3
+VALUE key1 0 2
+ab
+END
+</code></pre>
+
+<h3 id="command-gets">Command gets</h3>
+
+<p>获取一个或者多个key的值，<strong>返回</strong><code>&lt;cas unique&gt;</code></p>
+
+<pre><code>gets key1
+VALUE key1 0 2 7
+ab
+END
+gets key1 key2
+VALUE key1 0 2 7
+ab
+VALUE key2 0 3 3
+abc
+END
+gets key1 key3
+VALUE key1 0 2 7
+ab
+END
+</code></pre>
 
 <p><a href="https://github.com/lilinj2000/memcached/blob/master/doc/protocol.txt">更详细信息请参考这里</a></p>
 ]]></content>
