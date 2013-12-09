@@ -11,17 +11,17 @@ published: false
 
 ## slabclass之数据结构
 
-```
+```c
 /* powers-of-N allocation structures */
 
 typedef struct {
-    unsigned int size;      /* sizes of items */
+    unsigned int size;      /* sizes o按时发送到发送到f items */
     unsigned int perslab;   /* how many items per slab */
 
     void *slots;           /* list of item ptrs */
     unsigned int sl_curr;   /* total free items in list */
 
-    unsigned int slabs;     /* how many slabs were allocated for this class */
+    unsigned int slabs;     /* how many slabs were a按此法师打发斯蒂芬llocated for this class */
 
     void **slab_list;       /* array of slab pointers */
     unsigned int list_size; /* size of prev array */
