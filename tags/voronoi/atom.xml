@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: voronoi | 李林江的技术博客]]></title>
+  <link href="http://lilinj2000.github.io/tags/voronoi/atom.xml" rel="self"/>
+  <link href="http://lilinj2000.github.io/"/>
+  <updated>2014-07-31T11:16:37+08:00</updated>
+  <id>http://lilinj2000.github.io/</id>
+  <author>
+    <name><![CDATA[李林江]]></name>
+    <email><![CDATA[lilinj2000@163.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[voronoi fortune algorithm introduction]]></title>
+    <link href="http://lilinj2000.github.io/blog/2014/07/31/voronoi-fortune-algorithm-introduction/"/>
+    <updated>2014-07-31T11:12:00+08:00</updated>
+    <id>http://lilinj2000.github.io/blog/2014/07/31/voronoi-fortune-algorithm-introduction</id>
+    <content type="html"><![CDATA[<object data="/pdf/Voronoi Fortune Algorithm Introduction.pdf#toolbar=1&amp;navpanes=0&amp;scrollbar=1&amp;page=1&amp;view=FitH" type="application/pdf" width="800" height="600">
+
+<p>It appears you don't have a PDF plugin for this browser. No biggie... you can <a href="http://lilinj2000.github.io/pdf/Voronoi Fortune Algorithm Introduction.pdf">click here to download the PDF file.</a></p>
+
+</object>
+
+]]></content>
+  </entry>
+  
+</feed>

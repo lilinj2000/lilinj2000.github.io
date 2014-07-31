@@ -4,7 +4,7 @@
   <title><![CDATA[李林江的技术博客]]></title>
   <link href="http://lilinj2000.github.io/atom.xml" rel="self"/>
   <link href="http://lilinj2000.github.io/"/>
-  <updated>2014-07-31T11:08:06+08:00</updated>
+  <updated>2014-07-31T11:16:37+08:00</updated>
   <id>http://lilinj2000.github.io/</id>
   <author>
     <name><![CDATA[李林江]]></name>
@@ -12,6 +12,20 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[voronoi fortune algorithm introduction]]></title>
+    <link href="http://lilinj2000.github.io/blog/2014/07/31/voronoi-fortune-algorithm-introduction/"/>
+    <updated>2014-07-31T11:12:00+08:00</updated>
+    <id>http://lilinj2000.github.io/blog/2014/07/31/voronoi-fortune-algorithm-introduction</id>
+    <content type="html"><![CDATA[<object data="/pdf/Voronoi Fortune Algorithm Introduction.pdf#toolbar=1&amp;navpanes=0&amp;scrollbar=1&amp;page=1&amp;view=FitH" type="application/pdf" width="800" height="600">
+
+<p>It appears you don&#8217;t have a PDF plugin for this browser. No biggie&#8230; you can <a href="http://lilinj2000.github.io/pdf/Voronoi Fortune Algorithm Introduction.pdf">click here to download the PDF file.</a></p>
+
+</object>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[ipv6 programming introduction]]></title>
