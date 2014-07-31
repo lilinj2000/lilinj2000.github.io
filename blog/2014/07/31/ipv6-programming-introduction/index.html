@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Markdown editing介绍 - sublime text 2插件 - 李林江的技术博客</title>
+  <title>ipv6 programming introduction - 李林江的技术博客</title>
   <meta name="author" content="李林江">
 
   
-  <meta name="description" content="Markdown Editing介绍 - Sublime Text 2插件 Nov 26th, 2013 | <a href="#disqus_thread" data-disqus-identifier="http://lilinj2000.github.io">Comments 简介 &hellip;">
+  <meta name="description" content=" It appears you don&#8217;t have a PDF plugin for this browser. No biggie&#8230; you can click here to download the PDF file. ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://lilinj2000.github.io/blog/2013/11/26/introducing-markdown-editing-plugin-for-sublime-text2">
+  <link rel="canonical" href="http://lilinj2000.github.io/blog/2014/07/31/ipv6-programming-introduction">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="李林江的技术博客" type="application/atom+xml">
@@ -80,7 +80,7 @@
   
   <header>
     
-      <h1 class="entry-title">Markdown Editing介绍 - Sublime Text 2插件</h1>
+      <h1 class="entry-title">Ipv6 Programming Introduction</h1>
     
     
       <p class="meta">
@@ -96,7 +96,7 @@
   
 
 
-<time datetime="2013-11-26T10:50:00+08:00" pubdate data-updated="true">Nov 26<span>th</span>, 2013</time>
+<time datetime="2014-07-31T10:21:00+08:00" pubdate data-updated="true">Jul 31<span>st</span>, 2014</time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://lilinj2000.github.io">Comments</a>
@@ -108,116 +108,16 @@
   </header>
 
 
-<div class="entry-content"><h2 id="section">简介</h2>
-<p>MarkdownEditing是ttscoff编写的一个Sublime Text 2插件，用于在ST2中进行Markdown文件的编写。插件中添加一系列的快捷键和自动处理，方便大家在ST2中进行MD的编写。</p>
+<div class="entry-content"><object data="/pdf/IPv6 Programming Introduction.pdf#toolbar=1&amp;navpanes=0&amp;scrollbar=1&amp;page=1&amp;view=FitH" type="application/pdf" width="800" height="600">
 
-<p><a href="http://brettterpstra.com/2012/05/17/markdown-editing-for-sublime-text-2-humble-beginnings/">Markdown Editing for Sublime Text 2: humble beginnings</a></p>
+<p>It appears you don&#8217;t have a PDF plugin for this browser. No biggie&#8230; you can <a href="/pdf/IPv6 Programming Introduction.pdf">click here to download the PDF file.</a></p>
 
-<p>Source code: <a href="https://github.com/ttscoff/MarkdownEditing">https://github.com/ttscoff/MarkdownEditing</a></p>
-
-<!-- more -->
-
-<h2 id="markdownediting">MarkdownEditing的功能</h2>
-
-<h3 id="section-1">语法增强类</h3>
-
-<ul>
-  <li>
-    <p>星号*、下划线_和反引号`自动配对</p>
-  </li>
-  <li>
-    <p>如输入的自动配对符号中间内容为空时，删除第一个符号时将直接删除整对符号</p>
-  </li>
-  <li>
-    <p>如输入自动配对符号后直接输入空格，则自动删除后面自动配对的符号</p>
-  </li>
-  <li>
-    <p>波浪线 ~ 包围的内容将转换为HTML中的 标签</p>
-  </li>
-  <li>
-    <p>当创建了列表后，回车将自动添加一个列表项。如列表项为空，再次回车将删除该列表项.</p>
-  </li>
-</ul>
-
-<h3 id="markdowneditingwindows">MarkdownEditing在Windows下面的快捷键</h3>
-
-<ul>
-  <li>
-    <p>Ctrl+Win+V _选中的内容_将自动转换为<strong>行内式超链接</strong>，链接到剪贴板中的内容</p>
-  </li>
-  <li>
-    <p>Ctrl+Win+R _选中的内容将_自动转换为<strong>参考式超链接</strong>，链接到剪贴板中的内容</p>
-  </li>
-  <li>
-    <p>Ctrl+Win+K 插入一个<strong>标准的行内式超链接</strong></p>
-  </li>
-  <li>
-    <p>Shift+Win+K 插入一个<strong>标准的行内式图片</strong>（此快捷键可能与输入法有冲突）</p>
-  </li>
-  <li>
-    <p>Ctrl+1 至 Ctrl+6 插入一级至六级标题</p>
-  </li>
-  <li>
-    <p>Ctrl+I 选中的内容转换为_斜体_</p>
-  </li>
-  <li>
-    <p>Ctrl+B 选中的内容转换为<strong>粗体</strong></p>
-  </li>
-  <li>
-    <p>Ctrl+Shift+6 自动插入一个脚注，并跳转到该脚注的定义中。</p>
-  </li>
-  <li>
-    <p>Alt+Shift+F 查找没有定义的脚注并自动添加其定义链接</p>
-  </li>
-  <li>
-    <p>Alt+Shift+G 查找没有定义的参考式超链接并自动添加其定义链接</p>
-  </li>
-  <li>
-    <p>Ctrl+Alt+S 脚注排序</p>
-  </li>
-  <li>
-    <p>Ctrl+Shift+. 缩进当前内容</p>
-  </li>
-  <li>
-    <p>Ctrl+Shift+, 提前当前内容</p>
-  </li>
-</ul>
-
-<p>参考：</p>
-
-<p><a href="http://blog.edi-c.com/post/mod-mdediting-for-win">在Windows下面使用MarkdownEditing</a></p>
+</object>
 
 </div>
 
 
   
-  
-  <section>
-    <div class="related-posts">
-      <h2>Related Posts</h2>
-      
-        <article>
-          <h3 class="title"><a href="/blog/2013/11/22/markdown-inroduction-summarize/">Markdown 小结</a></h3>
-        </article>
-      
-        <article>
-          <h3 class="title"><a href="/blog/2013/11/22/markdown-inroduction-for-code-and-em/">Markdown语法介绍 - 代码和强调</a></h3>
-        </article>
-      
-        <article>
-          <h3 class="title"><a href="/blog/2013/11/22/markdown-inroduction-for-autolink-and-others/">Markdown语法介绍 - 自动链接和其他</a></h3>
-        </article>
-      
-        <article>
-          <h3 class="title"><a href="/blog/2013/11/22/markdown-inroduction-for-code-and-seprator/">Markdown语法介绍 - 代码区块和分隔线</a></h3>
-        </article>
-      
-        <article>
-          <h3 class="title"><a href="/blog/2013/11/22/markdown-inroduction-for-image/">Markdown语法介绍 - 图片</a></h3>
-        </article>
-      
-    </div>
-  </section>
   
   
   <footer>
@@ -239,14 +139,8 @@
   
 
 
-<time datetime="2013-11-26T10:50:00+08:00" pubdate data-updated="true">Nov 26<span>th</span>, 2013</time>
+<time datetime="2014-07-31T10:21:00+08:00" pubdate data-updated="true">Jul 31<span>st</span>, 2014</time>
       
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/markdownjie-shao/'>Markdown介绍</a>
-  
-</span>
 
 
     </p>
@@ -263,10 +157,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/11/24/warmup-memcached/" title="Previous Post: 初识 Memcached">&laquo; 初识 Memcached</a>
+        <a class="basic-alignment left" href="/blog/2013/11/27/playing-memcached-by-telnet-stats-slabs/" title="Previous Post: 玩转Memcached by telnet之Stats Slabs">&laquo; 玩转Memcached by telnet之Stats Slabs</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/11/26/playing-memcached-by-telnet-storage-command/" title="Next Post: 玩转Memcached by telnet之Storage Command">玩转Memcached by telnet之Storage Command &raquo;</a>
       
     </p>
   </footer>
@@ -355,8 +247,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://lilinj2000.github.io/blog/2013/11/26/introducing-markdown-editing-plugin-for-sublime-text2/';
-        var disqus_url = 'http://lilinj2000.github.io/blog/2013/11/26/introducing-markdown-editing-plugin-for-sublime-text2/';
+        var disqus_identifier = 'http://lilinj2000.github.io/blog/2014/07/31/ipv6-programming-introduction/';
+        var disqus_url = 'http://lilinj2000.github.io/blog/2014/07/31/ipv6-programming-introduction/';
         var disqus_script = 'embed.js';
       
     (function () {
